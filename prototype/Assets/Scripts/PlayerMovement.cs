@@ -56,14 +56,6 @@ public class PlayerMovement : MonoBehaviour
         
     }
 
-    private void OnDrawGizmos()
-    {
-        foreach (RaycastHit hit in hits)
-        {
-            Gizmos.DrawWireSphere(hit.point,0.25f);
-        }
-    }
-
     RaycastHit[] hits;
 
     private void FixedUpdate()
