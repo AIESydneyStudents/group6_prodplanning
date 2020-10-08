@@ -15,6 +15,18 @@ public class PlayerMovement : MonoBehaviour
     Vector3 velocity;
     bool isGrounded = false;
 
+    private Camera childCamera;
+
+    private Rigidbody heldObject = null;
+    private Collider heldObjectCollider = null;
+    private float distenceFromHeldObject = 0;
+    private Vector3 heldObjectVelocity = new Vector3();
+
+    private void Start()
+    {
+        childCamera = GetComponentInChildren<Camera>();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -35,5 +47,88 @@ public class PlayerMovement : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
 
         controller.Move(velocity * Time.deltaTime);
+
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            PickupObject();
+        }
+
+        
+    }
+
+    private void OnDrawGizmos()
+    {
+        foreach (RaycastHit hit in hits)
+        {
+            Gizmos.DrawWireSphere(hit.point,0.25f);
+        }
+    }
+
+    RaycastHit[] hits;
+
+    private void FixedUpdate()
+    {
+        if (heldObject != null)
+        {
+            Vector3 targetPoint = childCamera.ScreenToWorldPoint(new Vector3(Screen.width / 2, Screen.height / 2, 0));
+            targetPoint += childCamera.transform.forward * distenceFromHeldObject;
+
+            Vector3 move = Vector3.MoveTowards(heldObject.transform.position, targetPoint, 50 * Time.deltaTime);
+
+            Vector3 center = heldObjectCollider.bounds.center + move;
+            Vector3 extents = heldObjectCollider.bounds.extents;
+
+            hits = Physics.BoxCastAll(center, extents, childCamera.transform.forward, Quaternion.identity, distenceFromHeldObject,LayerMask.GetMask("Ground"));
+
+            bool hasHit = false;
+
+            foreach(RaycastHit hit in hits)
+            {
+                if(hit.collider != null)
+                {
+                    hasHit = true;
+                    break;
+                }
+            }
+
+            if(!hasHit)
+            {
+                heldObject.MovePosition(move);
+                heldObjectVelocity = move - heldObject.transform.position;
+            }
+
+        }
+    }
+
+    void PickupObject()
+    {
+        if (heldObject == null)
+        {
+            RaycastHit hit;
+            //Check if object in way of raycast
+            if(Physics.Raycast(new Ray(childCamera.transform.position,childCamera.transform.forward),out hit,500))
+            {
+                if ((LayerMask.GetMask("Pickupable") & (1 << hit.collider.gameObject.layer)) > 0)
+                {
+                    heldObject = hit.collider.gameObject.GetComponent<Rigidbody>();
+                    heldObjectCollider =  heldObject.gameObject.GetComponent<Collider>();
+                    heldObject.useGravity = false;
+                    heldObjectVelocity = Vector3.zero;
+
+                    distenceFromHeldObject = hit.distance;
+
+                    distenceFromHeldObject = Mathf.Max(2.5f,distenceFromHeldObject);
+                }
+            }
+        }
+        else
+        {
+
+            //heldObject.velocity = Vector3.zero;
+            heldObject.useGravity = true;
+            heldObject.velocity = heldObjectVelocity;
+            heldObjectCollider = null;
+            heldObject = null;
+        }
     }
 }
