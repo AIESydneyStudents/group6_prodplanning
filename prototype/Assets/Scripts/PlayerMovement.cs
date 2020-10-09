@@ -51,9 +51,7 @@ public class PlayerMovement : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.E))
         {
             PickupObject();
-        }
-
-        
+        }        
     }
 
     RaycastHit[] hits;
@@ -88,7 +86,6 @@ public class PlayerMovement : MonoBehaviour
                 heldObject.MovePosition(move);
                 heldObjectVelocity = move - heldObject.transform.position;
             }
-
         }
     }
 
