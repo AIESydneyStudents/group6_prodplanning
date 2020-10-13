@@ -9,7 +9,10 @@ public class PortalTeleporter : MonoBehaviour
 
     private Transform player;
 
-    private bool playerIsOverlapping = false;
+    [HideInInspector]
+    public bool PlayerIsOverlapping = false;
+
+    private bool canTeleport = true;
 
     //Display linked portal
     public void OnDrawGizmosSelected()
@@ -36,7 +39,7 @@ public class PortalTeleporter : MonoBehaviour
 
     private void Update()
     {
-        if(playerIsOverlapping && Reciver != null)
+        if(canTeleport && PlayerIsOverlapping && Reciver != null)
         {
             Vector3 portalToPlayer = player.position - transform.position;
             float dotProduct = Vector3.Dot(transform.up, portalToPlayer);
@@ -50,17 +53,28 @@ public class PortalTeleporter : MonoBehaviour
                 Debug.Log("Yop");
                 //TP them
                 float rotationDiff = -Quaternion.Angle(transform.rotation, Reciver.rotation);
-                //rotationDiff += 180;
+                rotationDiff += 180;
                 player.Rotate(Vector3.up, rotationDiff);
 
                 Vector3 posOffset = Quaternion.Euler(0,rotationDiff,0) * portalToPlayer;
                 player.position = Reciver.position + posOffset;
 
-                playerIsOverlapping = false;
+                PlayerIsOverlapping = false;
 
                 cont.enabled = true;
+
+                //Disable recivers collision thing
+                PortalTeleporter tele = Reciver.GetComponent<PortalTeleporter>();
+                tele.PlayerIsOverlapping = false;
+                tele.RecivedTeleport();
             }
         }
+    }
+
+    //Runs an event at the recives teleporter
+    public void RecivedTeleport()
+    {
+        StartCoroutine(DisableForAShortPeriod());
     }
 
     //Mark when player is in trigger
@@ -69,7 +83,7 @@ public class PortalTeleporter : MonoBehaviour
         if(other.tag == "Player")
         {
             player = other.gameObject.transform;
-            playerIsOverlapping = true;
+            PlayerIsOverlapping = true;
         }
     }
 
@@ -78,7 +92,17 @@ public class PortalTeleporter : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            playerIsOverlapping = false;
+            PlayerIsOverlapping = false;
         }
+    }
+
+    IEnumerator DisableForAShortPeriod()
+    {
+        canTeleport = false;
+
+        yield return new WaitForSeconds(1f);
+
+        PlayerIsOverlapping = false;
+        canTeleport = true;
     }
 }
