@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class PortalManager : MonoBehaviour
 {
+    [Tooltip("The secondary camera")]
     public Camera cameraBelow;
+
+    [Tooltip("The material the render texture is placed on")]
     public Material cameraMatB;
 
     [HideInInspector]
@@ -40,11 +43,5 @@ public class PortalManager : MonoBehaviour
 
         //Get the portal cam component
         PortalCam = cameraBelow.GetComponent<PortalCamera>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

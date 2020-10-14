@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PortalTeleporter : MonoBehaviour
 {
+    [Tooltip("The PortalBox (Spacifically the PortalBox!) of the target portal")]
     public Transform Reciver;
 
     private PlayerMovement player;
@@ -15,7 +16,7 @@ public class PortalTeleporter : MonoBehaviour
     [HideInInspector]
     public PortalManager MainPortalManager; //Stores the Portal Manager from the scene, The portal manager itself sets this variable
 
-    private bool canTeleport = true;
+    private bool canTeleport = true; // Used to disable teleportation when just teleporting.
 
     //Display linked portal
     public void OnDrawGizmosSelected()
@@ -49,17 +50,17 @@ public class PortalTeleporter : MonoBehaviour
 
             //If true player should be teleported
             if(dotProduct < 0f)
-            {
-                CharacterController cont = player.GetComponent<CharacterController>();
-                Vector3 pv = player.transform.forward;
+            {       
+                Vector3 pf = player.transform.forward;
                 Vector3 tf = transform.forward.normalized;
 
-                Debug.Log(Vector3.Dot(pv,tf));
-                if (Vector3.Dot(tf, pv) < 0f)
+                //Compare forwards to make sure the player is facing the right direction to teleport
+                if (Vector3.Dot(tf, pf) < 0f)
                 {
-                    cont.enabled = false;
+                    CharacterController cont = player.GetComponent<CharacterController>();
+                    cont.enabled = false; //Disable the controller, messes with collisions when changing position.
 
-                    //TP them
+                    //TP them, Position and rotate them accordingly
                     float rotationDiff = -Quaternion.Angle(transform.rotation, Reciver.rotation);
                     rotationDiff += 180;
                     player.transform.Rotate(Vector3.up, rotationDiff);
@@ -67,8 +68,7 @@ public class PortalTeleporter : MonoBehaviour
                     Vector3 posOffset = Quaternion.Euler(0, rotationDiff, 0) * portalToPlayer;
                     player.transform.position = Reciver.position + posOffset;
 
-                    
-
+                    //Reenable the controller
                     cont.enabled = true;
 
                     //Disable recivers collision thing
@@ -116,6 +116,7 @@ public class PortalTeleporter : MonoBehaviour
         }
     }
 
+    //Disables the telpoerter for a second.
     IEnumerator DisableForAShortPeriod()
     {
         canTeleport = false;
