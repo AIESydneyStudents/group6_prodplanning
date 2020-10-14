@@ -114,7 +114,6 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-
             //heldObject.Velocity = Vector3.zero;
             heldObject.useGravity = true;
             heldObject.velocity = heldObjectVelocity;

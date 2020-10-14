@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Portal
+  - ObjectHolder
   layers:
   - Default
   - TransparentFX
