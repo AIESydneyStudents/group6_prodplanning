@@ -12,7 +12,9 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 12f;
     public float gravity = -9.81f;
 
-    Vector3 velocity;
+    [HideInInspector]
+    public Vector3 Velocity;
+
     bool isGrounded = false;
 
     private Camera childCamera;
@@ -32,9 +34,9 @@ public class PlayerMovement : MonoBehaviour
     {
         isGrounded = Physics.CheckSphere(GroundCheck.position,groundDistance,groundMask);
 
-        if(isGrounded && velocity.y < 0)
+        if(isGrounded && Velocity.y < 0)
         {
-            velocity.y = 0f;
+            Velocity.y = 0f;
         }
 
         float xMov = Input.GetAxis("Horizontal");
@@ -44,9 +46,9 @@ public class PlayerMovement : MonoBehaviour
 
         controller.Move(move * speed * Time.deltaTime);
 
-        velocity.y += gravity * Time.deltaTime;
+        Velocity.y += gravity * Time.deltaTime;
 
-        controller.Move(velocity * Time.deltaTime);
+        controller.Move(Velocity * Time.deltaTime);
 
         if(Input.GetKeyDown(KeyCode.E))
         {
@@ -113,7 +115,7 @@ public class PlayerMovement : MonoBehaviour
         else
         {
 
-            //heldObject.velocity = Vector3.zero;
+            //heldObject.Velocity = Vector3.zero;
             heldObject.useGravity = true;
             heldObject.velocity = heldObjectVelocity;
             heldObjectCollider = null;

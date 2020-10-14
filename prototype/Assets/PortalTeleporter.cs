@@ -7,10 +7,13 @@ public class PortalTeleporter : MonoBehaviour
 {
     public Transform Reciver;
 
-    private Transform player;
+    private PlayerMovement player;
 
     [HideInInspector]
     public bool PlayerIsOverlapping = false;
+
+    [HideInInspector]
+    public PortalManager MainPortalManager; //Stores the Portal Manager from the scene, The portal manager itself sets this variable
 
     private bool canTeleport = true;
 
@@ -29,7 +32,7 @@ public class PortalTeleporter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
 
         if(Reciver == null)
         {
@@ -41,40 +44,53 @@ public class PortalTeleporter : MonoBehaviour
     {
         if(canTeleport && PlayerIsOverlapping && Reciver != null)
         {
-            Vector3 portalToPlayer = player.position - transform.position;
+            Vector3 portalToPlayer = player.transform.position - transform.position;
             float dotProduct = Vector3.Dot(transform.up, portalToPlayer);
 
             //If true player should be teleported
             if(dotProduct < 0f)
             {
                 CharacterController cont = player.GetComponent<CharacterController>();
-                cont.enabled = false;
+                Vector3 pv = player.transform.forward;
+                Vector3 tf = transform.forward.normalized;
 
-                Debug.Log("Yop");
-                //TP them
-                float rotationDiff = -Quaternion.Angle(transform.rotation, Reciver.rotation);
-                rotationDiff += 180;
-                player.Rotate(Vector3.up, rotationDiff);
+                Debug.Log(Vector3.Dot(pv,tf));
+                if (Vector3.Dot(tf, pv) < 0f)
+                {
+                    cont.enabled = false;
 
-                Vector3 posOffset = Quaternion.Euler(0,rotationDiff,0) * portalToPlayer;
-                player.position = Reciver.position + posOffset;
+                    //TP them
+                    float rotationDiff = -Quaternion.Angle(transform.rotation, Reciver.rotation);
+                    rotationDiff += 180;
+                    player.transform.Rotate(Vector3.up, rotationDiff);
 
+                    Vector3 posOffset = Quaternion.Euler(0, rotationDiff, 0) * portalToPlayer;
+                    player.transform.position = Reciver.position + posOffset;
+
+                    
+
+                    cont.enabled = true;
+
+                    //Disable recivers collision thing
+                    PortalTeleporter tele = Reciver.GetComponent<PortalTeleporter>();          
+                    tele.RecivedTeleport(this);
+                    tele.PlayerIsOverlapping = false;
+                }
                 PlayerIsOverlapping = false;
-
-                cont.enabled = true;
-
-                //Disable recivers collision thing
-                PortalTeleporter tele = Reciver.GetComponent<PortalTeleporter>();
-                tele.PlayerIsOverlapping = false;
-                tele.RecivedTeleport();
             }
         }
     }
 
-    //Runs an event at the recives teleporter
-    public void RecivedTeleport()
+    //Runs an event at the recives teleporter, As in when teleported TO.
+    public void RecivedTeleport(PortalTeleporter source)
     {
         StartCoroutine(DisableForAShortPeriod());
+
+        if(MainPortalManager != null)
+        {
+            MainPortalManager.PortalCam.portal = source.transform;
+            MainPortalManager.PortalCam.otherPortal = this.transform;
+        }
     }
 
     //Mark when player is in trigger
@@ -82,7 +98,11 @@ public class PortalTeleporter : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            player = other.gameObject.transform;
+            if(player == null || other.transform != player.transform)
+            {
+                player = other.GetComponent<PlayerMovement>();
+            }
+
             PlayerIsOverlapping = true;
         }
     }
