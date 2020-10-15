@@ -43,7 +43,7 @@ public class PortalTeleporter : MonoBehaviour
 
     private void Update()
     {
-        if(canTeleport && PlayerIsOverlapping && Reciver != null)
+        if(canTeleport && PlayerIsOverlapping && !MainPortalManager.PlayerJustTeleported && Reciver != null)
         {
             Vector3 portalToPlayer = player.transform.position - transform.position;
             float dotProduct = Vector3.Dot(transform.up, portalToPlayer);
@@ -51,12 +51,15 @@ public class PortalTeleporter : MonoBehaviour
             //If true player should be teleported
             if(dotProduct < 0f)
             {       
-                Vector3 pf = player.transform.forward;
+                //Make sure the player is moving through portal
+                Vector3 pf = player.Velocity.normalized;
                 Vector3 tf = transform.forward.normalized;
+                Debug.Log(pf.ToString());
 
                 //Compare forwards to make sure the player is facing the right direction to teleport
                 if (Vector3.Dot(tf, pf) < 0f)
                 {
+                    MainPortalManager.PlayerJustTeleported = true;
                     CharacterController cont = player.GetComponent<CharacterController>();
                     cont.enabled = false; //Disable the controller, messes with collisions when changing position.
 
