@@ -40,15 +40,18 @@ public class PickupObject : MonoBehaviour
                 focusing = true;
             }
         }
+    }
 
+    void FixedUpdate() // FixedUpdate fixes jitter issue.
+    {
         if (focusing) // Object has been picked up and is now focusing on its position.
         {
-            pickedObject.transform.position = Vector3.Lerp(pickedObject.transform.position, ObjectDestination.transform.position, Time.deltaTime * carrySmooth);
+            pickedObject.transform.position = Vector3.Lerp(pickedObject.transform.position, ObjectDestination.transform.position,
+                Time.deltaTime * carrySmooth);
             pickedObject.transform.rotation = Quaternion.identity; // So that the object doesn't spin, spin and spin.
-        }
 
-        // There's an issue with the lerping, it sometimes won't continue trying to lerp to desired position after random collision testing.
-        // Issue with position looks unstable and uncentered, try recreating the issue and let me know what you think, Ryan.
+            if (pickedObjectRb.velocity != Vector3.zero) pickedObjectRb.velocity = Vector3.zero; // Seemed to fix the rest of the issues lol
+        }
     }
 
     void PickUpControl()
