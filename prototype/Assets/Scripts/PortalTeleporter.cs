@@ -21,13 +21,16 @@ public class PortalTeleporter : MonoBehaviour
     //Display linked portal
     public void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.green;
-        if(Reciver != null)
-        {
-            Vector3 p1 = transform.position;
-            Vector3 p2 = Reciver.position;
-            Handles.DrawBezier(p1,p2,p1,p1,Color.green,null,4);
-        }
+        #if UNITY_EDITOR // prevents failiure to build on other platforms
+        
+            Gizmos.color = Color.green;
+            if (Reciver != null)
+            {
+                Vector3 p1 = transform.position;
+                Vector3 p2 = Reciver.position;
+                Handles.DrawBezier(p1, p2, p1, p1, Color.green, null, 4);
+            }
+        #endif
     }
 
     // Start is called before the first frame update
