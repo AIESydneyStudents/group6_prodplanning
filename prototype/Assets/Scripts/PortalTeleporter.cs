@@ -8,7 +8,7 @@ public class PortalTeleporter : MonoBehaviour
     [Tooltip("The PortalBox (Spacifically the PortalBox!) of the target portal")]
     public Transform Reciver;
 
-    private PlayerMovement player;
+    private F_PlayerMovement player;
 
     [HideInInspector]
     public bool PlayerIsOverlapping = false;
@@ -36,7 +36,7 @@ public class PortalTeleporter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<F_PlayerMovement>();
 
         if(Reciver == null)
         {
@@ -106,7 +106,7 @@ public class PortalTeleporter : MonoBehaviour
         {
             if(player == null || other.transform != player.transform)
             {
-                player = other.GetComponent<PlayerMovement>();
+                player = other.GetComponent<F_PlayerMovement>();
             }
 
             PlayerIsOverlapping = true;
