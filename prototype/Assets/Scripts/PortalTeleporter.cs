@@ -122,6 +122,11 @@ public class PortalTeleporter : MonoBehaviour
         }
     }
 
+    public bool FacingCamera(Camera cam) //Checks if the plane is facing the camera, does not respect visibility through objects
+    {
+        return Vector3.Dot(transform.forward,cam.transform.position - transform.position) > 0;
+    }
+
     //Disables the telpoerter for a second.
     IEnumerator DisableForAShortPeriod()
     {

@@ -53,6 +53,7 @@ public class PortalManager : MonoBehaviour
     private void Update()
     {
         teleporterTimer += Time.deltaTime;
+
         //Player should not teleport if teleported into another telepoerter.
         if (PlayerJustTeleported)
         {
@@ -76,10 +77,11 @@ public class PortalManager : MonoBehaviour
             Transform nearest = PortalCam.otherPortal;
             float nearestDist = Vector3.Distance(PortalCam.PlayerCamera.transform.position, nearest.position);
 
+            //Checks for the nearest portal and if it is facing the camera. Probably could be optimized dramatically
             foreach (KeyValuePair<Transform, PortalTeleporter> pair in portals)
             {
                 float dist = Vector3.Distance(PortalCam.PlayerCamera.transform.position, pair.Key.position);
-                if (dist < nearestDist)
+                if (dist < nearestDist && pair.Value.FacingCamera(Camera.main))
                 {
                     dist = nearestDist;
                     nearest = pair.Key;
@@ -94,9 +96,9 @@ public class PortalManager : MonoBehaviour
                 }
 
                 PortalCam.portal = portals[nearest].Reciver;
-                PortalCam.otherPortal = nearest;
-                teleporterTimer = 0;
+                PortalCam.otherPortal = nearest;  
             }
+            teleporterTimer = 0;
         }
     }
 }
