@@ -9,6 +9,7 @@ public class PortalTeleporter : MonoBehaviour
     public Transform Reciver;
 
     private F_PlayerMovement player;
+    public MeshRenderer planeRenderer;
 
     [HideInInspector]
     public bool PlayerIsOverlapping = false;
@@ -46,44 +47,52 @@ public class PortalTeleporter : MonoBehaviour
 
     private void Update()
     {
-        if(canTeleport && PlayerIsOverlapping && !MainPortalManager.PlayerJustTeleported && Reciver != null)
+        if(canTeleport && !MainPortalManager.PlayerJustTeleported && Reciver != null)
         {
-            Vector3 portalToPlayer = player.transform.position - transform.position;
-            float dotProduct = Vector3.Dot(transform.up, portalToPlayer);
+            planeRenderer.enabled = true;
 
-            //If true player should be teleported
-            if(dotProduct < 0f)
-            {       
-                //Make sure the player is moving through portal
-                Vector3 pf = player.Velocity.normalized;
-                Vector3 tf = transform.forward.normalized;
-                Debug.Log(pf.ToString());
+            if (PlayerIsOverlapping)
+            {
+                Vector3 portalToPlayer = player.transform.position - transform.position;
+                float dotProduct = Vector3.Dot(transform.up, portalToPlayer);
 
-                //Compare forwards to make sure the player is facing the right direction to teleport
-                if (Vector3.Dot(tf, pf) < 0f)
+                //If true player should be teleported
+                if (dotProduct < 0f)
                 {
-                    MainPortalManager.PlayerJustTeleported = true;
-                    CharacterController cont = player.GetComponent<CharacterController>();
-                    cont.enabled = false; //Disable the controller, messes with collisions when changing position.
+                    //Make sure the player is moving through portal
+                    Vector3 pf = player.Velocity.normalized;
+                    Vector3 tf = transform.forward.normalized;
 
-                    //TP them, Position and rotate them accordingly
-                    float rotationDiff = -Quaternion.Angle(transform.rotation, Reciver.rotation);
-                    rotationDiff += 180;
-                    player.transform.Rotate(Vector3.up, rotationDiff);
+                    //Compare forwards to make sure the player is facing the right direction to teleport
+                    if (Vector3.Dot(tf, pf) < 0f)
+                    {
+                        MainPortalManager.PlayerJustTeleported = true;
+                        CharacterController cont = player.GetComponent<CharacterController>();
+                        cont.enabled = false; //Disable the controller, messes with collisions when changing position.
 
-                    Vector3 posOffset = Quaternion.Euler(0, rotationDiff, 0) * portalToPlayer;
-                    player.transform.position = Reciver.position + posOffset;
+                        //TP them, Position and rotate them accordingly
+                        float rotationDiff = -Quaternion.Angle(transform.rotation, Reciver.rotation);
+                        //rotationDiff += 180;
+                        player.transform.Rotate(Vector3.up, rotationDiff);
 
-                    //Reenable the controller
-                    cont.enabled = true;
+                        Vector3 posOffset = Quaternion.Euler(0, rotationDiff, 0) * portalToPlayer;
+                        player.transform.position = Reciver.position + posOffset;
 
-                    //Disable recivers collision thing
-                    PortalTeleporter tele = Reciver.GetComponent<PortalTeleporter>();          
-                    tele.RecivedTeleport(this);
-                    tele.PlayerIsOverlapping = false;
+                        //Reenable the controller
+                        cont.enabled = true;
+
+                        //Disable recivers collision thing
+                        PortalTeleporter tele = Reciver.GetComponent<PortalTeleporter>();
+                        tele.RecivedTeleport(this);
+                        tele.PlayerIsOverlapping = false;
+                    }
+                    PlayerIsOverlapping = false;
                 }
-                PlayerIsOverlapping = false;
             }
+        }
+        else
+        {
+            planeRenderer.enabled = false;
         }
     }
 
