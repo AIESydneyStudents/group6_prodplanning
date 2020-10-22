@@ -18,6 +18,8 @@ public class PickupObject : MonoBehaviour
     bool fixedRotation = false;
     bool objectZoomed = false;
 
+    public float ArmLength = 4f;
+    [SerializeField] float throwStrength = 500f;
     [SerializeField] float pickUpSmooth = 20f;
     [SerializeField] float carrySmooth = 4f;
     [SerializeField] float zoomSmooth = 150f;
@@ -31,6 +33,7 @@ public class PickupObject : MonoBehaviour
     void Start()
     {
         ObjectDestination = GameObject.FindGameObjectWithTag("ObjectHolder");
+        playerMovement = FindObjectOfType<F_PlayerMovement>();
     }
 
     void Update()
@@ -52,6 +55,16 @@ public class PickupObject : MonoBehaviour
             playerMovement.LockPlayerMovement(false);
 
             ZoomOutObject();
+
+            pickedObjectRb.velocity = Vector3.zero;
+        }
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            Rigidbody objRb = pickedObjectRb;
+            PickUpControl();
+
+            objRb.AddForce(playerMovement.playerCamera.transform.forward * throwStrength);
         }
 
         if (smoothMove) // When the object is first picked up..
@@ -101,7 +114,7 @@ public class PickupObject : MonoBehaviour
         if (pickedObject == null)
         {
             RaycastHit hit;
-            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 10f, PickableObjectLayer))
+            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, ArmLength, PickableObjectLayer))
             { // Raycast from camera perspective, this may need to be edited if multiple cameras are used.
                 pickedObject = hit.collider.gameObject;
                 smoothMove = true;
@@ -162,5 +175,10 @@ public class PickupObject : MonoBehaviour
             ObjectDestination.transform.localPosition, Time.deltaTime * zoomSmooth);
 
         if (ObjectDestination.transform.localPosition == setObjectHolderLerpPos) objectHolderPosSet = true;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawRay(Camera.main.transform.position, Camera.main.transform.forward);
     }
 }
