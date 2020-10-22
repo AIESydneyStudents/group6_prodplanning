@@ -10,6 +10,7 @@ public class PickupObject : MonoBehaviour
     Vector3 pickedObjectRotation;
 
     public LayerMask PickableObjectLayer;
+    public LayerMask InteractableLayer;
 
     public F_PlayerMovement playerMovement;
 
@@ -116,18 +117,29 @@ public class PickupObject : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, ArmLength, PickableObjectLayer))
             { // Raycast from camera perspective, this may need to be edited if multiple cameras are used.
-                pickedObject = hit.collider.gameObject;
-                smoothMove = true;
-
-                pickedObjectRb = pickedObject.GetComponent<Rigidbody>();
-                pickedObjectRb.useGravity = false;
-
-                if (pickedObject.transform.parent != null)
-                    pickedObjectParent = pickedObject.transform.parent.gameObject;
+                if(InteractableLayer == (InteractableLayer | (1 << hit.collider.gameObject.layer)))
+                {
+                    Interactable interact = hit.collider.gameObject.GetComponent<Interactable>();
+                    if(interact != null)
+                    {
+                        interact.OnInteract.Invoke();
+                    }
+                }
                 else
-                    pickedObjectParent = null;
+                {
+                    pickedObject = hit.collider.gameObject;
+                    smoothMove = true;
 
-                pickedObjectRotation = pickedObject.transform.eulerAngles;
+                    pickedObjectRb = pickedObject.GetComponent<Rigidbody>();
+                    pickedObjectRb.useGravity = false;
+
+                    if (pickedObject.transform.parent != null)
+                        pickedObjectParent = pickedObject.transform.parent.gameObject;
+                    else
+                        pickedObjectParent = null;
+
+                    pickedObjectRotation = pickedObject.transform.eulerAngles;
+                }
             }
         }
         else // Reset everything.
