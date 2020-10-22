@@ -160,6 +160,7 @@ public class PickupObject : MonoBehaviour
             fixedRotation = false;
 
             playerMovement.LockPlayerMovement(false);
+            ObjectDestination.transform.localPosition = defaultLocalObjectHolderPos;
         }
     }
 
