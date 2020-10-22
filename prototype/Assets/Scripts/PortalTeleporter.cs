@@ -18,6 +18,7 @@ public class PortalTeleporter : MonoBehaviour
     public PortalManager MainPortalManager; //Stores the Portal Manager from the scene, The portal manager itself sets this variable
 
     private bool canTeleport = true; // Used to disable teleportation when just teleporting.
+    private float initalZ = 0;
 
     //Display linked portal
     public void OnDrawGizmosSelected()
@@ -38,6 +39,8 @@ public class PortalTeleporter : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<F_PlayerMovement>();
+
+        initalZ = transform.position.z;
 
         if(Reciver == null)
         {
@@ -83,6 +86,7 @@ public class PortalTeleporter : MonoBehaviour
 
                         //Disable recivers collision thing
                         PortalTeleporter tele = Reciver.GetComponent<PortalTeleporter>();
+                        StartCoroutine(DisableForAShortPeriod());
                         tele.RecivedTeleport(this);
                         tele.PlayerIsOverlapping = false;
                     }
@@ -99,7 +103,7 @@ public class PortalTeleporter : MonoBehaviour
     //Runs an event at the recives teleporter, As in when teleported TO.
     public void RecivedTeleport(PortalTeleporter source)
     {
-        StartCoroutine(DisableForAShortPeriod());
+        //StartCoroutine(DisableForAShortPeriod());
 
         if(MainPortalManager != null)
         {
@@ -141,7 +145,7 @@ public class PortalTeleporter : MonoBehaviour
     {
         canTeleport = false;
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.1f);
 
         PlayerIsOverlapping = false;
         canTeleport = true;
