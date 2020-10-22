@@ -43,17 +43,17 @@ public class F_PlayerMovement : MonoBehaviour
 
         if (characterController.isGrounded)
         {
-            // We are grounded, so recalculate move direction based on axes
-            Vector3 forward = transform.TransformDirection(Vector3.forward);
-            Vector3 right = transform.TransformDirection(Vector3.right);
-            float curSpeedX = canMove ? speed * Input.GetAxis("Vertical") : 0;
-            float curSpeedY = canMove ? speed * Input.GetAxis("Horizontal") : 0;
-            Velocity = (forward * curSpeedX) + (right * curSpeedY);
+        // We are grounded, so recalculate move direction based on axes
+        Vector3 forward = transform.TransformDirection(Vector3.forward);
+        Vector3 right = transform.TransformDirection(Vector3.right);
+        float curSpeedX = canMove ? speed * Input.GetAxis("Vertical") : 0;
+        float curSpeedY = canMove ? speed * Input.GetAxis("Horizontal") : 0;
+        Velocity = (forward * curSpeedX) + (right * curSpeedY);
 
-            if (Input.GetButton("Jump") && canMove)
-            {
-                Velocity.y = jumpSpeed;
-            }
+        if (Input.GetButton("Jump") && canMove)
+        {
+            Velocity.y = jumpSpeed;
+        }
         }
 
         // Apply gravity. Gravity is multiplied by deltaTime twice (once here, and once below
@@ -74,4 +74,6 @@ public class F_PlayerMovement : MonoBehaviour
             transform.eulerAngles = new Vector2(0, rotation.y);
         }
     }
+
+    public void LockPlayerMovement(bool _lock) { canMove = !_lock; }
 }
