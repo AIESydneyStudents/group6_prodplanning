@@ -2178,6 +2178,7 @@ MonoBehaviour:
   OnSnapped:
     m_PersistentCalls:
       m_Calls: []
+  SmoothingAmount: 30
 --- !u!65 &1005882916
 BoxCollider:
   m_ObjectHideFlags: 0
