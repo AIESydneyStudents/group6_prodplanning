@@ -10,6 +10,8 @@ public class SnapPickupInArea : MonoBehaviour
     public UnityEvent OnSnapped;
     public float SmoothingAmount = 30f;
 
+    public float SnappingReach = 0.01f;
+
     private PickupObject pickupObject = null;
     private List<Transform> snappingObjects = new List<Transform>();
 
@@ -27,8 +29,8 @@ public class SnapPickupInArea : MonoBehaviour
             {
                 snappingObjects[i].transform.position =    Vector3.Lerp(snappingObjects[i].transform.position,TargetTransform.position,SmoothingAmount * Time.deltaTime);
                 snappingObjects[i].transform.rotation = Quaternion.Lerp(snappingObjects[i].transform.rotation,TargetTransform.rotation,SmoothingAmount * Time.deltaTime);
-
-                if(Vector3.Distance(snappingObjects[i].transform.position, TargetTransform.position) < 0.1f && Quaternion.Dot(snappingObjects[i].transform.rotation, TargetTransform.rotation) > 0.999f)
+                // && Quaternion.Dot(snappingObjects[i].transform.rotation, TargetTransform.rotation) > 0.999f
+                if (Vector3.Distance(snappingObjects[i].transform.position, TargetTransform.position) < SnappingReach)
                 {
                     Debug.Log("AHH");
                     snappingObjects[i].transform.position = TargetTransform.position;

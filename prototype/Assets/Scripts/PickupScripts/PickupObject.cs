@@ -9,6 +9,8 @@ public class PickupObject : MonoBehaviour
     GameObject pickedObjectParent = null;
     Vector3 pickedObjectRotation;
 
+    public GameObject pickupAbleText;
+
     public LayerMask PickableObjectLayer;
     public LayerMask InteractableLayer;
 
@@ -39,6 +41,8 @@ public class PickupObject : MonoBehaviour
 
     void Update()
     {
+        RaycastObjectUpdate();
+
         if (Input.GetKeyDown(KeyCode.E)) PickUpControl();
 
         if (pickedObject == null) return; // Won't continue past this point if there's no object.
@@ -188,6 +192,33 @@ public class PickupObject : MonoBehaviour
             ObjectDestination.transform.localPosition, Time.deltaTime * zoomSmooth);
 
         if (ObjectDestination.transform.localPosition == setObjectHolderLerpPos) objectHolderPosSet = true;
+    }
+
+    void RaycastObjectUpdate() // DIRTY DIRTY DIRTY
+    {
+        RaycastHit hit;
+        if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, ArmLength, PickableObjectLayer))
+        {
+            if (InteractableLayer == (InteractableLayer | (1 << hit.collider.gameObject.layer)))
+            {
+                // show object is interactable
+            }
+            else
+            {
+                if (IsHoldingObject()) ToggleDisplayText(false);
+                else ToggleDisplayText(true);
+            }
+        }
+        else
+        {
+            ToggleDisplayText(false);
+        }
+    }
+
+    void ToggleDisplayText(bool toggle)
+    {
+        if(pickupAbleText != null)
+            pickupAbleText.SetActive(toggle);
     }
 
     private void OnDrawGizmos()
