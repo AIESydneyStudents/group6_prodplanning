@@ -26,7 +26,7 @@ public class PickupObject : MonoBehaviour
     [SerializeField] float throwStrength = 500f;
     [SerializeField] float pickUpSmooth = 20f;
     [SerializeField] float carrySmooth = 4f;
-    [SerializeField] float zoomSmooth = 150f;
+    [SerializeField] float zoomSmooth = 110f;
 
     public GameObject ObjectDestination;
     Vector3 defaultLocalObjectHolderPos = new Vector3(0, 0, 1.5f);
