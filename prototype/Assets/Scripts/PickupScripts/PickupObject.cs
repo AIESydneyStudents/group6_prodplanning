@@ -9,6 +9,7 @@ public class PickupObject : MonoBehaviour
     GameObject pickedObjectParent = null;
     Vector3 pickedObjectRotation;
 
+    RigidbodyConstraints freezeRotation = RigidbodyConstraints.FreezeRotation;
     public GameObject pickupAbleText;
 
     public LayerMask PickableObjectLayer;
@@ -28,14 +29,14 @@ public class PickupObject : MonoBehaviour
     [SerializeField] float zoomSmooth = 150f;
 
     public GameObject ObjectDestination;
-    Vector3 defaultLocalObjectHolderPos = new Vector3(0, 0, 2.5f);
-    Vector3 zoomedLocalObjectHolderPos = new Vector3(0, 0, 1.5f);
+    Vector3 defaultLocalObjectHolderPos = new Vector3(0, 0, 1.5f);
+    Vector3 zoomedLocalObjectHolderPos = new Vector3(0, 0, 0.5f);
 
     public bool IsHoldingObject() { return pickedObject != null; }
 
     void Start()
     {
-        ObjectDestination = GameObject.FindGameObjectWithTag("ObjectHolder");
+        //ObjectDestination = GameObject.FindGameObjectWithTag("ObjectHolder");
         playerMovement = FindObjectOfType<F_PlayerMovement>();
     }
 
@@ -53,6 +54,8 @@ public class PickupObject : MonoBehaviour
             playerMovement.LockPlayerMovement(true);
 
             ZoomInObject();
+
+            pickedObjectRb.constraints = freezeRotation;
         }
         if (Input.GetKeyUp(KeyCode.R))
         {
@@ -61,7 +64,7 @@ public class PickupObject : MonoBehaviour
 
             ZoomOutObject();
 
-            pickedObjectRb.velocity = Vector3.zero;
+            pickedObjectRb.constraints = RigidbodyConstraints.None;
         }
 
         if (Input.GetMouseButtonDown(1))
@@ -190,6 +193,8 @@ public class PickupObject : MonoBehaviour
     {
         ObjectDestination.transform.localPosition = Vector3.Lerp(setObjectHolderLerpPos,
             ObjectDestination.transform.localPosition, Time.deltaTime * zoomSmooth);
+
+        //ObjectDestination.transform.localPosition = setObjectHolderLerpPos;
 
         if (ObjectDestination.transform.localPosition == setObjectHolderLerpPos) objectHolderPosSet = true;
     }

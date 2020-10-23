@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -5526,18 +5526,6 @@ Transform:
   m_Father: {fileID: 1762974793}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1615909752 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5647926975231730260, guid: 0462f47617c620d4eadba55a2b57584d,
-    type: 3}
-  m_PrefabInstance: {fileID: 1876347972}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d89e3f96d806fd84f9ea44353aaf0f77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!43 &1690519834
 Mesh:
   m_ObjectHideFlags: 0
@@ -5707,7 +5695,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh16080
+  m_Name: pb_Mesh52462
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -6743,29 +6731,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1077710131, guid: 0462f47617c620d4eadba55a2b57584d, type: 3}
-      propertyPath: m_UseGravity
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1077710131, guid: 0462f47617c620d4eadba55a2b57584d, type: 3}
-      propertyPath: m_IsKinematic
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5647926973963532224, guid: 0462f47617c620d4eadba55a2b57584d,
-        type: 3}
-      propertyPath: playerMovement
-      value: 
-      objectReference: {fileID: 1615909752}
-    - target: {fileID: 5647926973963532224, guid: 0462f47617c620d4eadba55a2b57584d,
-        type: 3}
-      propertyPath: PickableObjectLayer.m_Bits
-      value: 2560
-      objectReference: {fileID: 0}
-    - target: {fileID: 5647926973963532224, guid: 0462f47617c620d4eadba55a2b57584d,
-        type: 3}
-      propertyPath: InteractableLayer.m_Bits
-      value: 2048
-      objectReference: {fileID: 0}
     - target: {fileID: 5647926973963532224, guid: 0462f47617c620d4eadba55a2b57584d,
         type: 3}
       propertyPath: pickupAbleText
@@ -6830,11 +6795,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 5647926975242723066, guid: 0462f47617c620d4eadba55a2b57584d,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 2.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0462f47617c620d4eadba55a2b57584d, type: 3}

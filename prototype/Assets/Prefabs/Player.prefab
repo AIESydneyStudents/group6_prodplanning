@@ -93,12 +93,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02ba2a3b1ae942c449792c5cf45196c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pickupAbleText: {fileID: 0}
   PickableObjectLayer:
     serializedVersion: 2
-    m_Bits: 512
-  ObjectDestination: {fileID: 5647926975242723067}
+    m_Bits: 2560
+  InteractableLayer:
+    serializedVersion: 2
+    m_Bits: 2048
+  playerMovement: {fileID: 5647926975231730260}
+  ArmLength: 4
+  throwStrength: 500
   pickUpSmooth: 20
   carrySmooth: 4
+  zoomSmooth: 150
+  ObjectDestination: {fileID: 5647926975242723067}
 --- !u!1 &5647926974177245737
 GameObject:
   m_ObjectHideFlags: 0
