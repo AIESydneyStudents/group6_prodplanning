@@ -16,7 +16,29 @@ public class PortalManager : MonoBehaviour
     [HideInInspector]
     public bool PlayerJustTeleported = false;
 
+    //Refrences all portals in the scene
     private Dictionary<Transform, PortalTeleporter> portals = new Dictionary<Transform, PortalTeleporter>();
+
+    private void OnDisable()
+    {
+        //Destroy the tartget texture
+        if (cameraBelow != null)
+        {
+            cameraBelow.targetTexture.Release();
+            cameraBelow.targetTexture = null;
+        }
+    }
+
+    private void OnEnable()
+    {
+        //Recreates the target texture
+        if (cameraBelow.targetTexture != null)
+        {
+            cameraBelow.targetTexture.Release();
+        }
+        cameraBelow.targetTexture = new RenderTexture(Screen.width, Screen.height, 24);
+        cameraMatB.mainTexture = cameraBelow.targetTexture;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -72,7 +94,7 @@ public class PortalManager : MonoBehaviour
                 teleporterTimer = 0;
             }
         }
-        else if (teleporterTimer >= 0.1f)
+        else if (teleporterTimer >= 0.1f) // Checks every 0.1 seconds, more efficient then checking every frame (Kinda arbitrary though)
         {
             Transform nearest = PortalCam.otherPortal;
             float nearestDist = Vector3.Distance(PortalCam.PlayerCamera.transform.position, nearest.position);

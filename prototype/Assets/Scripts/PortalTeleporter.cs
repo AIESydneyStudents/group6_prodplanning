@@ -8,7 +8,6 @@ public class PortalTeleporter : MonoBehaviour
     [Tooltip("The PortalBox (Spacifically the PortalBox!) of the target portal")]
     public Transform Reciver;
 
-    private F_PlayerMovement player;
     public MeshRenderer planeRenderer;
 
     [HideInInspector]
@@ -17,6 +16,7 @@ public class PortalTeleporter : MonoBehaviour
     [HideInInspector]
     public PortalManager MainPortalManager; //Stores the Portal Manager from the scene, The portal manager itself sets this variable
 
+    private F_PlayerMovement player;
     private bool canTeleport = true; // Used to disable teleportation when just teleporting.
     private float initalZ = 0;
 
@@ -52,6 +52,7 @@ public class PortalTeleporter : MonoBehaviour
     {
         if(canTeleport && !MainPortalManager.PlayerJustTeleported && Reciver != null)
         {
+            //Makes the protals surface visible if the player can teleport
             planeRenderer.enabled = true;
 
             if (PlayerIsOverlapping)
@@ -87,7 +88,6 @@ public class PortalTeleporter : MonoBehaviour
                         //Disable recivers collision thing
                         PortalTeleporter tele = Reciver.GetComponent<PortalTeleporter>();
                         StartCoroutine(DisableForAShortPeriod());
-                        tele.RecivedTeleport(this);
                         tele.PlayerIsOverlapping = false;
                     }
                     PlayerIsOverlapping = false;
@@ -96,27 +96,18 @@ public class PortalTeleporter : MonoBehaviour
         }
         else
         {
+            //Player cannot teleport so don't display the portal
             planeRenderer.enabled = false;
-        }
-    }
-
-    //Runs an event at the recives teleporter, As in when teleported TO.
-    public void RecivedTeleport(PortalTeleporter source)
-    {
-        //StartCoroutine(DisableForAShortPeriod());
-
-        if(MainPortalManager != null)
-        {
-            MainPortalManager.PortalCam.portal = source.transform;
-            MainPortalManager.PortalCam.otherPortal = this.transform;
         }
     }
 
     //Mark when player is in trigger
     private void OnTriggerEnter(Collider other)
     {
+        //Only teleport if it's the player
         if(other.tag == "Player")
         {
+            //If we don't have a stored instance of the player (Or it's a different one) set it.
             if(player == null || other.transform != player.transform)
             {
                 player = other.GetComponent<F_PlayerMovement>();
@@ -140,7 +131,7 @@ public class PortalTeleporter : MonoBehaviour
         return Vector3.Dot(transform.forward,cam.transform.position - transform.position) > 0;
     }
 
-    //Disables the telpoerter for a second.
+    //Disables the telpoerter for 0.1 seconds.
     IEnumerator DisableForAShortPeriod()
     {
         canTeleport = false;

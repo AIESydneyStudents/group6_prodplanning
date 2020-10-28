@@ -33496,7 +33496,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerCamera: {fileID: 1110043127}
-  portal: {fileID: 0}
+  portal: {fileID: 297443835}
   otherPortal: {fileID: 297443835}
 --- !u!114 &2066858408
 MonoBehaviour:
