@@ -44,7 +44,7 @@ public class PickupObject : MonoBehaviour
     {
         RaycastObjectUpdate();
 
-        if (Input.GetKeyDown(KeyCode.E)) PickUpControl();
+        if (Input.GetKeyDown(KeyCode.E) && playerMovement.IsGameplay) PickUpControl();
 
         if (pickedObject == null) return; // Won't continue past this point if there's no object.
 

@@ -19,6 +19,16 @@ public class F_PlayerMovement : MonoBehaviour
     [HideInInspector]
     public bool canMove = true;
 
+    public bool IsGameplay { get {return playerState == PlayerState.Gameplay;} }
+
+    private enum PlayerState
+    {
+        Gameplay,
+        Cutscene
+    }
+
+    private PlayerState playerState = PlayerState.Gameplay;
+
     void Start()
     {
         characterController = GetComponent<CharacterController>();
@@ -28,6 +38,16 @@ public class F_PlayerMovement : MonoBehaviour
     }
 
     void Update()
+    {
+        //Run the correct state for the player
+        switch(playerState)
+        {
+            case PlayerState.Gameplay: GameplayState(); break;
+            case PlayerState.Cutscene: CutsceneState(); break;
+        }
+    }
+
+    public void GameplayState()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -73,6 +93,29 @@ public class F_PlayerMovement : MonoBehaviour
             playerCamera.transform.localRotation = Quaternion.Euler(rotation.x, 0, 0);
             transform.eulerAngles = new Vector2(0, rotation.y);
         }
+    }
+
+    public void CutsceneState()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Cursor.lockState = CursorLockMode.None;
+            canMove = false;
+        }
+
+        if (Input.GetMouseButtonDown(0) && Cursor.lockState == CursorLockMode.None)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            canMove = true;
+        }
+
+        // Apply gravity. Gravity is multiplied by deltaTime twice (once here, and once below
+        // when the moveDirection is multiplied by deltaTime). This is because gravity should be applied
+        // as an acceleration (ms^-2)
+        Velocity.y -= gravity * Time.deltaTime;
+
+        // Move the controller
+        characterController.Move(Velocity * Time.deltaTime);
     }
 
     public void LockPlayerMovement(bool _lock) { canMove = !_lock; }
