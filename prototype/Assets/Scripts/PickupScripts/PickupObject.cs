@@ -106,11 +106,11 @@ public class PickupObject : MonoBehaviour
             if (fixedRotation)
             {
                 //pickedObject.transform.Rotate(new Vector3(Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0) * Time.fixedDeltaTime * 150f);
-                float rotX = Input.GetAxis("Mouse X") * 5 * Mathf.Deg2Rad;
-                float rotZ = Input.GetAxis("Mouse Y") * 5 * Mathf.Deg2Rad;
+                float rotX = Input.GetAxis("Mouse X") * 100 * Time.fixedDeltaTime * Mathf.Deg2Rad;
+                float rotZ = Input.GetAxis("Mouse Y") * 100 * Time.fixedDeltaTime * Mathf.Deg2Rad;
 
-                pickedObject.transform.RotateAround(Vector3.up, -rotX);
-                pickedObject.transform.RotateAround(Vector3.forward, rotZ);
+                pickedObject.transform.RotateAround(Vector3.down, -rotX);
+                pickedObject.transform.RotateAround(Vector3.left, rotZ);
 
                 pickedObjectRotation = pickedObject.transform.eulerAngles;
             }

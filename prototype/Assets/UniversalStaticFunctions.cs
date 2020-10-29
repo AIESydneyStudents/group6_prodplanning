@@ -6,6 +6,6 @@ public static class UniversalStaticFunctions
 {
     public static void lol()
     {
-        //STOPSTOPSTOPSTOSTOSTPSOTPSOTP
+
     }
 }
