@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cinemachine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,7 @@ public class DishWashingTask : MonoBehaviour
 {
     public DishStack DishesToWash;
     public SnapPickupInArea SnappingArea;
+    public CinemachineVirtualCamera TaskCamera;
 
     private bool running = false;
     private bool hasRun = false;
@@ -14,6 +16,7 @@ public class DishWashingTask : MonoBehaviour
     private float dishCleanAmount = 0f;
     private List<GameObject> stackedDishes;
     private Dictionary<Transform, Tuple<Material, Collider>> dishMaterialLookup = new Dictionary<Transform, Tuple<Material,Collider>>();
+    private F_PlayerMovement player;
 
     void StartTask()
     {
@@ -26,9 +29,12 @@ public class DishWashingTask : MonoBehaviour
         for (int i = 0; i < DishesToWash.stackedPlates.Count; i++)
         {
             //Store components we'll need later
-            dishMaterialLookup.Add(stackedDishes[i].transform, new Tuple<Material, Collider>(stackedDishes[i].GetComponent<MeshRenderer>().material,
-                stackedDishes[i].GetComponent<Collider>()));
+            dishMaterialLookup[stackedDishes[i].transform] = new Tuple<Material, Collider>(stackedDishes[i].GetComponent<MeshRenderer>().material,
+                stackedDishes[i].GetComponent<Collider>());
         }
+
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<F_PlayerMovement>();
+        player.ChangePerspective(TaskCamera);
 
         SnappingArea.RemoveSnap(stackedDishes[dishIndex].transform);
 
@@ -51,6 +57,7 @@ public class DishWashingTask : MonoBehaviour
             hasRun = true;
             dishIndex = 0;
             dishCleanAmount = 0;
+            player.ChangePerspective(null);
         }
 
         SnappingArea.RemoveSnap(stackedDishes[dishIndex].transform);

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Cinemachine;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,7 +8,8 @@ public class F_PlayerMovement : MonoBehaviour
     public float speed = 7.5f;
     public float jumpSpeed = 8.0f;
     public float gravity = 20.0f;
-    public Camera playerCamera;
+    public Camera playerCamera; // Acutal camera
+    public CinemachineVirtualCamera VirtualCamera; // Cinamachine cam
     public float lookSpeed = 2.0f;
     public float lookXLimit = 20.0f;
 
@@ -21,13 +23,15 @@ public class F_PlayerMovement : MonoBehaviour
 
     public bool IsGameplay { get {return playerState == PlayerState.Gameplay;} }
 
-    private enum PlayerState
+    public enum PlayerState
     {
         Gameplay,
         Cutscene
     }
 
+    public PlayerState PlayerCurrentState { get {return playerState; } }
     private PlayerState playerState = PlayerState.Gameplay;
+    private CinemachineVirtualCamera otherCamera;
 
     void Start()
     {
@@ -90,24 +94,18 @@ public class F_PlayerMovement : MonoBehaviour
             rotation.y += Input.GetAxis("Mouse X") * lookSpeed;
             rotation.x += -Input.GetAxis("Mouse Y") * lookSpeed;
             rotation.x = Mathf.Clamp(rotation.x, -lookXLimit, lookXLimit);
-            playerCamera.transform.localRotation = Quaternion.Euler(rotation.x, 0, 0);
+            VirtualCamera.transform.localRotation = Quaternion.Euler(rotation.x, 0, 0);
             transform.eulerAngles = new Vector2(0, rotation.y);
         }
     }
 
     public void CutsceneState()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Cursor.lockState = CursorLockMode.None;
-            canMove = false;
-        }
-
-        if (Input.GetMouseButtonDown(0) && Cursor.lockState == CursorLockMode.None)
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            canMove = true;
-        }
+        Velocity.x = 0;
+        Velocity.z = 0;
+        Cursor.lockState = CursorLockMode.None;
+        canMove = false;
+        
 
         // Apply gravity. Gravity is multiplied by deltaTime twice (once here, and once below
         // when the moveDirection is multiplied by deltaTime). This is because gravity should be applied
@@ -116,6 +114,36 @@ public class F_PlayerMovement : MonoBehaviour
 
         // Move the controller
         characterController.Move(Velocity * Time.deltaTime);
+    }
+
+    public void ChangePerspective(CinemachineVirtualCamera  newCamera) // Used for some tasks
+    {
+        if(newCamera == null)
+        {
+            if (otherCamera != null) otherCamera.Priority = 0;
+            VirtualCamera.m_Priority = 10;
+            VirtualCamera.enabled = true;
+            playerState = PlayerState.Gameplay;
+            otherCamera = null;
+
+            return;
+        }
+
+        if (newCamera != otherCamera)
+        {
+            newCamera.Priority = 10;
+            VirtualCamera.m_Priority = 0;
+            VirtualCamera.enabled = false;
+        }
+        else
+        {
+            if(otherCamera != null) otherCamera.Priority = 0;
+            VirtualCamera.m_Priority = 10;
+            VirtualCamera.enabled = true;
+        }
+
+        otherCamera = newCamera;
+        playerState = PlayerState.Cutscene;
     }
 
     public void LockPlayerMovement(bool _lock) { canMove = !_lock; }

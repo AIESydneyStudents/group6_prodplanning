@@ -18,6 +18,8 @@ public class HeadBobbing : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (controller.PlayerCurrentState == F_PlayerMovement.PlayerState.Cutscene) return;
+
         if (Mathf.Abs(controller.Velocity.x) > 0.1f || Mathf.Abs(controller.Velocity.z) > 0.1f)
         {
             //Player is moving
