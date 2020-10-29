@@ -20,8 +20,8 @@ public class TutorialAnimationController : MonoBehaviour
 
         if (playerAni.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !playerAni.IsInTransition(0))
         {
-            GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<F_PlayerMovement>().enabled = true;
             playerAni.enabled = false;
+            GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<F_PlayerMovement>().enabled = true;
         }
 
         if (!playAnimations) return;

@@ -29,8 +29,8 @@ public class PickupObject : MonoBehaviour
     [SerializeField] float zoomSmooth = 110f;
 
     public GameObject ObjectDestination;
-    Vector3 defaultLocalObjectHolderPos = new Vector3(0, 0, 1.5f);
-    Vector3 zoomedLocalObjectHolderPos = new Vector3(0, 0, 0.5f);
+    Vector3 defaultLocalObjectHolderPos;
+    Vector3 zoomedLocalObjectHolderPos;
 
     public bool IsHoldingObject() { return pickedObject != null; }
 
@@ -38,10 +38,14 @@ public class PickupObject : MonoBehaviour
     {
         //ObjectDestination = GameObject.FindGameObjectWithTag("ObjectHolder");
         playerMovement = FindObjectOfType<F_PlayerMovement>();
+
+        defaultLocalObjectHolderPos = new Vector3(0, 0, 1f);
+        zoomedLocalObjectHolderPos = new Vector3(0, 0, defaultLocalObjectHolderPos.z / 2);
     }
 
     void Update()
     {
+        UniversalStaticFunctions.lol();
         RaycastObjectUpdate();
 
         if (Input.GetKeyDown(KeyCode.E) && playerMovement.IsGameplay) PickUpControl();
@@ -124,10 +128,10 @@ public class PickupObject : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, ArmLength, PickableObjectLayer))
             { // Raycast from camera perspective, this may need to be edited if multiple cameras are used.
-                if(InteractableLayer == (InteractableLayer | (1 << hit.collider.gameObject.layer)))
+                if (InteractableLayer == (InteractableLayer | (1 << hit.collider.gameObject.layer)))
                 {
                     Interactable interact = hit.collider.gameObject.GetComponent<Interactable>();
-                    if(interact != null)
+                    if (interact != null)
                     {
                         interact.OnInteract.Invoke();
                     }
@@ -202,7 +206,7 @@ public class PickupObject : MonoBehaviour
     void RaycastObjectUpdate() // DIRTY DIRTY DIRTY
     {
         RaycastHit hit;
-        if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, ArmLength, PickableObjectLayer))
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, ArmLength, PickableObjectLayer))
         {
             if (InteractableLayer == (InteractableLayer | (1 << hit.collider.gameObject.layer)))
             {
@@ -222,7 +226,7 @@ public class PickupObject : MonoBehaviour
 
     void ToggleDisplayText(bool toggle)
     {
-        if(pickupAbleText != null)
+        if (pickupAbleText != null)
             pickupAbleText.SetActive(toggle);
     }
 
