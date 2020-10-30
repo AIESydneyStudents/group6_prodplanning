@@ -702,32 +702,37 @@ PrefabInstance:
     - target: {fileID: -4799615773092299951, guid: beae108bee366f14a9db774290c2f19a,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4799615773092299951, guid: beae108bee366f14a9db774290c2f19a,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.64106596
+      value: -0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -4799615773092299951, guid: beae108bee366f14a9db774290c2f19a,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.7674858
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -4799615773092299951, guid: beae108bee366f14a9db774290c2f19a,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -439.743
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: -4799615773092299951, guid: beae108bee366f14a9db774290c2f19a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.358
+      value: 1.9132878
       objectReference: {fileID: 0}
     - target: {fileID: -4799615773092299951, guid: beae108bee366f14a9db774290c2f19a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.671
+      value: -2.7580025
+      objectReference: {fileID: 0}
+    - target: {fileID: -4799615773092299951, guid: beae108bee366f14a9db774290c2f19a,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4606561879116787936, guid: beae108bee366f14a9db774290c2f19a,
         type: 3}
@@ -954,6 +959,12 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 2035054408318694296, guid: beae108bee366f14a9db774290c2f19a,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -6361902202112118353, guid: 9ea8dedde90631042b76b7697eabad38,
+        type: 3}
     - target: {fileID: 2242538511587369897, guid: beae108bee366f14a9db774290c2f19a,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -4130,6 +4141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da1246b6f69fb2441beb87b7dbb024d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TargetOpenRotationY: 0
 --- !u!1 &606275710 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8325083817259641068, guid: beae108bee366f14a9db774290c2f19a,
@@ -8188,6 +8200,20 @@ MonoBehaviour:
   SnappingArea: {fileID: 346615695}
   TaskCamera: {fileID: 1467159791}
   SoapParticles: {fileID: 1782901449}
+  OnWashFinish:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1870503145}
+        m_MethodName: ToggleDoor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!199 &1782901448
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -13197,9 +13223,22 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
-  m_Mesh: {fileID: -8755235212729674968, guid: beae108bee366f14a9db774290c2f19a, type: 3}
+  m_Mesh: {fileID: -6361902202112118353, guid: 9ea8dedde90631042b76b7697eabad38, type: 3}
+--- !u!114 &1870503145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1870503140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da1246b6f69fb2441beb87b7dbb024d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TargetOpenRotationY: 0
 --- !u!1 &1881368365 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8641211304647390516, guid: beae108bee366f14a9db774290c2f19a,

@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
 public class DishWashingTask : MonoBehaviour
@@ -11,6 +11,7 @@ public class DishWashingTask : MonoBehaviour
     public SnapPickupInArea SnappingArea;
     public CinemachineVirtualCamera TaskCamera;
     public ParticleSystem SoapParticles;
+    public UnityEvent OnWashFinish;
 
     private bool running = false;
     private bool hasRun = false;
@@ -60,6 +61,7 @@ public class DishWashingTask : MonoBehaviour
             dishIndex = 0;
             dishCleanAmount = 0;
             player.ChangePerspective(null);
+            OnWashFinish.Invoke();
         }
 
         SnappingArea.RemoveSnap(stackedDishes[dishIndex].transform);
