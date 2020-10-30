@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PortalTeleporter : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class PortalTeleporter : MonoBehaviour
     public Transform Reciver;
 
     public MeshRenderer planeRenderer;
+    public UnityEvent OnTeleport;
 
     [HideInInspector]
     public bool PlayerIsOverlapping = false;
@@ -89,6 +91,7 @@ public class PortalTeleporter : MonoBehaviour
                         PortalTeleporter tele = Reciver.GetComponent<PortalTeleporter>();
                         StartCoroutine(DisableForAShortPeriod());
                         tele.PlayerIsOverlapping = false;
+                        OnTeleport.Invoke();
                     }
                     PlayerIsOverlapping = false;
                 }

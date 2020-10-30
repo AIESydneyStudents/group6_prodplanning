@@ -18,6 +18,17 @@ public class TutorialAnimationController : MonoBehaviour
             PlayAnimation();
         }
 
+#if UNITY_EDITOR
+        if(Input.GetKey(KeyCode.LeftShift))
+        {
+            playerAni.speed = 10f;
+        }
+        else
+        {
+            playerAni.speed = 1f;
+        }
+#endif
+
         if (playerAni.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !playerAni.IsInTransition(0))
         {
             playerAni.enabled = false;

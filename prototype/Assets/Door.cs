@@ -11,7 +11,7 @@ public class Door : MonoBehaviour
 
     private void Start()
     {
-        initRotationY = transform.rotation.y;
+        initRotationY = transform.rotation.eulerAngles.y;
     }
 
     public void ToggleDoor()
@@ -28,7 +28,7 @@ public class Door : MonoBehaviour
         if(Moving)
         {
             float targetDir = Open ? TargetOpenRotationY : initRotationY;
-            transform.rotation = Quaternion.Lerp(transform.rotation,Quaternion.Euler( new Vector3(0, targetDir, 0)),25 * Time.deltaTime);
+            transform.rotation = Quaternion.Lerp(transform.rotation,Quaternion.Euler( new Vector3(0, targetDir, 0)),5 * Time.deltaTime);
             if(transform.rotation == Quaternion.Euler(new Vector3(0, targetDir, 0)))
             {
                 transform.rotation = Quaternion.Euler(new Vector3(0, targetDir, 0));
