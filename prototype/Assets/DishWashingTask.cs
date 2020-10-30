@@ -1,14 +1,16 @@
 ﻿using Cinemachine;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+using Random = UnityEngine.Random;
 
 public class DishWashingTask : MonoBehaviour
 {
     public DishStack DishesToWash;
     public SnapPickupInArea SnappingArea;
     public CinemachineVirtualCamera TaskCamera;
+    public ParticleSystem SoapParticles;
 
     private bool running = false;
     private bool hasRun = false;
@@ -82,6 +84,7 @@ public class DishWashingTask : MonoBehaviour
     }
 
     private Vector3 oldScrubPos = Vector3.zero;
+    private ParticleSystem.EmitParams soapParams = new ParticleSystem.EmitParams();
 
     private void CleanDish(GameObject dish)
     {
@@ -98,7 +101,14 @@ public class DishWashingTask : MonoBehaviour
                     if(Vector3.Distance(hit.point,oldScrubPos) > 0.01f)
                     {
                         dishCleanAmount += 1 * Time.deltaTime;
+
+                        soapParams.position = hit.point;
+                        soapParams.velocity = new Vector3(UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(0.05f,0.1f),0);
+                        soapParams.startSize = Random.Range(0.5f,1f);
+                        SoapParticles.Emit(soapParams,2);
+
                         dishMaterialLookup[dish.transform].Item1.SetFloat("_Percent", dishCleanAmount);
+
 
                         if(dishCleanAmount >= 1)
                         {
