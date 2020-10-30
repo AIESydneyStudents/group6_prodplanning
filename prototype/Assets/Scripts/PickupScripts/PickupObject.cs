@@ -141,7 +141,7 @@ public class PickupObject : MonoBehaviour
                     pickedObject = hit.collider.gameObject;
                     smoothMove = true;
 
-                    pickedObjectRb = pickedObject.GetComponent<Rigidbody>();
+                    pickedObjectRb = hit.collider.attachedRigidbody;
                     pickedObjectRb.useGravity = false;
 
                     if (pickedObject.transform.parent != null)
