@@ -7,6 +7,7 @@ public class DishStack : MonoBehaviour
     [Tooltip("The empty transforms of each plate in the stack.")]
     public Transform[] PlateStackPoints;
     public SnapPickupInArea PickupConroller;
+    public GameObject PlateIndicator;
 
     [HideInInspector]
     public List<GameObject> stackedPlates = new List<GameObject>();
@@ -18,6 +19,15 @@ public class DishStack : MonoBehaviour
     public void IncreaseStack()
     {
         if (done) return;
+
+        if(stackIndex == 0)
+        {
+            //Destory indicator
+            if(PlateIndicator != null)
+            {
+                Destroy(PlateIndicator);
+            }
+        }
 
         stackIndex++;
         if (PickupConroller.SnappingObject != null) stackedPlates.Add(PickupConroller.SnappingObject);
