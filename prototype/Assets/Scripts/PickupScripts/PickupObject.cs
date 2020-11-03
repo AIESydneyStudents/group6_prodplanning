@@ -22,11 +22,13 @@ public class PickupObject : MonoBehaviour
     bool fixedRotation = false;
     bool objectZoomed = false;
 
-    public float ArmLength = 4f;
-    [SerializeField] float throwStrength = 500f;
-    [SerializeField] float pickUpSmooth = 20f;
-    [SerializeField] float carrySmooth = 4f;
-    [SerializeField] float zoomSmooth = 110f;
+    public float ArmLength = 4f; // Ray cast length for pickup
+    [SerializeField] float pickUpSmooth = 20f; // Lerp smooth value
+    [SerializeField] float carrySmooth = 4f; // Lerp smooth value
+    [SerializeField] float throwStrength = 500f; // Throwing object
+
+    public float PickedRotationSpeed = 2f; // Player rotation's of object during inspection
+    [SerializeField] float zoomSmooth = 110f; // Lerp smooth value
 
     public GameObject ObjectDestination;
     Vector3 defaultLocalObjectHolderPos;
@@ -101,16 +103,16 @@ public class PickupObject : MonoBehaviour
         if (focusing) // Object has been picked up and is now focusing on its position.
         {
             pickedObject.transform.position = Vector3.Lerp(pickedObject.transform.position, ObjectDestination.transform.position,
-                Time.deltaTime * carrySmooth);
+                Time.fixedDeltaTime * carrySmooth);
 
             if (fixedRotation)
             {
                 //pickedObject.transform.Rotate(new Vector3(Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0) * Time.fixedDeltaTime * 150f);
-                float rotX = Input.GetAxis("Mouse X") * 100 * Time.fixedDeltaTime * Mathf.Deg2Rad;
-                float rotZ = Input.GetAxis("Mouse Y") * 100 * Time.fixedDeltaTime * Mathf.Deg2Rad;
+                float rotX = Input.GetAxis("Mouse X") * PickedRotationSpeed * Mathf.Deg2Rad;
+                float rotZ = Input.GetAxis("Mouse Y") * PickedRotationSpeed* Mathf.Deg2Rad;
 
                 pickedObject.transform.RotateAround(Vector3.down, -rotX);
-                pickedObject.transform.RotateAround(Vector3.left, rotZ);
+                pickedObject.transform.RotateAround(Vector3.right, rotZ);
 
                 pickedObjectRotation = pickedObject.transform.eulerAngles;
             }
@@ -230,8 +232,8 @@ public class PickupObject : MonoBehaviour
             pickupAbleText.SetActive(toggle);
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawRay(Camera.main.transform.position, Camera.main.transform.forward);
-    }
+    //private void OnDrawGizmos()
+    //{
+    //    Gizmos.DrawRay(Camera.main.transform.position, Camera.main.transform.forward);
+    //}
 }
