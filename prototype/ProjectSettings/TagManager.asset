@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Portal
   - ObjectHolder
+  - DialougeSystem
   layers:
   - Default
   - TransparentFX

@@ -81,13 +81,13 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Surface: 0
-    - _TotalAlpha: 0.5
+    - _TotalAlpha: 0.13
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _MainColour: {r: 0.5235849, g: 0.93377835, b: 1, a: 0.2509804}
-    - _OutlineCol: {r: 0.66551226, g: 0.79861474, b: 1.0592737, a: 1}
+    - _MainColour: {r: 0, g: 0, b: 0, a: 0.2509804}
+    - _OutlineCol: {r: 3.0578914, g: 3.6694698, b: 4.867144, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
