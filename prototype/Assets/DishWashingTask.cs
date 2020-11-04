@@ -5,16 +5,13 @@ using UnityEngine;
 using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
-public class DishWashingTask : MonoBehaviour
+public class DishWashingTask : Task
 {
     public DishStack DishesToWash;
     public SnapPickupInArea SnappingArea;
     public CinemachineVirtualCamera TaskCamera;
     public ParticleSystem SoapParticles;
-    public UnityEvent OnWashFinish;
 
-    private bool running = false;
-    private bool hasRun = false;
     private int dishIndex = 0;
     private float dishCleanAmount = 0f;
     private List<GameObject> stackedDishes;
@@ -41,7 +38,7 @@ public class DishWashingTask : MonoBehaviour
 
         SnappingArea.RemoveSnap(stackedDishes[dishIndex].transform);
 
-        running = true;
+        taskRunning = true;
     }
 
     void NextDish()
@@ -56,12 +53,15 @@ public class DishWashingTask : MonoBehaviour
 
         if(dishIndex >= stackedDishes.Count)
         {
-            running = false;
-            hasRun = true;
             dishIndex = 0;
             dishCleanAmount = 0;
             player.ChangePerspective(null);
-            OnWashFinish.Invoke();
+            TaskFinished();
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+        else
+        {
+            OnTaskProgressed.Invoke();
         }
 
         SnappingArea.RemoveSnap(stackedDishes[dishIndex].transform);
@@ -70,12 +70,12 @@ public class DishWashingTask : MonoBehaviour
     private void Update()
     {
 
-        if (!hasRun && DishesToWash.Done && !running)
+        if (!taskFinished && DishesToWash.Done && !taskRunning)
         {
             StartTask();
         }
 
-        if (running)
+        if (taskRunning)
         {
             GameObject currentDish = stackedDishes[dishIndex];
             currentDish.transform.position = Vector3.Lerp(currentDish.transform.position, transform.position, 25 * Time.deltaTime);
