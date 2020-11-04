@@ -41,6 +41,11 @@ public class F_PlayerMovement : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
 
+    public void ChangeState(PlayerState newState)
+    {
+        playerState = newState;
+    }
+
     void Update()
     {
         //Run the correct state for the player
