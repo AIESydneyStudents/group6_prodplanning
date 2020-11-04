@@ -37,6 +37,7 @@ public class TrashInBinTask : Task
     private void DisableTrashInteraction(GameObject trash)
     {
         trash.gameObject.layer = gameObject.layer;
+        trash.tag = "Untagged";
 
         //Force drop later.
         if (pickupObject.IsHoldingObject())
