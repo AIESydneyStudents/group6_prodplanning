@@ -15,6 +15,13 @@ public class DialougeLine
         SpokenLine = null;
         EndWaitTime = 0;
     }
+
+    public DialougeLine(string text)
+    {
+        DialougeText = text;
+        SpokenLine = null;
+        EndWaitTime = 0;
+    }
 }
 
 [CreateAssetMenu(fileName = "NewDialougeSequence", menuName = "Dialouge/Sequence")]
