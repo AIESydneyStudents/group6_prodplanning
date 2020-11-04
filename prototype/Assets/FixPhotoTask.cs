@@ -21,12 +21,37 @@ public class FixPhotoTask : Task
     {
         if(taskRunning)
         {
-            float dir = Input.mousePosition.x - previousMosuePos.x;
+            if (Input.GetMouseButtonDown(0))
+            {
+                previousMosuePos = GetNormalizedMousePosition();
+            }
 
-            transform.rotation *= Quaternion.Euler(dir * 0.05f,0,0);
+            if (Input.GetMouseButton(0))
+            {
+                Vector2 mousePos = GetNormalizedMousePosition();
 
-            previousMosuePos = Input.mousePosition;
+                float dir = mousePos.x - previousMosuePos.x;
+                transform.rotation *= Quaternion.Euler(dir * 20.0f, 0, 0);
+                previousMosuePos = mousePos;
+
+                if (transform.localRotation.eulerAngles.x < 0.25f && transform.localRotation.eulerAngles.x > -0.25f)
+                {
+                    transform.rotation = Quaternion.Euler(0, 0, 0);
+                    TaskFinished();
+                    player.ChangePerspective(null);
+                    gameObject.layer = transform.parent.gameObject.layer;
+                }
+            }
         }
+    }
+
+    public Vector2 GetNormalizedMousePosition() //Mouse positions between 0 to 1
+    {
+        Vector2 mousePos = Input.mousePosition;
+        mousePos.x /= Screen.width;
+        mousePos.y /= Screen.height;
+
+        return mousePos;
     }
 
     public void InteractWithPhoto()
@@ -36,7 +61,7 @@ public class FixPhotoTask : Task
             player.ChangePerspective(TaskCamera);
             taskRunning = true;
 
-            previousMosuePos = Input.mousePosition;
+            previousMosuePos = GetNormalizedMousePosition();
         }
     }
 }
