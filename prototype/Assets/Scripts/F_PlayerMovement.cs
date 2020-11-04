@@ -126,6 +126,9 @@ public class F_PlayerMovement : MonoBehaviour
             playerState = PlayerState.Gameplay;
             otherCamera = null;
 
+            Cursor.lockState = CursorLockMode.Locked;
+            canMove = true;
+
             return;
         }
 

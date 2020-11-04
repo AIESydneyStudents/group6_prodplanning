@@ -63,6 +63,7 @@ public class CleanBedTask : Task
         {
             taskRunning = true;
             player.ChangeState(F_PlayerMovement.PlayerState.Cutscene);
+            gameObject.layer = transform.parent.gameObject.layer;
         }
         //Play sound here
     }

@@ -5,21 +5,26 @@ using UnityEngine;
 public class DishStack : MonoBehaviour
 {
     [Tooltip("The empty transforms of each plate in the stack.")]
-    public Transform[] PlateStackPoints;
+    public Transform BaseTransform;
+    public float SpaceBetweenPlates = 0.03125f;
     public SnapPickupInArea PickupConroller;
     public GameObject PlateIndicator;
 
     [HideInInspector]
     public List<GameObject> stackedPlates = new List<GameObject>();
-    public bool Done { get {return done;} }
 
     private int stackIndex = 0;
-    private bool done = false;
+    private float BaseY = 0;
+    
+
+    private void Start()
+    {
+        BaseY = BaseTransform.position.y;
+        if (BaseTransform == null) BaseTransform = GetComponentInChildren<Transform>();
+    }
 
     public void IncreaseStack()
     {
-        if (done) return;
-
         if(stackIndex == 0)
         {
             //Destory indicator
@@ -32,15 +37,23 @@ public class DishStack : MonoBehaviour
         stackIndex++;
         if (PickupConroller.SnappingObject != null) stackedPlates.Add(PickupConroller.SnappingObject);
 
-        if (stackIndex < PlateStackPoints.Length)
-        {
-            PickupConroller.TargetTransform = PlateStackPoints[stackIndex];
-            
-        }
-        else
-        {
-            done = true;
-            stackedPlates.Reverse(); // Reverse list so the top one is first.
-        }
+        PickupConroller.transform.position = BaseTransform.position;
+        BaseTransform.position = new Vector3(BaseTransform.position.x,BaseY + (SpaceBetweenPlates * stackedPlates.Count), BaseTransform.position.z);
+    }
+
+    public GameObject PopDish()
+    {
+        if (stackedPlates == null || stackedPlates.Count == 0) return null;
+
+        GameObject obj = stackedPlates[stackedPlates.Count - 1];
+        stackedPlates.RemoveAt(stackedPlates.Count - 1);
+        BaseTransform.position = new Vector3(BaseTransform.position.x, BaseY + (SpaceBetweenPlates * stackedPlates.Count), BaseTransform.position.z);
+
+        return obj;
+    }
+
+    public bool HasDishes()
+    {
+        return (stackedPlates != null && stackedPlates.Count > 0);
     }
 }

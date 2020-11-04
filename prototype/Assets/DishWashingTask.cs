@@ -12,72 +12,79 @@ public class DishWashingTask : Task
     public CinemachineVirtualCamera TaskCamera;
     public ParticleSystem SoapParticles;
 
-    private int dishIndex = 0;
     private float dishCleanAmount = 0f;
-    private List<GameObject> stackedDishes;
+    private GameObject currentDishToClean;
     private Dictionary<Transform, Tuple<Material, Collider>> dishMaterialLookup = new Dictionary<Transform, Tuple<Material,Collider>>();
     private F_PlayerMovement player;
+    private DialougeManager dialougeManager;
 
-    void StartTask()
+    private void Start()
     {
-        //Reset base values
-        dishIndex = 0;
-        dishCleanAmount = 0;
-        stackedDishes = DishesToWash.stackedPlates;
+        dialougeManager = GameObject.FindGameObjectWithTag("DialougeSystem").GetComponent<DialougeManager>();
+    }
 
-        //Get the materials of all the dishes
-        for (int i = 0; i < DishesToWash.stackedPlates.Count; i++)
+    public void StartTask()
+    {
+        if (!DishesToWash.HasDishes())
         {
-            //Store components we'll need later
-            dishMaterialLookup[stackedDishes[i].transform] = new Tuple<Material, Collider>(stackedDishes[i].GetComponent<MeshRenderer>().material,
-                stackedDishes[i].GetComponent<Collider>());
+            dialougeManager.PlayDialougeIfNotPlaying(new List<DialougeLine> { new DialougeLine("There are no dishes to wash.") });
+            return;
         }
+
+        //Reset base values
+        dishCleanAmount = 0;
+        currentDishToClean = DishesToWash.PopDish();
+
+
+        //Store components we'll need later
+        dishMaterialLookup[currentDishToClean.transform] = new Tuple<Material, Collider>(currentDishToClean.GetComponent<MeshRenderer>().material,
+            currentDishToClean.GetComponent<Collider>());
+
 
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<F_PlayerMovement>();
         player.ChangePerspective(TaskCamera);
 
-        SnappingArea.RemoveSnap(stackedDishes[dishIndex].transform);
+        SnappingArea.RemoveSnap(currentDishToClean.transform);
 
         taskRunning = true;
     }
 
     void NextDish()
     {
-        Rigidbody bod = stackedDishes[dishIndex].GetComponent<Rigidbody>();
+        Rigidbody bod = currentDishToClean.GetComponent<Rigidbody>();
         bod.isKinematic = false;
         bod.useGravity = true;
         bod.detectCollisions = true;
 
-        dishIndex++;
-        dishCleanAmount = 0;
-
-        if(dishIndex >= stackedDishes.Count)
+        if (!DishesToWash.HasDishes())
         {
-            dishIndex = 0;
             dishCleanAmount = 0;
             player.ChangePerspective(null);
             TaskFinished();
             Cursor.lockState = CursorLockMode.Locked;
+            return;
         }
         else
         {
             OnTaskProgressed.Invoke();
         }
 
-        SnappingArea.RemoveSnap(stackedDishes[dishIndex].transform);
+        //Reset stas and get next dish
+        dishCleanAmount = 0;
+        currentDishToClean = DishesToWash.PopDish();
+
+        //Add to dictinary
+        dishMaterialLookup[currentDishToClean.transform] = new Tuple<Material, Collider>(currentDishToClean.GetComponent<MeshRenderer>().material,
+                currentDishToClean.GetComponent<Collider>());
+
+        SnappingArea.RemoveSnap(currentDishToClean.transform);
     }
 
     private void Update()
     {
-
-        if (!taskFinished && DishesToWash.Done && !taskRunning)
-        {
-            StartTask();
-        }
-
         if (taskRunning)
         {
-            GameObject currentDish = stackedDishes[dishIndex];
+            GameObject currentDish = currentDishToClean;
             currentDish.transform.position = Vector3.Lerp(currentDish.transform.position, transform.position, 25 * Time.deltaTime);
             currentDish.transform.LookAt(Camera.main.transform.position, Vector3.up);
             currentDish.transform.rotation *= Quaternion.Euler(90f, 0f, 0f);
