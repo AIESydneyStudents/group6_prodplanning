@@ -9,6 +9,8 @@ public class PickupObject : MonoBehaviour
     GameObject pickedObjectParent = null;
     Vector3 pickedObjectRotation;
 
+    InspectionEvent pickedObjectInspectEvent = null;
+
     RigidbodyConstraints freezeRotation = RigidbodyConstraints.FreezeRotation;
     public GameObject pickupAbleText;
 
@@ -21,6 +23,7 @@ public class PickupObject : MonoBehaviour
     bool focusing = false;
     bool fixedRotation = false;
     bool objectZoomed = false;
+    bool isObjectDesiredInspection = false; // Does the object have a force rotation script?
 
     public float ArmLength = 4f; // Ray cast length for pickup
     [SerializeField] float pickUpSmooth = 20f; // Lerp smooth value
@@ -107,17 +110,36 @@ public class PickupObject : MonoBehaviour
 
             if (fixedRotation)
             {
-                //pickedObject.transform.Rotate(new Vector3(Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0) * Time.fixedDeltaTime * 150f);
-                float rotX = Input.GetAxis("Mouse X") * PickedRotationSpeed * Mathf.Deg2Rad;
-                float rotZ = Input.GetAxis("Mouse Y") * PickedRotationSpeed* Mathf.Deg2Rad;
+                if (isObjectDesiredInspection)
+                {
+                    pickedObjectInspectEvent.IsInspected = true;
+                    if (!pickedObjectInspectEvent.PositionLocked)
+                    {
+                        //pickedObject.transform.Rotate(new Vector3(Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0) * Time.fixedDeltaTime * 150f);
+                        float rotX = Input.GetAxis("Mouse X") * PickedRotationSpeed * Mathf.Deg2Rad;
+                        float rotZ = Input.GetAxis("Mouse Y") * PickedRotationSpeed * Mathf.Deg2Rad;
 
-                pickedObject.transform.RotateAround(Vector3.down, -rotX);
-                pickedObject.transform.RotateAround(Vector3.right, rotZ);
+                        pickedObject.transform.RotateAround(Vector3.down, -rotX);
+                        pickedObject.transform.RotateAround(Vector3.right, rotZ);
 
-                pickedObjectRotation = pickedObject.transform.eulerAngles;
+                        pickedObjectRotation = pickedObject.transform.eulerAngles;
+                    }
+                }
             }
             else
-                pickedObject.transform.eulerAngles = pickedObjectRotation;// So that the object doesn't spin, spin and spin.
+            {
+                if (isObjectDesiredInspection)
+                {
+                    pickedObjectInspectEvent.IsInspected = false;
+                    if (!pickedObject.GetComponent<InspectionEvent>().PositionLocked) // So that this doesn't conflict with the lerping in InspectionEvent
+                    {
+                        pickedObjectRotation = pickedObjectInspectEvent.transform.eulerAngles;
+                        pickedObject.transform.eulerAngles = pickedObjectRotation; // So that the object doesn't spin, spin and spin.
+                    }
+                }
+                else
+                    pickedObject.transform.eulerAngles = pickedObjectRotation; // So that the object doesn't spin, spin and spin.
+            }
 
             if (pickedObjectRb.velocity != Vector3.zero) pickedObjectRb.velocity = Vector3.zero; // Seemed to fix the rest of the issues lol
         }
@@ -152,6 +174,12 @@ public class PickupObject : MonoBehaviour
                         pickedObjectParent = null;
 
                     pickedObjectRotation = pickedObject.transform.eulerAngles;
+
+                    if (pickedObject.GetComponent<InspectionEvent>() != null)
+                    {
+                        pickedObjectInspectEvent = pickedObject.GetComponent<InspectionEvent>();
+                        isObjectDesiredInspection = true;
+                    }
                 }
             }
         }
@@ -167,6 +195,9 @@ public class PickupObject : MonoBehaviour
 
             pickedObjectRb.useGravity = true;
             pickedObjectRb = null;
+
+            isObjectDesiredInspection = false;
+            pickedObjectInspectEvent = null;
 
             smoothMove = false;
             focusing = false;
