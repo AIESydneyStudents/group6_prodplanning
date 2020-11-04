@@ -12,7 +12,7 @@ public class PickupObject : MonoBehaviour
     InspectionEvent pickedObjectInspectEvent = null;
 
     RigidbodyConstraints freezeRotation = RigidbodyConstraints.FreezeRotation;
-    public GameObject pickupAbleText;
+    public PickupTextPrompt pickupAbleText;
 
     public LayerMask PickableObjectLayer;
     public LayerMask InteractableLayer;
@@ -260,7 +260,17 @@ public class PickupObject : MonoBehaviour
     void ToggleDisplayText(bool toggle)
     {
         if (pickupAbleText != null)
-            pickupAbleText.SetActive(toggle);
+        {
+            if(toggle)
+            {
+                pickupAbleText.EnableText();
+            }
+            else
+            {
+                pickupAbleText.DisableText();
+            }
+        }
+            
     }
 
     //private void OnDrawGizmos()

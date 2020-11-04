@@ -13,6 +13,7 @@ public class SnapPickupInArea : MonoBehaviour
     public float SmoothingAmount = 30f;
 
     public float SnappingReach = 0.01f;
+    public string TagMask = "";
 
     public GameObject SnappingObject { get { return snappingObjects.Count > 0 ? snappingObjects[snappingObjects.Count - 1].Item1.gameObject : null; } }
 
@@ -60,7 +61,7 @@ public class SnapPickupInArea : MonoBehaviour
     {
         //Check if object is on pickup layer
 
-        if (PickupLayer == (PickupLayer | (1 << other.gameObject.layer)))
+        if ((TagMask != "")? other.tag == TagMask : true && PickupLayer == (PickupLayer | (1 << other.gameObject.layer)))
         {
             SnapPickup(other.transform);
             OnSnapped.Invoke();
