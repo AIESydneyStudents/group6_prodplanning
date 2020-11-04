@@ -111,7 +111,6 @@ public class DishWashingTask : Task
 
                         dishMaterialLookup[dish.transform].Item1.SetFloat("_Percent", dishCleanAmount);
 
-
                         if(dishCleanAmount >= 1)
                         {
                             NextDish();

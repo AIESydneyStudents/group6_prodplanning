@@ -30,7 +30,7 @@ public class PickupObject : MonoBehaviour
     [SerializeField] float carrySmooth = 4f; // Lerp smooth value
     [SerializeField] float throwStrength = 500f; // Throwing object
 
-    public float PickedRotationSpeed = 2f; // Player rotation's of object during inspection
+    public float PickedRotationSpeed = 4f; // Player rotation's of object during inspection
     [SerializeField] float zoomSmooth = 110f; // Lerp smooth value
 
     public GameObject ObjectDestination;
@@ -108,22 +108,26 @@ public class PickupObject : MonoBehaviour
             pickedObject.transform.position = Vector3.Lerp(pickedObject.transform.position, ObjectDestination.transform.position,
                 Time.fixedDeltaTime * carrySmooth);
 
+            bool check = false;
             if (fixedRotation)
             {
                 if (isObjectDesiredInspection)
                 {
                     pickedObjectInspectEvent.IsInspected = true;
                     if (!pickedObjectInspectEvent.PositionLocked)
-                    {
-                        //pickedObject.transform.Rotate(new Vector3(Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0) * Time.fixedDeltaTime * 150f);
-                        float rotX = Input.GetAxis("Mouse X") * PickedRotationSpeed * Mathf.Deg2Rad;
-                        float rotZ = Input.GetAxis("Mouse Y") * PickedRotationSpeed * Mathf.Deg2Rad;
+                        check = true;
+                }
 
-                        pickedObject.transform.RotateAround(Vector3.down, -rotX);
-                        pickedObject.transform.RotateAround(Vector3.right, rotZ);
+                if (!check)
+                {
+                    //pickedObject.transform.Rotate(new Vector3(Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0) * Time.fixedDeltaTime * 150f);
+                    float rotX = Input.GetAxis("Mouse X") * PickedRotationSpeed * Mathf.Deg2Rad;
+                    float rotZ = Input.GetAxis("Mouse Y") * PickedRotationSpeed * Mathf.Deg2Rad;
 
-                        pickedObjectRotation = pickedObject.transform.eulerAngles;
-                    }
+                    pickedObject.transform.RotateAround(Vector3.down, -rotX);
+                    pickedObject.transform.RotateAround(Vector3.right, rotZ);
+
+                    pickedObjectRotation = pickedObject.transform.eulerAngles;
                 }
             }
             else
@@ -197,7 +201,13 @@ public class PickupObject : MonoBehaviour
             pickedObjectRb = null;
 
             isObjectDesiredInspection = false;
-            pickedObjectInspectEvent = null;
+            if(pickedObjectInspectEvent != null)
+            {
+                pickedObjectInspectEvent.PositionLocked = false;
+                pickedObjectInspectEvent.IsInspected = false;
+
+                pickedObjectInspectEvent = null;
+            }
 
             smoothMove = false;
             focusing = false;
@@ -242,14 +252,12 @@ public class PickupObject : MonoBehaviour
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, ArmLength, PickableObjectLayer))
         {
             if (InteractableLayer == (InteractableLayer | (1 << hit.collider.gameObject.layer)))
-            {
-                // show object is interactable
-            }
+                pickupAbleText.Text.text = "Press 'E' to interact with this object";
             else
-            {
-                if (IsHoldingObject()) ToggleDisplayText(false);
-                else ToggleDisplayText(true);
-            }
+                pickupAbleText.Text.text = "Press 'E' to pickup this object";
+
+            if (IsHoldingObject()) ToggleDisplayText(false);
+            else ToggleDisplayText(true);
         }
         else
         {
@@ -261,7 +269,7 @@ public class PickupObject : MonoBehaviour
     {
         if (pickupAbleText != null)
         {
-            if(toggle)
+            if (toggle)
             {
                 pickupAbleText.EnableText();
             }
@@ -270,7 +278,7 @@ public class PickupObject : MonoBehaviour
                 pickupAbleText.DisableText();
             }
         }
-            
+
     }
 
     //private void OnDrawGizmos()
