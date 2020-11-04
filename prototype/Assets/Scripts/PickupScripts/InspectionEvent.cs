@@ -15,37 +15,41 @@ public class InspectionEvent : MonoBehaviour
 
     void Update()
     { // Might update check to use Vector3.Distance lol..
-        if (!IsInspected && PositionLocked == false) return;
 
-        float dist = Vector3.Distance(transform.localEulerAngles, DesiredRotation);
+        //float dist = Vector3.Angle(transform.localEulerAngles, DesiredRotation);
+        //Debug.Log(dist);
 
-        if (dist < OffsetWithinRange && dist > 1)
+        //if (dist < OffsetWithinRange && dist > 1)
+        //{
+        //    PositionLocked = true;
+        //    transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.Euler(DesiredRotation), ObjectSnapSmooth * Time.deltaTime);
+        //}
+
+        //if (dist < 2)
+        //{
+        //    IsInspected = false;
+        //    PositionLocked = false;
+        //}
+
+        bool rotating = false;
+        if (Mathf.Abs(transform.localEulerAngles.x) > Mathf.Abs(DesiredRotation.x - OffsetWithinRange))
         {
-            PositionLocked = true;
-            transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.Euler(DesiredRotation), ObjectSnapSmooth * Time.deltaTime);
+            if (Mathf.Abs(transform.localEulerAngles.y) > Mathf.Abs(DesiredRotation.y - OffsetWithinRange))
+            {
+                if (Mathf.Abs(transform.localEulerAngles.z) > Mathf.Abs(DesiredRotation.z - OffsetWithinRange))
+                {
+                    rotating = true;
+
+                    PositionLocked = true;
+                    transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.Euler(DesiredRotation), ObjectSnapSmooth * Time.deltaTime);
+                }
+            }
         }
 
-        if (Vector3.Distance(transform.localEulerAngles, DesiredRotation) < 50) 
+        if (!rotating)
         {
-            Debug.Log("ok.ok.ok.");
             IsInspected = false;
             PositionLocked = false;
         }
-
-        //if (transform.eulerAngles.x > DesiredRotation.x - OffsetWithinRange && transform.eulerAngles.x < DesiredRotation.x + OffsetWithinRange)
-        //{ 
-        //    if (transform.eulerAngles.y > DesiredRotation.y - OffsetWithinRange && transform.eulerAngles.y < DesiredRotation.y + OffsetWithinRange)
-        //    {
-        //        if (transform.eulerAngles.z > DesiredRotation.z - OffsetWithinRange && transform.eulerAngles.z < DesiredRotation.z + OffsetWithinRange)
-        //        {
-        //            Vector3 rot = transform.eulerAngles;
-        //            rot.x = Mathf.Lerp(rot.x, DesiredRotation.x, ObjectSnapSmooth);
-        //            rot.y = Mathf.Lerp(rot.y, DesiredRotation.y, ObjectSnapSmooth);
-        //            rot.z = Mathf.Lerp(rot.z, DesiredRotation.z, ObjectSnapSmooth);
-
-            //            transform.eulerAngles = rot;
-            //        }
-            //    }
-            //}
     }
 }

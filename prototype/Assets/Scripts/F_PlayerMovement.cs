@@ -78,11 +78,6 @@ public class F_PlayerMovement : MonoBehaviour
             float curSpeedX = canMove ? speed * Input.GetAxis("Vertical") : 0;
             float curSpeedY = canMove ? speed * Input.GetAxis("Horizontal") : 0;
             Velocity = (forward * curSpeedX) + (right * curSpeedY);
-
-            if (Input.GetButton("Jump") && canMove)
-            {
-                Velocity.y = jumpSpeed;
-            }
         }
 
         // Apply gravity. Gravity is multiplied by deltaTime twice (once here, and once below
