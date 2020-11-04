@@ -10,15 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7febcd0aa5af46143a79391d6eb5cf68, type: 3}
-  m_Name: dia_test
+  m_Name: dia_trigger
   m_EditorClassIdentifier: 
   textStrings:
-  - DialougeText: Line A
+  - DialougeText: <color=#a37df5>Triggered </color>by walking through a <color=#f57d95>Door.</color>
     SpokenLine: {fileID: 8300000, guid: 24fe7588ae5c5d84ca6b27976074431d, type: 3}
-    EndWaitTime: 5
-  - DialougeText: Line B
+    EndWaitTime: 1
+  - DialougeText: Line 2 Line 2 Line 2 Line 2 Line 2.
     SpokenLine: {fileID: 8300000, guid: 24fe7588ae5c5d84ca6b27976074431d, type: 3}
-    EndWaitTime: 0
-  - DialougeText: Line C Dude
-    SpokenLine: {fileID: 0}
     EndWaitTime: 1
