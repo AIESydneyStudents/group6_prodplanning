@@ -14,8 +14,21 @@ public class InspectionEvent : MonoBehaviour
     [SerializeField] float ObjectSnapSmooth = 100f;
 
     void Update()
-    { // Might update check to use Vector3.Distance lol..
+    {
+        if(Mathf.Abs(transform.eulerAngles.x) < Mathf.Abs(DesiredRotation.x) + OffsetWithinRange)
+        {
+            if (Mathf.Abs(transform.eulerAngles.y) < Mathf.Abs(DesiredRotation.y) + OffsetWithinRange)
+            {
+                if (Mathf.Abs(transform.eulerAngles.z) < Mathf.Abs(DesiredRotation.z) + OffsetWithinRange)
+                {
+                    PositionLocked = true;
+                    transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.Euler(DesiredRotation), ObjectSnapSmooth * Time.deltaTime);
 
+                }
+            }
+        }
+
+        // Might update check to use Vector3.Distance lol..
         //float dist = Vector3.Angle(transform.localEulerAngles, DesiredRotation);
         //Debug.Log(dist);
 
@@ -31,25 +44,25 @@ public class InspectionEvent : MonoBehaviour
         //    PositionLocked = false;
         //}
 
-        bool rotating = false;
-        if (Mathf.Abs(transform.localEulerAngles.x) > Mathf.Abs(DesiredRotation.x - OffsetWithinRange))
-        {
-            if (Mathf.Abs(transform.localEulerAngles.y) > Mathf.Abs(DesiredRotation.y - OffsetWithinRange))
-            {
-                if (Mathf.Abs(transform.localEulerAngles.z) > Mathf.Abs(DesiredRotation.z - OffsetWithinRange))
-                {
-                    rotating = true;
+        //    bool rotating = false;
+        //    if (Mathf.Abs(transform.localEulerAngles.x) > Mathf.Abs(DesiredRotation.x - OffsetWithinRange))
+        //    {
+        //        if (Mathf.Abs(transform.localEulerAngles.y) > Mathf.Abs(DesiredRotation.y - OffsetWithinRange))
+        //        {
+        //            if (Mathf.Abs(transform.localEulerAngles.z) > Mathf.Abs(DesiredRotation.z - OffsetWithinRange))
+        //            {
+        //                rotating = true;
 
-                    PositionLocked = true;
-                    transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.Euler(DesiredRotation), ObjectSnapSmooth * Time.deltaTime);
-                }
-            }
-        }
+        //                PositionLocked = true;
+        //                transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.Euler(DesiredRotation), ObjectSnapSmooth * Time.deltaTime);
+        //            }
+        //        }
+        //    }
 
-        if (!rotating)
-        {
-            IsInspected = false;
-            PositionLocked = false;
-        }
+        //    if (!rotating)
+        //    {
+        //        IsInspected = false;
+        //        PositionLocked = false;
+        //    }
     }
 }
