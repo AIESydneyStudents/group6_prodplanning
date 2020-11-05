@@ -83,11 +83,14 @@ public class PickupObject : MonoBehaviour
 
             objRb.AddForce(playerMovement.playerCamera.transform.forward * throwStrength);
         }
+    }
 
+    void FixedUpdate() // FixedUpdate fixes jitter issue.
+    {
         if (smoothMove) // When the object is first picked up..
         {
             pickedObject.transform.position = Vector3.MoveTowards(pickedObject.transform.position,
-                ObjectDestination.transform.position, Time.deltaTime * pickUpSmooth);
+                ObjectDestination.transform.position, Time.fixedDeltaTime * pickUpSmooth);
 
             if (pickedObject.transform.position == ObjectDestination.transform.position)
             {
@@ -99,10 +102,7 @@ public class PickupObject : MonoBehaviour
         }
 
         if (!objectHolderPosSet) SmoothMoveObjectHolderUpdate();
-    }
 
-    void FixedUpdate() // FixedUpdate fixes jitter issue.
-    {
         if (focusing) // Object has been picked up and is now focusing on its position.
         {
             pickedObject.transform.position = Vector3.Lerp(pickedObject.transform.position, ObjectDestination.transform.position,
@@ -157,7 +157,7 @@ public class PickupObject : MonoBehaviour
             if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, ArmLength, PickableObjectLayer))
             { // Raycast from camera perspective, this may need to be edited if multiple cameras are used.
                 if (InteractableLayer == (InteractableLayer | (1 << hit.collider.gameObject.layer)))
-                {
+                { 
                     Interactable interact = hit.collider.gameObject.GetComponent<Interactable>();
                     if (interact != null)
                     {
@@ -239,7 +239,7 @@ public class PickupObject : MonoBehaviour
     void SmoothMoveObjectHolderUpdate()
     {
         ObjectDestination.transform.localPosition = Vector3.Lerp(setObjectHolderLerpPos,
-            ObjectDestination.transform.localPosition, Time.deltaTime * zoomSmooth);
+            ObjectDestination.transform.localPosition, Time.fixedDeltaTime * zoomSmooth);
 
         //ObjectDestination.transform.localPosition = setObjectHolderLerpPos;
 
@@ -249,7 +249,8 @@ public class PickupObject : MonoBehaviour
     void RaycastObjectUpdate() // DIRTY DIRTY DIRTY
     {
         RaycastHit hit;
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, ArmLength, PickableObjectLayer))
+        if (playerMovement.PlayerCurrentState == F_PlayerMovement.PlayerState.Gameplay && 
+            Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, ArmLength, PickableObjectLayer))
         {
             if (InteractableLayer == (InteractableLayer | (1 << hit.collider.gameObject.layer)))
                 pickupAbleText.Text.text = "Press 'E' to interact with this object";
