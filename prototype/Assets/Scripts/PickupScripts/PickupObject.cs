@@ -121,11 +121,16 @@ public class PickupObject : MonoBehaviour
                 if (!check)
                 {
                     //pickedObject.transform.Rotate(new Vector3(Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0) * Time.fixedDeltaTime * 150f);
-                    float rotX = Input.GetAxis("Mouse X") * PickedRotationSpeed * Mathf.Deg2Rad;
-                    float rotZ = Input.GetAxis("Mouse Y") * PickedRotationSpeed * Mathf.Deg2Rad;
+                    //float rotX = Input.GetAxis("Mouse X") * PickedRotationSpeed * Mathf.Deg2Rad;
+                    //float rotZ = Input.GetAxis("Mouse Y") * PickedRotationSpeed * Mathf.Deg2Rad;
 
-                    pickedObject.transform.RotateAround(Vector3.down, -rotX);
-                    pickedObject.transform.RotateAround(Vector3.right, rotZ);
+                    //pickedObject.transform.RotateAround(Vector3.down, -rotX * Time.fixedDeltaTime);
+                    //pickedObject.transform.RotateAround(Vector3.right, rotZ * Time.fixedDeltaTime);
+
+                    pickedObject.transform.localRotation = Quaternion.Lerp(pickedObject.transform.localRotation,
+                        Quaternion.Euler(pickedObject.transform.localRotation.eulerAngles.x + Input.GetAxis("Vertical"),
+                        pickedObject.transform.localRotation.eulerAngles.y + Input.GetAxis("Horizontal"),
+                        pickedObject.transform.localRotation.eulerAngles.y - pickedObject.transform.localRotation.eulerAngles.x), PickedRotationSpeed);
 
                     pickedObjectRotation = pickedObject.transform.eulerAngles;
                 }
@@ -197,6 +202,7 @@ public class PickupObject : MonoBehaviour
             pickedObjectParent = null;
             pickedObject = null;
 
+            pickedObjectRb.constraints = RigidbodyConstraints.None; // hopefully u dont need constraints..
             pickedObjectRb.useGravity = true;
             pickedObjectRb = null;
 

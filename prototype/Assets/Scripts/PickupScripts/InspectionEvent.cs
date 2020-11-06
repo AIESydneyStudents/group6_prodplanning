@@ -15,14 +15,14 @@ public class InspectionEvent : MonoBehaviour
 
     void Update()
     {
-        if(Mathf.Abs(transform.eulerAngles.x) < Mathf.Abs(DesiredRotation.x) + OffsetWithinRange)
+        if(Mathf.Abs(transform.eulerAngles.x) > Mathf.Abs(DesiredRotation.x) + OffsetWithinRange)
         {
-            if (Mathf.Abs(transform.eulerAngles.y) < Mathf.Abs(DesiredRotation.y) + OffsetWithinRange)
+            if (Mathf.Abs(transform.eulerAngles.y) > Mathf.Abs(DesiredRotation.y) + OffsetWithinRange)
             {
-                if (Mathf.Abs(transform.eulerAngles.z) < Mathf.Abs(DesiredRotation.z) + OffsetWithinRange)
+                if (Mathf.Abs(transform.eulerAngles.z) > Mathf.Abs(DesiredRotation.z) + OffsetWithinRange)
                 {
                     PositionLocked = true;
-                    transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.Euler(DesiredRotation), ObjectSnapSmooth * Time.deltaTime);
+                    transform.localRotation = Quaternion.Lerp(Quaternion.Euler(transform.localRotation.eulerAngles), Quaternion.Euler(DesiredRotation), Time.deltaTime * ObjectSnapSmooth);
 
                 }
             }
