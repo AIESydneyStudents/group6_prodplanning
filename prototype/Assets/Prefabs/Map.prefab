@@ -16205,6 +16205,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4278295269672860446, guid: 74ddbca12e06b724db1ee91efecccc9a,
+        type: 3}
+      propertyPath: m_WaitForFirstFrame
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4278295269672860447, guid: 74ddbca12e06b724db1ee91efecccc9a,
         type: 3}
       propertyPath: m_LocalPosition.x
