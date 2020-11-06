@@ -56,6 +56,8 @@ public class DishWashingTask : Task
         bod.useGravity = true;
         bod.detectCollisions = true;
 
+        OnTaskProgressed.Invoke();
+
         if (!DishesToWash.HasDishes())
         {
             dishCleanAmount = 0;
@@ -63,10 +65,6 @@ public class DishWashingTask : Task
             TaskFinished();
             Cursor.lockState = CursorLockMode.Locked;
             return;
-        }
-        else
-        {
-            OnTaskProgressed.Invoke();
         }
 
         //Reset stas and get next dish

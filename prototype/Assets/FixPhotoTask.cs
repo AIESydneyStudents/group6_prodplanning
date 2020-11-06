@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Interactable))]
+[RequireComponent(typeof(Collider))]
 public class FixPhotoTask : Task
 {
     F_PlayerMovement player;
@@ -38,6 +40,7 @@ public class FixPhotoTask : Task
                 {
                     transform.rotation = Quaternion.Euler(0, 0, 0);
                     TaskFinished();
+                    OnTaskProgressed.Invoke();
                     player.ChangePerspective(null);
                     gameObject.layer = transform.parent.gameObject.layer;
                 }

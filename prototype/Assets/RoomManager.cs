@@ -18,6 +18,7 @@ public class RoomManager : MonoBehaviour
             if(currentCompletion >= CompletionThreshhold)
             {
                 OnRoomComplete.Invoke();
+                hasFinished = true;
             }
         }
     }
@@ -25,5 +26,6 @@ public class RoomManager : MonoBehaviour
     public void AddComplete(int amount)
     {
         currentCompletion += amount;
+        Debug.Log(name + ": " + currentCompletion + " / " + CompletionThreshhold);
     }
 }
