@@ -10,7 +10,7 @@ public class DialougeManager : MonoBehaviour
 
     public bool IsPlayingDialouge { get { return active; } }
 
-    private List<DialougeLine> playingSequence;
+    private Queue<List<DialougeLine>> playingSequence = new Queue<List<DialougeLine>>();
     private int dialougeIndex = 0;
 
     private bool lineHasPlayed = false;
@@ -19,20 +19,28 @@ public class DialougeManager : MonoBehaviour
     //Incase you need to play dialouge without a scriptable object
     public void PlayDialouge(List<DialougeLine> ToPlay)
     {
-        dialougeIndex = 0;
         lineHasPlayed = false;
-        playingSequence = ToPlay;
-        active = true;
-        Text.enabled = true;
+        playingSequence.Enqueue(ToPlay);
+
+        if (!active)
+        {
+            dialougeIndex = 0;
+            active = true;
+            Text.enabled = true;
+        }
     }
 
     public void PlayDialouge(DialougeSequence ToPlay)
     {
-        dialougeIndex = 0;
         lineHasPlayed = false;
-        playingSequence = ToPlay.textStrings;
-        active = true;
-        Text.enabled = true;
+        playingSequence.Enqueue(ToPlay.textStrings);
+
+        if (!active)
+        {
+            dialougeIndex = 0;
+            active = true;
+            Text.enabled = true;
+        }
     }
 
     public void PlayDialougeIfNotPlaying(List<DialougeLine> ToPlay)
@@ -62,20 +70,20 @@ public class DialougeManager : MonoBehaviour
             if(!lineHasPlayed)
             {
                 //Set dialouge text
-                Text.text = playingSequence[dialougeIndex].DialougeText;
+                Text.text = playingSequence.Peek()[dialougeIndex].DialougeText;
 
                 Text.alpha = 0;
                 Text.maxVisibleCharacters = 0;
                 lineTimer = 0;
 
                 //Play Dialouge line.
-                if (playingSequence[dialougeIndex].SpokenLine)
+                if (playingSequence.Peek()[dialougeIndex].SpokenLine)
                 {
-                    AudioPlayer.PlayOneShot(playingSequence[dialougeIndex].SpokenLine);
-                    lineMaxTimer = playingSequence[dialougeIndex].SpokenLine.length;
+                    AudioPlayer.PlayOneShot(playingSequence.Peek()[dialougeIndex].SpokenLine);
+                    lineMaxTimer = playingSequence.Peek()[dialougeIndex].SpokenLine.length;
                 }
 
-                lineMaxTimer += playingSequence[dialougeIndex].EndWaitTime;
+                lineMaxTimer += playingSequence.Peek()[dialougeIndex].EndWaitTime;
                 charIncereaseRate = Mathf.Ceil(Text.textInfo.characterCount / (lineTimer));
 
                 lineHasPlayed = true;
@@ -100,10 +108,15 @@ public class DialougeManager : MonoBehaviour
                     dialougeIndex++;
                     lineHasPlayed = false;
 
-                    if (dialougeIndex >= playingSequence.Count)
+                    if (dialougeIndex >= playingSequence.Peek().Count)
                     {
-                        Text.enabled = false;
-                        active = false;
+                        dialougeIndex = 0;
+                        playingSequence.Dequeue();
+                        if (playingSequence.Count <= 0)
+                        {
+                            Text.enabled = false;
+                            active = false;
+                        }
                     }
                 }
             }
