@@ -19,11 +19,12 @@ public class DialougeManager : MonoBehaviour
     //Incase you need to play dialouge without a scriptable object
     public void PlayDialouge(List<DialougeLine> ToPlay)
     {
-        lineHasPlayed = false;
+        
         playingSequence.Enqueue(ToPlay);
 
         if (!active)
         {
+            lineHasPlayed = false;
             dialougeIndex = 0;
             active = true;
             Text.enabled = true;
@@ -32,11 +33,12 @@ public class DialougeManager : MonoBehaviour
 
     public void PlayDialouge(DialougeSequence ToPlay)
     {
-        lineHasPlayed = false;
+        
         playingSequence.Enqueue(ToPlay.textStrings);
 
         if (!active)
         {
+            lineHasPlayed = false;
             dialougeIndex = 0;
             active = true;
             Text.enabled = true;
