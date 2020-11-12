@@ -15,4 +15,4 @@ MonoBehaviour:
   textStrings:
   - DialougeText: "Twice over the legal limit. He didn\u2019t seem that bad"
     SpokenLine: {fileID: 0}
-    EndWaitTime: 1
+    EndWaitTime: 2

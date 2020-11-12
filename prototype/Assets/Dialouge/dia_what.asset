@@ -15,4 +15,4 @@ MonoBehaviour:
   textStrings:
   - DialougeText: 'Daivd: What...'
     SpokenLine: {fileID: 0}
-    EndWaitTime: 1
+    EndWaitTime: 2

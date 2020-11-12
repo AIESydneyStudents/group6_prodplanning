@@ -15,7 +15,7 @@ MonoBehaviour:
   textStrings:
   - DialougeText: "David: Jarred\u2026  that sounded like him."
     SpokenLine: {fileID: 0}
-    EndWaitTime: 1
+    EndWaitTime: 2
   - DialougeText: 'David: There has to be something else in this mess'
     SpokenLine: {fileID: 0}
-    EndWaitTime: 1
+    EndWaitTime: 2

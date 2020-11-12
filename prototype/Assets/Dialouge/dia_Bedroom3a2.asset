@@ -15,4 +15,4 @@ MonoBehaviour:
   textStrings:
   - DialougeText: This is what happens when you rely on others.
     SpokenLine: {fileID: 0}
-    EndWaitTime: 1
+    EndWaitTime: 2

@@ -15,4 +15,4 @@ MonoBehaviour:
   textStrings:
   - DialougeText: "Why did this have to happen\u2026  "
     SpokenLine: {fileID: 0}
-    EndWaitTime: 1
+    EndWaitTime: 2

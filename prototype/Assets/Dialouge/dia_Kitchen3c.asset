@@ -15,4 +15,4 @@ MonoBehaviour:
   textStrings:
   - DialougeText: "If only I hadn\u2019t asked him to drive me home."
     SpokenLine: {fileID: 0}
-    EndWaitTime: 1
+    EndWaitTime: 2

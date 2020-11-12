@@ -1355,7 +1355,7 @@ PrefabInstance:
     - target: {fileID: 550909491888878223, guid: 32af8611398e51b43b33d5961b9a2f05,
         type: 3}
       propertyPath: m_Name
-      value: DialougeTrigger_journal1 (1)
+      value: DialougeTrigger_kitchen1
       objectReference: {fileID: 0}
     - target: {fileID: 550909491888878225, guid: 32af8611398e51b43b33d5961b9a2f05,
         type: 3}
@@ -2233,7 +2233,7 @@ PrefabInstance:
     - target: {fileID: 550909491888878223, guid: 32af8611398e51b43b33d5961b9a2f05,
         type: 3}
       propertyPath: m_Name
-      value: DialougeTrigger_bedroom3a
+      value: DialougeTrigger_bedroom3a2
       objectReference: {fileID: 0}
     - target: {fileID: 550909491888878225, guid: 32af8611398e51b43b33d5961b9a2f05,
         type: 3}
@@ -2907,7 +2907,7 @@ PrefabInstance:
     - target: {fileID: 550909491888878223, guid: 32af8611398e51b43b33d5961b9a2f05,
         type: 3}
       propertyPath: m_Name
-      value: DialougeTrigger_bedroom2a2 (1)
+      value: DialougeTrigger_bedroom3a
       objectReference: {fileID: 0}
     - target: {fileID: 550909491888878225, guid: 32af8611398e51b43b33d5961b9a2f05,
         type: 3}

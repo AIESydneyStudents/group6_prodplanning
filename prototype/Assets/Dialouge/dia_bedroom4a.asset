@@ -15,23 +15,23 @@ MonoBehaviour:
   textStrings:
   - DialougeText: 'David: I need to call her. I need to apologise.'
     SpokenLine: {fileID: 0}
-    EndWaitTime: 1
+    EndWaitTime: 2
   - DialougeText: "David: I\u2019m sorry for what I\u2019ve done and said. You were
       right I pushed everyone away because it was easier to feel sorry for myself
       than get help."
     SpokenLine: {fileID: 0}
-    EndWaitTime: 1
+    EndWaitTime: 2
   - DialougeText: "Alice: It\u2019s okay. I\u2019ve been thinking a lot since that
       day\u2026 \r\n"
     SpokenLine: {fileID: 0}
-    EndWaitTime: 1
+    EndWaitTime: 2
   - DialougeText: "Alice: We both said things we didn\u2019t mean.\r We should meet
       up tonight and talk.\r\n"
     SpokenLine: {fileID: 0}
-    EndWaitTime: 1
+    EndWaitTime: 2
   - DialougeText: "David: I\u2019d like that. Thank you. See you then."
     SpokenLine: {fileID: 0}
-    EndWaitTime: 1
+    EndWaitTime: 2
   - DialougeText: 'Alice: Yeah, see you there.'
     SpokenLine: {fileID: 0}
-    EndWaitTime: 1
+    EndWaitTime: 2

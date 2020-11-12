@@ -15,39 +15,39 @@ MonoBehaviour:
   textStrings:
   - DialougeText: "Alice: You\u2019re hurt. You need help."
     SpokenLine: {fileID: 0}
-    EndWaitTime: 1
+    EndWaitTime: 2
   - DialougeText: "David: I\u2019m fine. No need to worry. "
     SpokenLine: {fileID: 0}
-    EndWaitTime: 1
+    EndWaitTime: 2
   - DialougeText: "Alice: Our friend is gone, it\u2019s okay to say you miss him.
       It\u2019s okay to say you\u2019re having a rough time."
     SpokenLine: {fileID: 0}
-    EndWaitTime: 1
+    EndWaitTime: 2
   - DialougeText: 'David: Stop!  Stop mothering me.'
     SpokenLine: {fileID: 0}
-    EndWaitTime: 1
+    EndWaitTime: 2
   - DialougeText: "Alice: You can\u2019t keep pushing everyone away."
     SpokenLine: {fileID: 0}
-    EndWaitTime: 1
+    EndWaitTime: 2
   - DialougeText: "David: I don\u2019t need anyone\u2019s help or pity. Leave me
       alone I\u2019m fine"
     SpokenLine: {fileID: 0}
-    EndWaitTime: 1
+    EndWaitTime: 2
   - DialougeText: "Alice: You say that a lot, but do you actually mean it. Because
       you don\u2019t act fine. You don\u2019t leave the house, you don\u2019t talk
       to anyone. This place is so disgusting that it\u2019s hard to move without
       stepping on trash."
     SpokenLine: {fileID: 0}
-    EndWaitTime: 1
+    EndWaitTime: 2
   - DialougeText: "David: Why do you keep coming here then? Go away.\r\nI just want
       to be left alone. \r\n"
     SpokenLine: {fileID: 0}
-    EndWaitTime: 1
+    EndWaitTime: 2
   - DialougeText: "Alice: If that\u2019s how you really feel.\r\nOh, and one more
       thing. Stop blaming Jarred when we were the ones who should have stopped him.
       \r\n\r\n"
     SpokenLine: {fileID: 0}
-    EndWaitTime: 1
+    EndWaitTime: 2
   - DialougeText: "David: Whatever\u2026"
     SpokenLine: {fileID: 0}
-    EndWaitTime: 1
+    EndWaitTime: 2
