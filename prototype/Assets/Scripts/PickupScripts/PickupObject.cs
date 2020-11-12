@@ -42,6 +42,7 @@ public class PickupObject : MonoBehaviour
 
     public bool IsHoldingObject() { return pickedObject != null; }
 
+    private bool hasInteracted = false;
     private GameObject highlightingObject;
 
     void Start()
@@ -58,7 +59,12 @@ public class PickupObject : MonoBehaviour
         RaycastObjectUpdate();
 
         if (Input.GetMouseButtonDown(0) && playerMovement.IsGameplay) PickUpControl();
-        if (Input.GetMouseButtonUp(0) && playerMovement.IsGameplay) PickUpControl();
+
+        if (Input.GetMouseButtonUp(0) && playerMovement.IsGameplay)
+        {
+            PickUpControl();
+            hasInteracted = false;
+        }
 
         if (pickedObject == null) return; // Won't continue past this point if there's no object.
 
@@ -178,8 +184,9 @@ public class PickupObject : MonoBehaviour
                 if (InteractableLayer == (InteractableLayer | (1 << hit.collider.gameObject.layer)))
                 { 
                     Interactable interact = hit.collider.gameObject.GetComponent<Interactable>();
-                    if (interact != null)
+                    if (!hasInteracted && interact != null)
                     {
+                        hasInteracted = true;
                         interact.OnInteract.Invoke();
                     }
                 }

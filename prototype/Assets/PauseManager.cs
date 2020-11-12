@@ -30,7 +30,15 @@ public class PauseManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            TogglePause(!active);
+            if(!active && player.PlayerCurrentState == F_PlayerMovement.PlayerState.Gameplay)
+            {
+                TogglePause(!active);
+            }
+            else if(active)
+            {
+                TogglePause(!active);
+            }
+            
         }
     }
 

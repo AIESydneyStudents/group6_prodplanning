@@ -100,7 +100,7 @@ LightmapSettings:
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 112000000, guid: 9e965abfd7d6e284d813b98abc24c596,
     type: 2}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -987,16 +987,16 @@ PrefabInstance:
       propertyPath: m_DefaultBlend.m_Time
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 5647926973833009598, guid: 0462f47617c620d4eadba55a2b57584d,
-        type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
     - target: {fileID: 5647926973963532224, guid: 0462f47617c620d4eadba55a2b57584d,
         type: 3}
       propertyPath: pickupAbleText
       value: 
       objectReference: {fileID: 454033432}
+    - target: {fileID: 5647926974272489027, guid: 0462f47617c620d4eadba55a2b57584d,
+        type: 3}
+      propertyPath: m_FOVAxisMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5647926975231730258, guid: 0462f47617c620d4eadba55a2b57584d,
         type: 3}
       propertyPath: m_LocalPosition.x
