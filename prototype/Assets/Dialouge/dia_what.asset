@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: dia_what
   m_EditorClassIdentifier: 
   textStrings:
-  - DialougeText: What
+  - DialougeText: 'Daivd: What...'
     SpokenLine: {fileID: 0}
-    EndWaitTime: 2
+    EndWaitTime: 1

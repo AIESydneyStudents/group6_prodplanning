@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: dia_bedroom2a
   m_EditorClassIdentifier: 
   textStrings:
-  - DialougeText: "Jarred\u2026  that sounded like him."
+  - DialougeText: "David: Jarred\u2026  that sounded like him."
     SpokenLine: {fileID: 0}
-    EndWaitTime: 2
+    EndWaitTime: 1
+  - DialougeText: 'David: There has to be something else in this mess'
+    SpokenLine: {fileID: 0}
+    EndWaitTime: 1

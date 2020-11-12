@@ -16,4 +16,4 @@ MonoBehaviour:
   - DialougeText: You're better than this. **** **** **** *** ******  * *** *** ****
       ******* **** ** you need help **** *** ***** **** ****
     SpokenLine: {fileID: 0}
-    EndWaitTime: 10
+    EndWaitTime: 1

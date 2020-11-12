@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7febcd0aa5af46143a79391d6eb5cf68, type: 3}
   m_Name: dia_Bedroom3a2
   m_EditorClassIdentifier: 
-  textStrings: []
+  textStrings:
+  - DialougeText: This is what happens when you rely on others.
+    SpokenLine: {fileID: 0}
+    EndWaitTime: 1

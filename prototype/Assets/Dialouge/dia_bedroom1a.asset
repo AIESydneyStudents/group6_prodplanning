@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: dia_bedroom1a
   m_EditorClassIdentifier: 
   textStrings:
-  - DialougeText: When was the last time I cleaned.
+  - DialougeText: 'David:  When was the last time I cleaned.'
     SpokenLine: {fileID: 0}
-    EndWaitTime: 0
+    EndWaitTime: 1

@@ -16,4 +16,4 @@ MonoBehaviour:
   - DialougeText: "****** ****** **** ****. Just stay here the night, I can get home
       another way. ** *** **** ***** I\u2019m one phone call away."
     SpokenLine: {fileID: 0}
-    EndWaitTime: 0
+    EndWaitTime: 1

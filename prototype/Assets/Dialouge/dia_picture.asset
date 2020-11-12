@@ -13,12 +13,15 @@ MonoBehaviour:
   m_Name: dia_picture
   m_EditorClassIdentifier: 
   textStrings:
-  - DialougeText: Feels like it's been forever.
+  - DialougeText: 'David: Feels like it''s been forever.'
     SpokenLine: {fileID: 0}
-    EndWaitTime: 2
-  - DialougeText: Graduation day with the crew.
+    EndWaitTime: 1
+  - DialougeText: 'Jarred: Graduation day with the crew.'
     SpokenLine: {fileID: 0}
-    EndWaitTime: 2
-  - DialougeText: Those were better days.
+    EndWaitTime: 1
+  - DialougeText: 'David: Those were better days.'
     SpokenLine: {fileID: 0}
-    EndWaitTime: 2
+    EndWaitTime: 1
+  - DialougeText: 'David : When was the last time I cleaned'
+    SpokenLine: {fileID: 0}
+    EndWaitTime: 1
