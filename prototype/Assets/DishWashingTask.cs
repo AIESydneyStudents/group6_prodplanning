@@ -62,7 +62,7 @@ public class DishWashingTask : Task
         {
             dishCleanAmount = 0;
             player.ChangePerspective(null);
-            TaskFinished();
+            taskFinished = false;
             Cursor.lockState = CursorLockMode.Locked;
             return;
         }
