@@ -16973,6 +16973,11 @@ PrefabInstance:
       propertyPath: zoomSmooth
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 5647926973963532224, guid: 0462f47617c620d4eadba55a2b57584d,
+        type: 3}
+      propertyPath: defaultLocalObjectHolderPos.z
+      value: 1.2
+      objectReference: {fileID: 0}
     - target: {fileID: 5647926974272489024, guid: 0462f47617c620d4eadba55a2b57584d,
         type: 3}
       propertyPath: m_Enabled
