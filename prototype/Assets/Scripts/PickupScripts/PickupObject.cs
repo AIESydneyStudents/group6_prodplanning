@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,6 +20,8 @@ public class PickupObject : MonoBehaviour
 
     public F_PlayerMovement playerMovement;
 
+    public Material SelectedGlowMaterial;
+
     bool smoothMove = false;
     bool focusing = false;
     bool fixedRotation = false;
@@ -38,6 +41,8 @@ public class PickupObject : MonoBehaviour
     Vector3 zoomedLocalObjectHolderPos;
 
     public bool IsHoldingObject() { return pickedObject != null; }
+
+    private GameObject highlightingObject;
 
     void Start()
     {
@@ -172,6 +177,7 @@ public class PickupObject : MonoBehaviour
                 else
                 {
                     pickedObject = hit.collider.gameObject;
+
                     smoothMove = true;
 
                     pickedObjectRb = hit.collider.attachedRigidbody;
@@ -263,13 +269,54 @@ public class PickupObject : MonoBehaviour
             else
                 pickupAbleText.Text.text = "Press 'E' to pickup this object";
 
-            if (IsHoldingObject()) ToggleDisplayText(false);
-            else ToggleDisplayText(true);
+            if (IsHoldingObject())
+            {
+                ResetHighlightedObject();
+                ToggleDisplayText(false);
+            }
+            else
+            {
+                ToggleDisplayText(true);
+                SetHighlightedObject(hit.collider.gameObject);
+            }
         }
         else
         {
+            ResetHighlightedObject();
             ToggleDisplayText(false);
         }
+    }
+
+    private MeshRenderer highlightRenderer;
+    private Material highlightOriginalMaterial;
+
+    void SetHighlightedObject(GameObject obj)
+    {
+        //Reset the highlighting to disable it on other objects
+        if (highlightingObject != obj)
+        {
+            ResetHighlightedObject();
+
+            highlightingObject = obj;
+            highlightRenderer = obj.GetComponent<MeshRenderer>();
+            highlightOriginalMaterial = highlightRenderer.material;
+
+            SelectedGlowMaterial.CopyPropertiesFromMaterial(highlightOriginalMaterial);
+
+            highlightRenderer.material = SelectedGlowMaterial;
+        }
+    }
+
+    void ResetHighlightedObject()
+    {
+        if(highlightingObject != null)
+        {
+            highlightRenderer.material = highlightOriginalMaterial;
+        }
+
+        highlightingObject          = null;
+        highlightRenderer           = null;
+        highlightOriginalMaterial   = null;
     }
 
     void ToggleDisplayText(bool toggle)

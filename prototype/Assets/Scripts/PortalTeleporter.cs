@@ -52,7 +52,7 @@ public class PortalTeleporter : MonoBehaviour
 
     private void Update()
     {
-        if(canTeleport && !MainPortalManager.PlayerJustTeleported && Reciver != null)
+        if(canTeleport && MainPortalManager != null && !MainPortalManager.PlayerJustTeleported && Reciver != null)
         {
             //Makes the protals surface visible if the player can teleport
             planeRenderer.enabled = true;

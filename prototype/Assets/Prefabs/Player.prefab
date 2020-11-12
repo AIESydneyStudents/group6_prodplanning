@@ -225,6 +225,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
   playerMovement: {fileID: 5647926975231730260}
+  SelectedGlowMaterial: {fileID: 2100000, guid: 6410fbb52687bae4baeff0402d357072,
+    type: 2}
   ArmLength: 4
   pickUpSmooth: 20
   carrySmooth: 4
