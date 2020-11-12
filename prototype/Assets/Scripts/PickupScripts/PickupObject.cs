@@ -37,11 +37,12 @@ public class PickupObject : MonoBehaviour
     [SerializeField] float zoomSmooth = 110f; // Lerp smooth value
 
     public GameObject ObjectDestination;
-    Vector3 defaultLocalObjectHolderPos;
+    public Vector3 defaultLocalObjectHolderPos = new Vector3(0, 0, 1.2f);
     Vector3 zoomedLocalObjectHolderPos;
 
     public bool IsHoldingObject() { return pickedObject != null; }
 
+    private bool hasInteracted = false;
     private GameObject highlightingObject;
 
     void Start()
@@ -49,7 +50,6 @@ public class PickupObject : MonoBehaviour
         //ObjectDestination = GameObject.FindGameObjectWithTag("ObjectHolder");
         playerMovement = FindObjectOfType<F_PlayerMovement>();
 
-        defaultLocalObjectHolderPos = new Vector3(0, 0, 1f);
         zoomedLocalObjectHolderPos = new Vector3(0, 0, defaultLocalObjectHolderPos.z / 2);
     }
 
@@ -58,7 +58,13 @@ public class PickupObject : MonoBehaviour
         UniversalStaticFunctions.lol();
         RaycastObjectUpdate();
 
-        if (Input.GetKeyDown(KeyCode.E) && playerMovement.IsGameplay) PickUpControl();
+        if (Input.GetMouseButtonDown(0) && playerMovement.IsGameplay) PickUpControl();
+
+        if (Input.GetMouseButtonUp(0) && playerMovement.IsGameplay)
+        {
+            PickUpControl();
+            hasInteracted = false;
+        }
 
         if (pickedObject == null) return; // Won't continue past this point if there's no object.
 
@@ -132,12 +138,21 @@ public class PickupObject : MonoBehaviour
                     //pickedObject.transform.RotateAround(Vector3.down, -rotX * Time.fixedDeltaTime);
                     //pickedObject.transform.RotateAround(Vector3.right, rotZ * Time.fixedDeltaTime);
 
-                    pickedObject.transform.localRotation = Quaternion.Lerp(pickedObject.transform.localRotation,
-                        Quaternion.Euler(pickedObject.transform.localRotation.eulerAngles.x + Input.GetAxis("Vertical"),
-                        pickedObject.transform.localRotation.eulerAngles.y + Input.GetAxis("Horizontal"),
-                        pickedObject.transform.localRotation.eulerAngles.y - pickedObject.transform.localRotation.eulerAngles.x), PickedRotationSpeed);
+                    //pickedObject.transform.rotation = Quaternion.Lerp(pickedObject.transform.rotation,
+                    //    Quaternion.Euler(pickedObject.transform.rotation.eulerAngles.x + Input.GetAxis("Vertical"),
+                    //    pickedObject.transform.rotation.eulerAngles.y + Input.GetAxis("Horizontal"),
+                    //    pickedObject.transform.rotation.eulerAngles.y - pickedObject.transform.rotation.eulerAngles.x), PickedRotationSpeed);
 
-                    pickedObjectRotation = pickedObject.transform.eulerAngles;
+                    //pickedObjectRotation = pickedObject.transform.eulerAngles;
+
+                    //Vector3 v3 = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 1f);
+                    //Quaternion qTo = Quaternion.LookRotation(v3);
+
+                    //pickedObject.transform.rotation = Quaternion.Lerp(pickedObject.transform.rotation,
+                    //    qTo, PickedRotationSpeed * Time.fixedDeltaTime);
+
+
+                    pickedObject.transform.rotation *= Quaternion.Euler(Input.GetAxis("Mouse X"), 1f, Input.GetAxis("Mouse Y"));
                 }
             }
             else
@@ -169,8 +184,9 @@ public class PickupObject : MonoBehaviour
                 if (InteractableLayer == (InteractableLayer | (1 << hit.collider.gameObject.layer)))
                 { 
                     Interactable interact = hit.collider.gameObject.GetComponent<Interactable>();
-                    if (interact != null)
+                    if (!hasInteracted && interact != null)
                     {
+                        hasInteracted = true;
                         interact.OnInteract.Invoke();
                     }
                 }
@@ -208,7 +224,7 @@ public class PickupObject : MonoBehaviour
             pickedObjectParent = null;
             pickedObject = null;
 
-            pickedObjectRb.constraints = RigidbodyConstraints.None; // hopefully u dont need constraints..
+            pickedObjectRb.constraints = RigidbodyConstraints.None;
             pickedObjectRb.useGravity = true;
             pickedObjectRb = null;
 
@@ -258,7 +274,7 @@ public class PickupObject : MonoBehaviour
         if (ObjectDestination.transform.localPosition == setObjectHolderLerpPos) objectHolderPosSet = true;
     }
 
-    void RaycastObjectUpdate() // DIRTY DIRTY DIRTY
+    void RaycastObjectUpdate()
     {
         RaycastHit hit;
         if (playerMovement.PlayerCurrentState == F_PlayerMovement.PlayerState.Gameplay && 
