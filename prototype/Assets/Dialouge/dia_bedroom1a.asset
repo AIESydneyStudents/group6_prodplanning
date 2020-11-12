@@ -15,4 +15,4 @@ MonoBehaviour:
   textStrings:
   - DialougeText: 'David:  When was the last time I cleaned.'
     SpokenLine: {fileID: 0}
-    EndWaitTime: 1
+    EndWaitTime: 2

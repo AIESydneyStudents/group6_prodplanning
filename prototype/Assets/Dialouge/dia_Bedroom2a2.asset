@@ -15,4 +15,4 @@ MonoBehaviour:
   textStrings:
   - DialougeText: 'David: There has to be something else in this mess'
     SpokenLine: {fileID: 0}
-    EndWaitTime: 1
+    EndWaitTime: 2
