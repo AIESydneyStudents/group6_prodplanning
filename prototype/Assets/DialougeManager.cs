@@ -77,9 +77,10 @@ public class DialougeManager : MonoBehaviour
                 Text.alpha = 0;
                 Text.maxVisibleCharacters = 0;
                 lineTimer = 0;
-
+				lineMaxTimer = 0;
+				
                 //Play Dialouge line.
-                if (playingSequence.Peek()[dialougeIndex].SpokenLine)
+                if (playingSequence.Peek()[dialougeIndex].SpokenLine != null)
                 {
                     AudioPlayer.PlayOneShot(playingSequence.Peek()[dialougeIndex].SpokenLine);
                     lineMaxTimer = playingSequence.Peek()[dialougeIndex].SpokenLine.length;
