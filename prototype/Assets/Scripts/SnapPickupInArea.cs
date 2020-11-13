@@ -64,11 +64,10 @@ public class SnapPickupInArea : MonoBehaviour
         if ((TagMask != "")? other.tag == TagMask : true && PickupLayer == (PickupLayer | (1 << other.gameObject.layer)))
         {
             SnapPickup(other.transform);
-            OnSnapped.Invoke();
         }
     }
 
-    void SnapPickup(Transform pickup)
+    public void SnapPickup(Transform pickup)
     {
         //Set all pickup stuff active.
         snappingObjects.Add(new Tuple<Transform, Transform>(pickup, TargetTransform));
@@ -94,5 +93,7 @@ public class SnapPickupInArea : MonoBehaviour
         {
             pickupObject.PickUpControl();
         }
+
+        OnSnapped.Invoke();
     }
 }

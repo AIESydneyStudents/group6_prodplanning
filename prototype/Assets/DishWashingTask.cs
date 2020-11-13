@@ -11,6 +11,7 @@ public class DishWashingTask : Task
     public SnapPickupInArea SnappingArea;
     public CinemachineVirtualCamera TaskCamera;
     public ParticleSystem SoapParticles;
+    public SnapPickupInArea CleanPlateStack;
 
     private float dishCleanAmount = 0f;
     private GameObject currentDishToClean;
@@ -51,10 +52,8 @@ public class DishWashingTask : Task
 
     void NextDish()
     {
-        Rigidbody bod = currentDishToClean.GetComponent<Rigidbody>();
-        bod.isKinematic = false;
-        bod.useGravity = true;
-        bod.detectCollisions = true;
+
+        CleanPlateStack.SnapPickup(currentDishToClean.transform);
 
         OnTaskProgressed.Invoke();
 

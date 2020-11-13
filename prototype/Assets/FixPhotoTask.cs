@@ -13,7 +13,7 @@ public class FixPhotoTask : Task
     // Start is called before the first frame update
     void Start()
     {
-        taskRunning = true;
+        taskRunning = false;
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<F_PlayerMovement>();
     }
 

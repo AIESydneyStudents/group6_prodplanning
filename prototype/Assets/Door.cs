@@ -28,6 +28,12 @@ public void ToggleDoor()
         Moving = true;
     }
 
+    public void ToggleDoor(bool open)
+    {
+        Open = open;
+        Moving = true;
+    }
+
     private bool Moving = false;
 
     public void Update()

@@ -112,6 +112,17 @@ public class F_PlayerMovement : MonoBehaviour
         // as an acceleration (ms^-2)
         Velocity.y -= gravity * Time.deltaTime;
 
+        if(teleMoving)
+        {
+            Velocity = portalVelocity;
+            teleMovingTimer -= Time.deltaTime;
+            if(teleMovingTimer <= 0)
+            {
+                teleMoving = false;
+                playerState = PlayerState.Gameplay;
+            }
+        }
+
         // Move the controller
         characterController.Move(Velocity * Time.deltaTime);
     }
@@ -147,6 +158,18 @@ public class F_PlayerMovement : MonoBehaviour
 
         otherCamera = newCamera;
         playerState = PlayerState.Cutscene;
+    }
+
+    private Vector3 portalVelocity;
+    private bool  teleMoving = false;
+    private float teleMovingTimer = 0;
+
+    public void HasTeleported()
+    {
+        portalVelocity = Velocity;
+        playerState = PlayerState.Cutscene;
+        teleMoving = true;
+        teleMovingTimer = 0.25f;
     }
 
     public void LockPlayerMovement(bool _lock) { canMove = !_lock; }
