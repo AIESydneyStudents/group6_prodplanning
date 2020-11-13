@@ -193,6 +193,7 @@ public class PickupObject : MonoBehaviour
                 else
                 {
                     pickedObject = hit.collider.gameObject;
+                    hasInteracted = true;
 
                     smoothMove = true;
 
@@ -281,9 +282,9 @@ public class PickupObject : MonoBehaviour
             Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, ArmLength, PickableObjectLayer))
         {
             if (InteractableLayer == (InteractableLayer | (1 << hit.collider.gameObject.layer)))
-                pickupAbleText.Text.text = "Press 'E' to interact with this object";
+                pickupAbleText.Text.text = "Press 'Left Mouse' to interact with this object";
             else
-                pickupAbleText.Text.text = "Press 'E' to pickup this object";
+                pickupAbleText.Text.text = "Hold 'Left Mouse' to pickup this object";
 
             if (IsHoldingObject())
             {

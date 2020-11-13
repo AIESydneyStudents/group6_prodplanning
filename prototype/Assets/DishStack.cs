@@ -28,7 +28,7 @@ public class DishStack : MonoBehaviour
         if(stackIndex == 0)
         {
             //Destory indicator
-            if(PlateIndicator != null)
+            if (PlateIndicator != null)
             {
                 Destroy(PlateIndicator);
             }
