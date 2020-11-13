@@ -62,6 +62,7 @@ public class PickupObject : MonoBehaviour
 
         if (Input.GetMouseButtonUp(0) && playerMovement.IsGameplay)
         {
+            hasInteracted = true; // So you don't pick up when released
             PickUpControl();
             hasInteracted = false;
         }

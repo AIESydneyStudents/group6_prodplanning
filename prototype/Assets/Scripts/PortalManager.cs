@@ -19,6 +19,8 @@ public class PortalManager : MonoBehaviour
     //Refrences all portals in the scene
     private Dictionary<Transform, PortalTeleporter> portals = new Dictionary<Transform, PortalTeleporter>();
 
+    private Door[] doors;
+
     private void OnDisable()
     {
         //Destroy the tartget texture
@@ -68,6 +70,8 @@ public class PortalManager : MonoBehaviour
 
         //Get the portal cam component
         PortalCam = cameraBelow.GetComponent<PortalCamera>();
+
+        doors = Object.FindObjectsOfType<Door>();
     }
 
     private float teleporterTimer = 0;
@@ -88,6 +92,11 @@ public class PortalManager : MonoBehaviour
                     {
                         notTouching = true;
                     }
+                }
+
+                foreach(Door dor in doors)
+                {
+                    dor.ToggleDoor(false);
                 }
 
                 PlayerJustTeleported = notTouching;

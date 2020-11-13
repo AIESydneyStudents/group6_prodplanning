@@ -92,6 +92,7 @@ public class PortalTeleporter : MonoBehaviour
                         StartCoroutine(DisableForAShortPeriod());
                         tele.PlayerIsOverlapping = false;
                         OnTeleport.Invoke();
+                        player.BroadcastMessage("HasTeleported");
                     }
                     PlayerIsOverlapping = false;
                 }
