@@ -10,6 +10,8 @@ public class PickupObject : MonoBehaviour
     GameObject pickedObjectParent = null;
     Vector3 pickedObjectRotation;
 
+    float pickedObjectColliderMultiplier = 2;
+
     InspectionEvent pickedObjectInspectEvent = null;
 
     RigidbodyConstraints freezeRotation = RigidbodyConstraints.FreezeRotation;
@@ -34,6 +36,7 @@ public class PickupObject : MonoBehaviour
     [SerializeField] float throwStrength = 500f; // Throwing object
 
     public float PickedRotationSpeed = 4f; // Player rotation's of object during inspection
+    [SerializeField] float inspectionSmooth = 1f;
     [SerializeField] float zoomSmooth = 110f; // Lerp smooth value
 
     public GameObject ObjectDestination;
@@ -55,12 +58,11 @@ public class PickupObject : MonoBehaviour
 
     void Update()
     {
-        UniversalStaticFunctions.lol();
         RaycastObjectUpdate();
 
-        if (Input.GetMouseButtonDown(0) && playerMovement.IsGameplay) PickUpControl();
+        if (Input.GetMouseButtonDown(0) && playerMovement.IsGameplay && !fixedRotation) PickUpControl();
 
-        if (Input.GetMouseButtonUp(0) && playerMovement.IsGameplay)
+        if (Input.GetMouseButtonUp(0) && playerMovement.IsGameplay && !fixedRotation)
         {
             hasInteracted = true; // So you don't pick up when released
             PickUpControl();
@@ -71,22 +73,36 @@ public class PickupObject : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.R))
         {
-            fixedRotation = true;
-            playerMovement.LockPlayerMovement(true);
+            if (fixedRotation)
+            {
+                fixedRotation = false;
+                playerMovement.LockPlayerMovement(false);
 
-            ZoomInObject();
+                ZoomOutObject();
 
-            pickedObjectRb.constraints = freezeRotation;
+                pickedObjectRb.constraints = RigidbodyConstraints.None;
+
+                if (IsHoldingObject() && !Input.GetMouseButton(0)) PickUpControl();
+            }
+            else
+            {
+                fixedRotation = true;
+                playerMovement.LockPlayerMovement(true);
+
+                ZoomInObject();
+
+                pickedObjectRb.constraints = freezeRotation;
+            }
         }
-        if (Input.GetKeyUp(KeyCode.R))
-        {
-            fixedRotation = false;
-            playerMovement.LockPlayerMovement(false);
+        //if (Input.GetKeyUp(KeyCode.R))
+        //{
+        //    fixedRotation = false;
+        //    playerMovement.LockPlayerMovement(false);
 
-            ZoomOutObject();
+        //    ZoomOutObject();
 
-            pickedObjectRb.constraints = RigidbodyConstraints.None;
-        }
+        //    pickedObjectRb.constraints = RigidbodyConstraints.None;
+        //}
 
         if (Input.GetMouseButtonDown(1))
         {
@@ -117,6 +133,8 @@ public class PickupObject : MonoBehaviour
 
         if (focusing) // Object has been picked up and is now focusing on its position.
         {
+            //pickedObjectRb.MovePosition(Vector3.Lerp(pickedObject.transform.position, ObjectDestination.transform.position,
+            //    Time.fixedDeltaTime * carrySmooth));
             pickedObject.transform.position = Vector3.Lerp(pickedObject.transform.position, ObjectDestination.transform.position,
                 Time.fixedDeltaTime * carrySmooth);
 
@@ -152,8 +170,15 @@ public class PickupObject : MonoBehaviour
                     //pickedObject.transform.rotation = Quaternion.Lerp(pickedObject.transform.rotation,
                     //    qTo, PickedRotationSpeed * Time.fixedDeltaTime);
 
+                    //pickedObject.transform.rotation = Quaternion.Slerp(pickedObject.transform.rotation,
+                    //    pickedObject.transform.rotation * Quaternion.Euler(Input.GetAxis("Mouse X") * 3, 1f, Input.GetAxis("Mouse Y") * 3),
+                    //    inspectionSmooth);
 
-                    pickedObject.transform.rotation *= Quaternion.Euler(Input.GetAxis("Mouse X"), 1f, Input.GetAxis("Mouse Y"));
+                    pickedObjectRb.MoveRotation(pickedObject.transform.rotation * Quaternion.Euler(Input.GetAxis("Mouse X"), 1, Input.GetAxis("Mouse Y")));
+
+    //                pickedObjectRb.MoveRotation(Quaternion.Lerp(pickedObject.transform.rotation,
+    //pickedObject.transform.rotation * Quaternion.Euler(Input.GetAxis("Mouse X") * 3, 1f, Input.GetAxis("Mouse Y") * 3),
+    //inspectionSmooth));
                 }
             }
             else
@@ -171,7 +196,7 @@ public class PickupObject : MonoBehaviour
                     pickedObject.transform.eulerAngles = pickedObjectRotation; // So that the object doesn't spin, spin and spin.
             }
 
-            if (pickedObjectRb.velocity != Vector3.zero) pickedObjectRb.velocity = Vector3.zero; // Seemed to fix the rest of the issues lol
+            pickedObjectRb.velocity = Vector3.zero; // Seemed to fix the rest of the issues lol
         }
     }
 
@@ -183,7 +208,7 @@ public class PickupObject : MonoBehaviour
             if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, ArmLength, PickableObjectLayer))
             { // Raycast from camera perspective, this may need to be edited if multiple cameras are used.
                 if (InteractableLayer == (InteractableLayer | (1 << hit.collider.gameObject.layer)))
-                { 
+                {
                     Interactable interact = hit.collider.gameObject.GetComponent<Interactable>();
                     if (!hasInteracted && interact != null)
                     {
@@ -194,12 +219,16 @@ public class PickupObject : MonoBehaviour
                 else
                 {
                     pickedObject = hit.collider.gameObject;
+
                     hasInteracted = true;
 
                     smoothMove = true;
 
                     pickedObjectRb = hit.collider.attachedRigidbody;
                     pickedObjectRb.useGravity = false;
+
+                    if (pickedObjectRb.collisionDetectionMode != CollisionDetectionMode.ContinuousDynamic)
+                        pickedObjectRb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
 
                     if (pickedObject.transform.parent != null)
                         pickedObjectParent = pickedObject.transform.parent.gameObject;
@@ -213,11 +242,26 @@ public class PickupObject : MonoBehaviour
                         pickedObjectInspectEvent = pickedObject.GetComponent<InspectionEvent>();
                         isObjectDesiredInspection = true;
                     }
+
+                    if(pickedObject.GetComponent<BoxCollider>() == null)
+                    {
+                        pickedObject.GetComponent<Collider>().enabled = false;
+                        pickedObject.AddComponent<BoxCollider>();
+                    }
+
+                    BoxCollider col = pickedObject.GetComponent<BoxCollider>();
+                    col.size = new Vector3(col.size.x * pickedObjectColliderMultiplier, col.size.y * pickedObjectColliderMultiplier, col.size.z * pickedObjectColliderMultiplier);
                 }
             }
         }
         else // Reset everything.
         {
+            if (pickedObject.GetComponent<BoxCollider>() != null)
+            {
+                BoxCollider col = pickedObject.GetComponent<BoxCollider>();
+                col.size = new Vector3(col.size.x / pickedObjectColliderMultiplier, col.size.y / pickedObjectColliderMultiplier, col.size.z / pickedObjectColliderMultiplier);
+            }
+
             if (pickedObjectParent != null)
                 pickedObject.transform.parent = pickedObjectParent.transform;
             else
@@ -231,7 +275,7 @@ public class PickupObject : MonoBehaviour
             pickedObjectRb = null;
 
             isObjectDesiredInspection = false;
-            if(pickedObjectInspectEvent != null)
+            if (pickedObjectInspectEvent != null)
             {
                 pickedObjectInspectEvent.PositionLocked = false;
                 pickedObjectInspectEvent.IsInspected = false;
@@ -279,7 +323,7 @@ public class PickupObject : MonoBehaviour
     void RaycastObjectUpdate()
     {
         RaycastHit hit;
-        if (playerMovement.PlayerCurrentState == F_PlayerMovement.PlayerState.Gameplay && 
+        if (playerMovement.PlayerCurrentState == F_PlayerMovement.PlayerState.Gameplay &&
             Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, ArmLength, PickableObjectLayer))
         {
             if (InteractableLayer == (InteractableLayer | (1 << hit.collider.gameObject.layer)))
@@ -327,14 +371,14 @@ public class PickupObject : MonoBehaviour
 
     void ResetHighlightedObject()
     {
-        if(highlightingObject != null)
+        if (highlightingObject != null)
         {
             highlightRenderer.material = highlightOriginalMaterial;
         }
 
-        highlightingObject          = null;
-        highlightRenderer           = null;
-        highlightOriginalMaterial   = null;
+        highlightingObject = null;
+        highlightRenderer = null;
+        highlightOriginalMaterial = null;
     }
 
     void ToggleDisplayText(bool toggle)
