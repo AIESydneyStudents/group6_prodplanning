@@ -10,6 +10,8 @@ public class PlayDialougeOnCollision : MonoBehaviour
     private bool hasPlayed = false;
     private DialougeManager dialougeManager;
 
+    public GameObject InterfacePrompt = null;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +36,9 @@ public class PlayDialougeOnCollision : MonoBehaviour
         if(other.tag == "Player")
         {
             PlayDialouge();
+
+            if (InterfacePrompt != null)
+                InterfacePrompt.SetActive(true);
         }
     }
 }

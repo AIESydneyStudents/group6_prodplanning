@@ -62,7 +62,7 @@ public class PickupObject : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0) && playerMovement.IsGameplay && !fixedRotation) PickUpControl();
 
-        if (Input.GetMouseButtonUp(0) && playerMovement.IsGameplay && !fixedRotation && pickedObject != null)
+        if (Input.GetMouseButtonUp(0) && playerMovement.IsGameplay && !fixedRotation && IsHoldingObject())
         {
             hasInteracted = true; // So you don't pick up when released
             PickUpControl();
