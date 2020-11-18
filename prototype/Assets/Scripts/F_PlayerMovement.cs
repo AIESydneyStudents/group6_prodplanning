@@ -103,7 +103,7 @@ public class F_PlayerMovement : MonoBehaviour
     {
         Velocity.x = 0;
         Velocity.z = 0;
-        Cursor.lockState = CursorLockMode.None;
+        //Cursor.lockState = CursorLockMode.None;
         canMove = false;
         
 
