@@ -1,7 +1,10 @@
 ﻿using Cinemachine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+using Random = UnityEngine.Random;
 
 public class F_PlayerMovement : MonoBehaviour
 {
@@ -13,6 +16,8 @@ public class F_PlayerMovement : MonoBehaviour
     public float lookSpeed = 2.0f;
     public float lookXLimit = 20.0f;
     public AudioClip[] FootstepClips;
+
+    public event EventHandler OnTeleport;
 
     CharacterController characterController;
     [HideInInspector]
@@ -193,6 +198,7 @@ public class F_PlayerMovement : MonoBehaviour
         playerState = PlayerState.Cutscene;
         teleMoving = true;
         teleMovingTimer = 0.25f;
+        OnTeleport.Invoke(this, new EventArgs());
     }
 
     public void LockPlayerMovement(bool _lock) { canMove = !_lock; }

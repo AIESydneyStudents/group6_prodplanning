@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class CleanBedTask : Task
 {
-    public MeshRenderer Renderer;
-    public Material CleanMaterial;
+    public MeshFilter Fitter;
+    public Mesh CleanMesh;
     public Image PanelToFade;
 
     private F_PlayerMovement player;
@@ -52,7 +52,7 @@ public class CleanBedTask : Task
     {
         yield return new WaitForSeconds(1.5f);
 
-        Renderer.material = CleanMaterial;
+        Fitter.mesh = CleanMesh;
         fadeingOut = true;
         player.ChangeState(F_PlayerMovement.PlayerState.Gameplay);
     }

@@ -12,6 +12,9 @@ public class PortalTeleporter : MonoBehaviour
     public MeshRenderer planeRenderer;
     public UnityEvent OnTeleport;
 
+    public bool CanTeleport = true;
+    public Door ContainingDoor;
+
     [HideInInspector]
     public bool PlayerIsOverlapping = false;
 
@@ -52,7 +55,7 @@ public class PortalTeleporter : MonoBehaviour
 
     private void Update()
     {
-        if(canTeleport && MainPortalManager != null && !MainPortalManager.PlayerJustTeleported && Reciver != null)
+        if(CanTeleport && canTeleport && MainPortalManager != null && !MainPortalManager.PlayerJustTeleported && Reciver != null)
         {
             //Makes the protals surface visible if the player can teleport
             planeRenderer.enabled = true;

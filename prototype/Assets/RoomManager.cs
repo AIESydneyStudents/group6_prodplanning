@@ -7,6 +7,8 @@ public class RoomManager : MonoBehaviour
 {
     public UnityEvent OnRoomComplete;
     public int CompletionThreshhold = 5;
+    
+    public bool Complete { get { return hasFinished; } }
 
     private int currentCompletion;
     private bool hasFinished;
