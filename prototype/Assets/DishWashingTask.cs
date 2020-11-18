@@ -18,10 +18,12 @@ public class DishWashingTask : Task
     private Dictionary<Transform, Tuple<Material, Collider>> dishMaterialLookup = new Dictionary<Transform, Tuple<Material,Collider>>();
     private F_PlayerMovement player;
     private DialougeManager dialougeManager;
+    private AudioSource audioPlayer;
 
     private void Start()
     {
         dialougeManager = GameObject.FindGameObjectWithTag("DialougeSystem").GetComponent<DialougeManager>();
+        audioPlayer = GetComponent<AudioSource>();
     }
 
     public void StartTask()
@@ -91,14 +93,17 @@ public class DishWashingTask : Task
 
     private Vector3 oldScrubPos = Vector3.zero;
     private ParticleSystem.EmitParams soapParams = new ParticleSystem.EmitParams();
+    private float dishCleanTimer = 0;
 
     private void CleanDish(GameObject dish)
     {
+        bool hittem = false;
         //Check if player clicking on dish
         if (Input.GetMouseButton(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
+            
 
             if (dishMaterialLookup[dish.transform].Item2.Raycast(ray, out hit, 5f))
             {
@@ -106,7 +111,16 @@ public class DishWashingTask : Task
                 {
                     if(Vector3.Distance(hit.point,oldScrubPos) > 0.01f)
                     {
+                        hittem = true;
                         dishCleanAmount += 1 * Time.deltaTime;
+
+                        if(!audioPlayer.isPlaying)
+                        {
+                            audioPlayer.Play();
+                            audioPlayer.volume = 1;
+                        }
+
+                        dishCleanTimer = 0.1f;
 
                         soapParams.position = hit.point;
                         soapParams.velocity = new Vector3(UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(0.05f,0.1f),0);
@@ -118,11 +132,22 @@ public class DishWashingTask : Task
                         if(dishCleanAmount >= 1)
                         {
                             NextDish();
+                            audioPlayer.Stop();
                         }
                     }
                 }
 
                 oldScrubPos = hit.point;
+            }
+        }
+
+        if(!hittem) // stop sound if not playing.
+        {
+            dishCleanTimer -= Time.deltaTime;
+            audioPlayer.volume = dishCleanTimer * 10f;
+            if (dishCleanTimer <= 0)
+            {
+                audioPlayer.Pause();
             }
         }
     }
