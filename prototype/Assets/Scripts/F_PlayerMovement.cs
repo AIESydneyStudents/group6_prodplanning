@@ -12,6 +12,7 @@ public class F_PlayerMovement : MonoBehaviour
     public CinemachineVirtualCamera VirtualCamera; // Cinamachine cam
     public float lookSpeed = 2.0f;
     public float lookXLimit = 20.0f;
+    public AudioClip[] FootstepClips;
 
     CharacterController characterController;
     [HideInInspector]
@@ -32,10 +33,13 @@ public class F_PlayerMovement : MonoBehaviour
     public PlayerState PlayerCurrentState { get {return playerState; } }
     private PlayerState playerState = PlayerState.Gameplay;
     private CinemachineVirtualCamera otherCamera;
+    private AudioSource audioPlayer;
+    private float footStepTimer = 0;
 
     void Start()
     {
         characterController = GetComponent<CharacterController>();
+        audioPlayer = GetComponent<AudioSource>();
         rotation.y = transform.eulerAngles.y;
 
         Cursor.lockState = CursorLockMode.Locked;
@@ -53,6 +57,22 @@ public class F_PlayerMovement : MonoBehaviour
         {
             case PlayerState.Gameplay: GameplayState(); break;
             case PlayerState.Cutscene: CutsceneState(); break;
+        }
+
+        //Play footstep noises
+        if(Velocity.x != 0 || Velocity.z != 0)
+        {
+            footStepTimer += Time.deltaTime;
+
+            if(footStepTimer >= 1f)
+            {
+                footStepTimer = Random.Range(0,0.1f);
+                audioPlayer.PlayOneShot(FootstepClips[Random.Range(0,FootstepClips.Length)]);
+            }
+        }
+        else
+        {
+            footStepTimer = 0.9f;
         }
     }
 
@@ -103,7 +123,7 @@ public class F_PlayerMovement : MonoBehaviour
     {
         Velocity.x = 0;
         Velocity.z = 0;
-        //Cursor.lockState = CursorLockMode.None;
+        Cursor.lockState = CursorLockMode.None;
         canMove = false;
         
 
@@ -114,12 +134,15 @@ public class F_PlayerMovement : MonoBehaviour
 
         if(teleMoving)
         {
+            Cursor.lockState = CursorLockMode.Locked;
             Velocity = portalVelocity;
             teleMovingTimer -= Time.deltaTime;
             if(teleMovingTimer <= 0)
             {
                 teleMoving = false;
                 playerState = PlayerState.Gameplay;
+                canMove = true;
+                Cursor.lockState = CursorLockMode.Locked;
             }
         }
 

@@ -8,13 +8,13 @@ public class DialougeManager : MonoBehaviour
     public TextMeshProUGUI Text;
     public AudioSource AudioPlayer;
 
-    public bool IsPlayingDialouge { get { return active; } }
+    public bool IsPlayingDialouge { get { return iactive; } }
 
     private Queue<List<DialougeLine>> playingSequence = new Queue<List<DialougeLine>>();
     private int dialougeIndex = 0;
 
     private bool lineHasPlayed = false;
-    private bool active = false;
+    private bool iactive = false;
 
     //Incase you need to play dialouge without a scriptable object
     public void PlayDialouge(List<DialougeLine> ToPlay)
@@ -22,11 +22,11 @@ public class DialougeManager : MonoBehaviour
         
         playingSequence.Enqueue(ToPlay);
 
-        if (!active)
+        if (!iactive)
         {
             lineHasPlayed = false;
             dialougeIndex = 0;
-            active = true;
+            iactive = true;
             Text.enabled = true;
         }
     }
@@ -36,18 +36,18 @@ public class DialougeManager : MonoBehaviour
         
         playingSequence.Enqueue(ToPlay.textStrings);
 
-        if (!active)
+        if (!iactive)
         {
             lineHasPlayed = false;
             dialougeIndex = 0;
-            active = true;
+            iactive = true;
             Text.enabled = true;
         }
     }
 
     public void PlayDialougeIfNotPlaying(List<DialougeLine> ToPlay)
     {
-        if(!active)
+        if(playingSequence.Count <= 0)
         {
             PlayDialouge(ToPlay);
         }
@@ -55,7 +55,7 @@ public class DialougeManager : MonoBehaviour
 
     public void PlayDialougeIfNotPlaying(DialougeSequence ToPlay)
     {
-        if (!active)
+        if (playingSequence.Count <= 0)
         {
             PlayDialouge(ToPlay);
         }
@@ -67,7 +67,7 @@ public class DialougeManager : MonoBehaviour
 
     private void Update()
     {
-        if(active)
+        if(iactive)
         {
             if(!lineHasPlayed)
             {
@@ -118,7 +118,7 @@ public class DialougeManager : MonoBehaviour
                         if (playingSequence.Count <= 0)
                         {
                             Text.enabled = false;
-                            active = false;
+                            iactive = false;
                         }
                     }
                 }
