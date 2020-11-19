@@ -11,6 +11,8 @@ public class FixPhotoTask : Task
     public CinemachineVirtualCamera TaskCamera;
     public AdjustAxis AxisToAdjust = AdjustAxis.x;
 
+    private PickupTextPrompt prompt;
+
     public enum AdjustAxis
     {
         x,
@@ -23,6 +25,9 @@ public class FixPhotoTask : Task
     {
         taskRunning = false;
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<F_PlayerMovement>();
+
+        //Get the text Prompt
+        prompt = GameObject.FindGameObjectWithTag("PromptPanel").GetComponent<PickupTextPrompt>();
     }
 
     Vector2 previousMosuePos = Vector2.zero;
@@ -75,6 +80,7 @@ public class FixPhotoTask : Task
                     }
 
                     TaskFinished();
+                    prompt.DisableText();
                     OnTaskProgressed.Invoke();
                     player.ChangePerspective(null);
                     gameObject.layer = transform.parent.gameObject.layer;
@@ -96,10 +102,24 @@ public class FixPhotoTask : Task
     {
         if(!taskFinished)
         {
+            StartCoroutine(WaitToDisplayText());
+
             player.ChangePerspective(TaskCamera);
             taskRunning = true;
 
             previousMosuePos = GetNormalizedMousePosition();
+        }
+    }
+
+    //Wait for a short time, so the previous prompt can fade
+    IEnumerator WaitToDisplayText()
+    {
+        yield return new WaitForSeconds(1.0f);
+
+        if(taskRunning)
+        {
+            prompt.Text.text = "Click and move the mouse left/right to rotate.";
+            prompt.EnableText();
         }
     }
 }

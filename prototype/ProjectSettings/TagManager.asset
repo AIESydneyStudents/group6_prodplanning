@@ -9,6 +9,7 @@ TagManager:
   - DialougeSystem
   - Plate
   - Trash
+  - PromptPanel
   layers:
   - Default
   - TransparentFX

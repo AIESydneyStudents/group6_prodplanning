@@ -1177,10 +1177,11 @@ AudioSource:
   m_GameObject: {fileID: 250604263364056250}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 6737551408026083339, guid: 9bd8bc1cfcb405d4ebcb33088b2d911c,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -12166,7 +12167,7 @@ GameObject:
   - component: {fileID: 7201371300521114185}
   - component: {fileID: 5812824239792613461}
   - component: {fileID: 7005181560916826848}
-  - component: {fileID: 4809705100238750837}
+  - component: {fileID: 8680638685610518686}
   m_Layer: 0
   m_Name: BedroomDesk
   m_TagString: Untagged
@@ -12235,7 +12236,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &4809705100238750837
+--- !u!64 &8680638685610518686
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -12248,7 +12249,7 @@ MeshCollider:
   serializedVersion: 3
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: -5413620247932540982, guid: febf520dccfbbf84c8ffbc0fce4b6d03, type: 3}
+  m_Mesh: {fileID: -3293160604905905615, guid: 7ef40ac6e3daee44fa798f077afea5ef, type: 3}
 --- !u!1 &5589519794124853423
 GameObject:
   m_ObjectHideFlags: 0

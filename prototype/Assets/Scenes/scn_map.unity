@@ -5203,6 +5203,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1520981560750060263, guid: 198555f83544f9c45a46d454cdc87bd4,
+        type: 3}
+      propertyPath: m_TagString
+      value: PromptPanel
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 198555f83544f9c45a46d454cdc87bd4, type: 3}
 --- !u!1 &2132515740

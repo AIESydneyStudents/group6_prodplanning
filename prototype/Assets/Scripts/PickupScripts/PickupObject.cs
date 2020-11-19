@@ -60,7 +60,11 @@ public class PickupObject : MonoBehaviour
     {
         RaycastObjectUpdate();
 
-        if (Input.GetMouseButtonDown(0) && playerMovement.IsGameplay && !fixedRotation) PickUpControl();
+        if (Input.GetMouseButtonDown(0) && playerMovement.IsGameplay && !fixedRotation)
+        {
+            ToggleDisplayText(false);
+            PickUpControl();
+        }
 
         if (Input.GetMouseButtonUp(0) && playerMovement.IsGameplay && !fixedRotation)
         {
@@ -345,7 +349,12 @@ public class PickupObject : MonoBehaviour
         else
         {
             ResetHighlightedObject();
-            ToggleDisplayText(false);
+
+            //Disable text, if in gameplay. (Cutscene needs it to display tool tips.)
+            if(playerMovement.PlayerCurrentState == F_PlayerMovement.PlayerState.Gameplay)
+            {
+                ToggleDisplayText(false);
+            }
         }
     }
 
