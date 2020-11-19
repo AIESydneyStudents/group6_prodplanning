@@ -1,21 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.Rendering.Universal;
 
 public class LoopManager : MonoBehaviour
 {
-
     private struct ObjectRoomPair
     {
         public GameObject obj;
         public RoomManager kitchen;
         public PortalTeleporter portal;
+        public LoopController cont;
 
         public ObjectRoomPair(GameObject _obj,RoomManager _kitch)
         {
             obj = _obj;
             kitchen = _kitch;
             portal = _obj.GetComponentInChildren<PortalTeleporter>();
+            cont = obj.GetComponent<LoopController>();
         }
     }
 
@@ -25,8 +29,15 @@ public class LoopManager : MonoBehaviour
     private int currentLoop = 0;
     private bool init = false;
 
+    private float saturationValue = 0.5f;
+    private Keyframe saturationFrame = new Keyframe(0,0.5f);
+
+    private ColorCurves saturationCurve;
+
     private void Start()
     {
+        Object.FindObjectOfType<Volume>().profile.TryGet<ColorCurves>(out saturationCurve);
+        saturationCurve.satVsSat.value.AddKey(0,0);
         StartCoroutine(LateStart());
     }
 
@@ -42,14 +53,14 @@ public class LoopManager : MonoBehaviour
         }
 
         //Disable all loops but the first.
-        for(int i = 1; i < loops.Count; i++)
+        for(int i = 0; i < loops.Count; i++)
         {
             if(loops[i].portal != null)
             {
                 loops[i].portal.CanTeleport = false;
             }
 
-            loops[i].obj.SetActive(false);
+            if(i != 0) loops[i].obj.SetActive(false);
         }
 
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<F_PlayerMovement>();
@@ -68,6 +79,7 @@ public class LoopManager : MonoBehaviour
         if (currentLoop < loops.Count)
         {
             loops[currentLoop].obj.SetActive(true);
+            saturationValue = loops[currentLoop].cont.SaturationLevel / 2.0f;
         }
     }
 
@@ -87,7 +99,10 @@ public class LoopManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(init && !LoopLoaded)
+        saturationFrame.value = Mathf.MoveTowards(saturationFrame.value,saturationValue,0.25f * Time.deltaTime);
+        saturationCurve.satVsSat.value.MoveKey(0,saturationFrame);
+
+        if (init && !LoopLoaded)
         {
             //Checks if kitchen tasks are complete and then actiavtes the next loop
             if(loops[currentLoop].kitchen.Complete)

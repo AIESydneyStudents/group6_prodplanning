@@ -55,6 +55,8 @@ public class CleanBedTask : Task
         Fitter.mesh = CleanMesh;
         fadeingOut = true;
         player.ChangeState(F_PlayerMovement.PlayerState.Gameplay);
+        player.canMove = true;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void CleanBed()

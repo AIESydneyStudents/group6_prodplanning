@@ -65,7 +65,7 @@ public class PickupObject : MonoBehaviour
         if (Input.GetMouseButtonUp(0) && playerMovement.IsGameplay && !fixedRotation)
         {
             hasInteracted = true; // So you don't pick up when released
-            PickUpControl();
+            if (IsHoldingObject()) PickUpControl();
             hasInteracted = false;
         }
 
@@ -174,7 +174,7 @@ public class PickupObject : MonoBehaviour
                     //    pickedObject.transform.rotation * Quaternion.Euler(Input.GetAxis("Mouse X") * 3, 1f, Input.GetAxis("Mouse Y") * 3),
                     //    inspectionSmooth);
 
-                    pickedObjectRb.MoveRotation(pickedObject.transform.rotation * Quaternion.Euler(Input.GetAxis("Mouse X"), 1, Input.GetAxis("Mouse Y")));
+                    pickedObjectRb.MoveRotation(pickedObject.transform.rotation * Quaternion.Euler(Input.GetAxis("Mouse X"), 0, Input.GetAxis("Mouse Y")));
 
     //                pickedObjectRb.MoveRotation(Quaternion.Lerp(pickedObject.transform.rotation,
     //pickedObject.transform.rotation * Quaternion.Euler(Input.GetAxis("Mouse X") * 3, 1f, Input.GetAxis("Mouse Y") * 3),
