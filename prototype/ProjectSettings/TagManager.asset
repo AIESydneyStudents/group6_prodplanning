@@ -13,6 +13,7 @@ TagManager:
   - PauseHint
   - Bin
   - Sink
+  - Phone
   layers:
   - Default
   - TransparentFX

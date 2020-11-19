@@ -13,13 +13,16 @@ public class LoopManager : MonoBehaviour
         public RoomManager kitchen;
         public PortalTeleporter portal;
         public LoopController cont;
+        public PhoneDialouge Phone;
 
         public ObjectRoomPair(GameObject _obj,RoomManager _kitch)
         {
             obj = _obj;
+            obj = _obj;
             kitchen = _kitch;
             portal = _obj.GetComponentInChildren<PortalTeleporter>();
             cont = obj.GetComponent<LoopController>();
+            Phone = obj.GetComponentInChildren<PhoneDialouge>();
         }
     }
 
@@ -95,6 +98,7 @@ public class LoopManager : MonoBehaviour
 
     //Checks if a loop needs to be loaded (Reset when teleported)
     bool LoopLoaded = false;
+    bool PhoneDone = false;
 
     // Update is called once per frame
     void Update()
@@ -102,14 +106,29 @@ public class LoopManager : MonoBehaviour
         saturationFrame.value = Mathf.MoveTowards(saturationFrame.value,saturationValue,0.25f * Time.deltaTime);
         saturationCurve.satVsSat.value.MoveKey(0,saturationFrame);
 
-        if (init && !LoopLoaded)
+        if (init)
         {
-            //Checks if kitchen tasks are complete and then actiavtes the next loop
-            if(loops[currentLoop].kitchen.Complete)
+            if (!LoopLoaded)
             {
-                loops[currentLoop].portal.ContainingDoor.ToggleDoor(true);
-                LoopLoaded = true;
-                ActiveNext();
+                //Checks if kitchen tasks are complete and then actiavtes the next loop
+                if (loops[currentLoop].kitchen.Complete)
+                {
+                    //Play Phone call
+                    LoopLoaded = true;
+                    loops[currentLoop].Phone.ActivatePhone();
+                    PhoneDone = false;
+                }
+            }
+            else //Should be playing phone
+            {
+                //Check if phone is done;
+                if (!PhoneDone && loops[currentLoop].Phone.PhoneDone())
+                {
+                    PhoneDone = true;
+                    loops[currentLoop].portal.ContainingDoor.ToggleDoor(true);
+                    LoopLoaded = true;
+                    ActiveNext();
+                }
             }
         }
     }

@@ -108,6 +108,8 @@ public class PortalManager : MonoBehaviour
             Transform nearest = PortalCam.otherPortal;
             float nearestDist = Vector3.Distance(PortalCam.PlayerCamera.transform.position, nearest.position);
 
+            if (portals == null || portals.Count <= 0) return;
+
             //Checks for the nearest portal and if it is facing the camera. Probably could be optimized dramatically
             foreach (KeyValuePair<Transform, PortalTeleporter> pair in portals)
             {
