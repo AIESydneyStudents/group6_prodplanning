@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: dia_picture
   m_EditorClassIdentifier: 
   textStrings:
-  - DialougeText: 'David: Feels like it''s been forever.'
+  - DialougeText: 'David: (looks at picture) Feels like it''s been forever.'
     SpokenLine: {fileID: 0}
     EndWaitTime: 2
   - DialougeText: 'Jarred: Graduation day with the crew.'

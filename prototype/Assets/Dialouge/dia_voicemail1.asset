@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: dia_voicemail1
   m_EditorClassIdentifier: 
   textStrings:
-  - DialougeText: You're better than this. **** **** **** *** ******  * *** *** ****
-      ******* **** ** you need help **** *** ***** **** ****
+  - DialougeText: (After tasks are done, a voicemail starts to play) You're better
+      than this. **** **** **** *** ******  * *** *** **** ******* **** ** you need
+      help **** *** ***** **** ****
     SpokenLine: {fileID: 0}
     EndWaitTime: 2
