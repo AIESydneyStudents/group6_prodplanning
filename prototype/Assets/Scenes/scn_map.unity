@@ -2131,6 +2131,11 @@ PrefabInstance:
       propertyPath: m_BoundingSphereOverride.x
       value: NaN
       objectReference: {fileID: 0}
+    - target: {fileID: 6372268193692433860, guid: 342d021b89b6fe446b462bfae317bf09,
+        type: 3}
+      propertyPath: SaturationLevel
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6394382470680383587, guid: 342d021b89b6fe446b462bfae317bf09,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -2906,6 +2911,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_BoundingSphereOverride.x
       value: NaN
+      objectReference: {fileID: 0}
+    - target: {fileID: 6372268193692433860, guid: 342d021b89b6fe446b462bfae317bf09,
+        type: 3}
+      propertyPath: SaturationLevel
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6394382470680383587, guid: 342d021b89b6fe446b462bfae317bf09,
         type: 3}
