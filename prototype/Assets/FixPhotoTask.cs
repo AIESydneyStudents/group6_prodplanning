@@ -9,6 +9,14 @@ public class FixPhotoTask : Task
 {
     F_PlayerMovement player;
     public CinemachineVirtualCamera TaskCamera;
+    public AdjustAxis AxisToAdjust = AdjustAxis.x;
+
+    public enum AdjustAxis
+    {
+        x,
+        y,
+        z
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +26,7 @@ public class FixPhotoTask : Task
     }
 
     Vector2 previousMosuePos = Vector2.zero;
+    Vector3 euler;
 
     private void Update()
     {
@@ -31,14 +40,40 @@ public class FixPhotoTask : Task
             if (Input.GetMouseButton(0))
             {
                 Vector2 mousePos = GetNormalizedMousePosition();
+                euler = transform.eulerAngles;
 
                 float dir = mousePos.x - previousMosuePos.x;
-                transform.rotation *= Quaternion.Euler(dir * 20.0f, 0, 0);
+
+                switch (AxisToAdjust)
+                {
+                    case AdjustAxis.x: euler.x += dir * 20f; break;
+                    case AdjustAxis.y: euler.y += dir * 20f; break;
+                    case AdjustAxis.z: euler.z += dir * 20f; break;
+                }
+
+                transform.eulerAngles = euler;
                 previousMosuePos = mousePos;
 
-                if (transform.localRotation.eulerAngles.x < 1f && transform.localRotation.eulerAngles.x > -1f)
+                bool CorrectCheck = false;
+
+                switch (AxisToAdjust)
+                {
+                    case AdjustAxis.x: CorrectCheck = transform.localRotation.eulerAngles.x < 1f && transform.localRotation.eulerAngles.x > -1f; break;
+                    case AdjustAxis.y: CorrectCheck = transform.localRotation.eulerAngles.y < 1f && transform.localRotation.eulerAngles.y > -1f; break;
+                    case AdjustAxis.z: CorrectCheck = transform.localRotation.eulerAngles.z < 1f && transform.localRotation.eulerAngles.z > -1f; break;
+                }
+
+                if (CorrectCheck)
                 {
                     transform.rotation = Quaternion.Euler(0, 0, 0);
+
+                    switch (AxisToAdjust)
+                    {
+                        case AdjustAxis.x: transform.rotation = Quaternion.Euler(0, euler.y, euler.z); break;
+                        case AdjustAxis.y: transform.rotation = Quaternion.Euler(euler.x, 0, euler.z); break;
+                        case AdjustAxis.z: transform.rotation = Quaternion.Euler(euler.x, euler.y, 0); break;
+                    }
+
                     TaskFinished();
                     OnTaskProgressed.Invoke();
                     player.ChangePerspective(null);
