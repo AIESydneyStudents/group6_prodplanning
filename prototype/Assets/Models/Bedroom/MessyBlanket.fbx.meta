@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: BedSheetMAT_Base_Color
-    second: {fileID: 2800000, guid: 89362b3ec3356774fad407937c252f85, type: 3}
+    second: {fileID: 2800000, guid: 55c7553ab2c263c43b88588d5e332219, type: 3}
   materials:
     materialImportMode: 1
     materialName: 0
