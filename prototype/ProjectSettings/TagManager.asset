@@ -11,6 +11,8 @@ TagManager:
   - Trash
   - PromptPanel
   - PauseHint
+  - Bin
+  - Sink
   layers:
   - Default
   - TransparentFX

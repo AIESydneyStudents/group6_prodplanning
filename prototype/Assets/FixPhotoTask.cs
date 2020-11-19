@@ -51,7 +51,7 @@ public class FixPhotoTask : Task
 
                 switch (AxisToAdjust)
                 {
-                    case AdjustAxis.x: euler.x += dir * 20f; break;
+                    case AdjustAxis.x: euler.x -= dir * 20f; break;
                     case AdjustAxis.y: euler.y += dir * 20f; break;
                     case AdjustAxis.z: euler.z += dir * 20f; break;
                 }

@@ -44,6 +44,18 @@ public class PickupObject : MonoBehaviour
     Vector3 zoomedLocalObjectHolderPos;
 
     public bool IsHoldingObject() { return pickedObject != null; }
+    public GameObject HeldObject
+    {
+        get
+        {
+            if(IsHoldingObject())
+            {
+                return pickedObject;
+            }
+
+            return null;
+        }
+    }
 
     private bool hasInteracted = false;
     private GameObject highlightingObject;
