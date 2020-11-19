@@ -7,9 +7,9 @@ public class LaundryTask : MonoBehaviour
 {
     public UnityEvent OnPickedUp;
 
-   public void PickedUp()
+    public void PickedUp()
     {
         OnPickedUp.Invoke();
-
+        Destroy(this.gameObject);
     }
 }

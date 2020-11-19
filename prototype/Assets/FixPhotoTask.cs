@@ -36,7 +36,7 @@ public class FixPhotoTask : Task
                 transform.rotation *= Quaternion.Euler(dir * 20.0f, 0, 0);
                 previousMosuePos = mousePos;
 
-                if (transform.localRotation.eulerAngles.x < 0.25f && transform.localRotation.eulerAngles.x > -0.25f)
+                if (transform.localRotation.eulerAngles.x < 1f && transform.localRotation.eulerAngles.x > -1f)
                 {
                     transform.rotation = Quaternion.Euler(0, 0, 0);
                     TaskFinished();
