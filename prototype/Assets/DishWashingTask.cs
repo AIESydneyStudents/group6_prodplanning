@@ -30,7 +30,7 @@ public class DishWashingTask : Task
     {
         if (!DishesToWash.HasDishes())
         {
-            dialougeManager.PlayDialougeIfNotPlaying(new List<DialougeLine> { new DialougeLine("There are no dishes to wash.") });
+            dialougeManager.PlayDialougeIfNotPlaying(new List<DialougeLine> { new DialougeLine("There are no dishes to wash.",3f) });
             return;
         }
 

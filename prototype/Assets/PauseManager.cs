@@ -6,8 +6,8 @@ using UnityEngine;
 public class PauseManager : MonoBehaviour
 {
 
-    public GameObject PauseUI;
-    public GameObject PausePanel;
+    public CanvasGroup PauseGroup;
+    public CanvasGroup RootCanvasGroup;
 
     private bool active = false;
 
@@ -28,9 +28,9 @@ public class PauseManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetKeyDown(KeyCode.Return) && player.enabled != false && player.PlayerCurrentState == F_PlayerMovement.PlayerState.Gameplay)
         {
-            if(!active && player.PlayerCurrentState == F_PlayerMovement.PlayerState.Gameplay)
+            if(!active)
             {
                 TogglePause(!active);
             }
@@ -48,8 +48,10 @@ public class PauseManager : MonoBehaviour
 
         if (on)
         {
-            PauseUI.SetActive(true);
-            PausePanel.SetActive(true);
+            PauseGroup.alpha = 1;
+            PauseGroup.interactable = true;
+            PauseGroup.blocksRaycasts = true;
+            RootCanvasGroup.blocksRaycasts = true;
             player.LockPlayerMovement(true);
             oldPlayerState = player.PlayerCurrentState;
             player.ChangeState(F_PlayerMovement.PlayerState.Cutscene);
@@ -58,8 +60,10 @@ public class PauseManager : MonoBehaviour
         }
         else
         {
-            PauseUI.SetActive(false);
-            PausePanel.SetActive(false);
+            PauseGroup.alpha = 0;
+            PauseGroup.interactable = false;
+            PauseGroup.blocksRaycasts = false;
+            RootCanvasGroup.blocksRaycasts = false;
             player.LockPlayerMovement(false);
             Cursor.lockState = CursorLockMode.Locked;
             player.ChangeState(oldPlayerState);

@@ -20,7 +20,14 @@ public class DialougeLine
     {
         DialougeText = text;
         SpokenLine = null;
-        EndWaitTime = 0;
+        EndWaitTime = 5;
+    }
+
+    public DialougeLine(string text,float time)
+    {
+        DialougeText = text;
+        SpokenLine = null;
+        EndWaitTime = time;
     }
 }
 
