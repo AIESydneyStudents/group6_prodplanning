@@ -34,24 +34,14 @@ public class PortalManager : MonoBehaviour
     private void OnEnable()
     {
         //Recreates the target texture
-        if (cameraBelow.targetTexture != null)
-        {
-            cameraBelow.targetTexture.Release();
-        }
-        cameraBelow.targetTexture = new RenderTexture(Screen.width, Screen.height, 24);
-        cameraMatB.mainTexture = cameraBelow.targetTexture;
+        RebuildRenderTexture();
     }
 
     // Start is called before the first frame update
     void Start()
     {
         //Sets the render texture of the portal camera
-        if(cameraBelow.targetTexture != null)
-        {
-            cameraBelow.targetTexture.Release();
-        }
-        cameraBelow.targetTexture = new RenderTexture(Screen.width,Screen.height,24);
-        cameraMatB.mainTexture = cameraBelow.targetTexture;
+        RebuildRenderTexture();
 
         //Get All portas
         GameObject[] taggedPortals = GameObject.FindGameObjectsWithTag("Portal");
@@ -72,6 +62,16 @@ public class PortalManager : MonoBehaviour
         PortalCam = cameraBelow.GetComponent<PortalCamera>();
 
         doors = Object.FindObjectsOfType<Door>();
+    }
+
+    public void RebuildRenderTexture()
+    {
+        if (cameraBelow.targetTexture != null)
+        {
+            cameraBelow.targetTexture.Release();
+        }
+        cameraBelow.targetTexture = new RenderTexture(Screen.width, Screen.height, 24);
+        cameraMatB.mainTexture = cameraBelow.targetTexture;
     }
 
     private float teleporterTimer = 0;
@@ -130,6 +130,12 @@ public class PortalManager : MonoBehaviour
                 PortalCam.otherPortal = nearest;  
             }
             teleporterTimer = 0;
+        }
+
+        //Check if screen resized
+        if(Screen.width != cameraBelow.targetTexture.width || Screen.height != cameraBelow.targetTexture.height)
+        {
+            RebuildRenderTexture();
         }
     }
 }
