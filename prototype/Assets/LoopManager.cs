@@ -42,14 +42,14 @@ public class LoopManager : MonoBehaviour
         }
 
         //Disable all loops but the first.
-        for(int i = 1; i < loops.Count; i++)
+        for(int i = 0; i < loops.Count; i++)
         {
             if(loops[i].portal != null)
             {
                 loops[i].portal.CanTeleport = false;
             }
 
-            loops[i].obj.SetActive(false);
+            if(i != 0) loops[i].obj.SetActive(false);
         }
 
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<F_PlayerMovement>();

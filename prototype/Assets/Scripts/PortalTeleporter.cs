@@ -49,7 +49,7 @@ public class PortalTeleporter : MonoBehaviour
 
         if(Reciver == null)
         {
-            Debug.LogWarning("Portal " + gameObject.name + " is NOT linked to a reciver, this will make it unuseable.");
+            Debug.LogWarning("Portal " + gameObject.transform.parent.name + " is NOT linked to a reciver, this will make it unuseable.");
         }
     }
 
