@@ -21,4 +21,4 @@ MonoBehaviour:
     EndWaitTime: 2
   - DialougeText: 'David: Ugh, this place is filthy'
     SpokenLine: {fileID: 0}
-    EndWaitTime: 0
+    EndWaitTime: 2

@@ -15,13 +15,13 @@ MonoBehaviour:
   textStrings:
   - DialougeText: 'David: (looks at picture) Feels like it''s been forever.'
     SpokenLine: {fileID: 0}
-    EndWaitTime: 2
+    EndWaitTime: 3
   - DialougeText: 'Jarred: Graduation day with the crew.'
     SpokenLine: {fileID: 0}
-    EndWaitTime: 2
+    EndWaitTime: 3
   - DialougeText: 'David: Those were better days.'
     SpokenLine: {fileID: 0}
-    EndWaitTime: 2
-  - DialougeText: 'David : When was the last time I cleaned'
+    EndWaitTime: 3
+  - DialougeText: 'David: Probably been a while since I last tidied up the place'
     SpokenLine: {fileID: 0}
-    EndWaitTime: 2
+    EndWaitTime: 3
