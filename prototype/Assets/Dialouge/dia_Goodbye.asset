@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7febcd0aa5af46143a79391d6eb5cf68, type: 3}
-  m_Name: dia_voicemail3
+  m_Name: dia_Goodbye
   m_EditorClassIdentifier: 
   textStrings:
-  - DialougeText: '*********************************************************'
+  - DialougeText: 'David: *sigh* Goodbye...'
     SpokenLine: {fileID: 0}
-    EndWaitTime: 5
+    EndWaitTime: 7

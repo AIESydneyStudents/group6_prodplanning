@@ -19,3 +19,6 @@ MonoBehaviour:
   - DialougeText: 'David: There has to be something else in this mess'
     SpokenLine: {fileID: 0}
     EndWaitTime: 2
+  - DialougeText: 'David: Ugh, this place is filthy'
+    SpokenLine: {fileID: 0}
+    EndWaitTime: 2

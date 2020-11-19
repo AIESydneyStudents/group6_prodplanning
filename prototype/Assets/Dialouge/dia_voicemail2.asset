@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: dia_voicemail2
   m_EditorClassIdentifier: 
   textStrings:
-  - DialougeText: "****** ****** **** ****. Just stay here the night, I can get home
-      another way. ** *** **** ***** I\u2019m one phone call away."
+  - DialougeText: "(A voicemail is heard) ****** ****** **** ****. Just stay here
+      the night, I can get home another way. ** *** **** ***** I\u2019m one phone
+      call away."
     SpokenLine: {fileID: 0}
-    EndWaitTime: 2
+    EndWaitTime: 5

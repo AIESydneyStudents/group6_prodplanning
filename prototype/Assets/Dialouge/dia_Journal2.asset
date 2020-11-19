@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: dia_Journal2
   m_EditorClassIdentifier: 
   textStrings:
-  - DialougeText: "Jarred: David and Alice are a good couple, I hate watching them
-      argue. They\u2019re my best friends, but like everyone they have their issues.
-      David is too stubborn... though, then again so is Alice."
+  - DialougeText: '(David opens the scrunched paper and reads the journal page) Jarred:
+      David and Alice are a good couple, I hate watching them argue.'
     SpokenLine: {fileID: 0}
-    EndWaitTime: 2
+    EndWaitTime: 6
+  - DialougeText: " They\u2019re my best friends, but like everyone they have their
+      issues. David is too stubborn... though, then again so is Alice."
+    SpokenLine: {fileID: 0}
+    EndWaitTime: 6
