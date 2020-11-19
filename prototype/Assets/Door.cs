@@ -8,6 +8,8 @@ public class Door : MonoBehaviour
     public float TargetOpenRotationY;
 
     private float initRotationY;
+    private DialougeManager dialougeManager;
+    private List<DialougeLine> cannotProgress = new List<DialougeLine>();
 
 #if UNITY_EDITOR // So we can skip tasks >:>
     private Collider col;
@@ -15,14 +17,17 @@ public class Door : MonoBehaviour
 
     private void Start()
     {
+        dialougeManager = GameObject.FindGameObjectWithTag("DialougeSystem").GetComponent<DialougeManager>();
         initRotationY = transform.rotation.eulerAngles.y;
 
-        #if UNITY_EDITOR // So we can skip tasks >:>
+        cannotProgress.Add(new DialougeLine("I still have things to do in here.",3f));
+
+#if UNITY_EDITOR // So we can skip tasks >:>
             col = GetComponent<Collider>();
         #endif
     }
 
-public void ToggleDoor()
+    public void ToggleDoor()
     {
         Open = !Open;
         Moving = true;
@@ -60,6 +65,14 @@ public void ToggleDoor()
                 Moving = false;
             }
 
+        }
+    }
+
+    public void Interact()
+    {
+        if(!Open)
+        {
+            dialougeManager.PlayDialougeIfNotPlaying(cannotProgress);
         }
     }
 }
