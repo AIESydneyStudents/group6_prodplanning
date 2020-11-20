@@ -5,6 +5,16 @@ ModelImporter:
   internalIDToNameTable: []
   externalObjects:
   - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WindowGlassMAT
+    second: {fileID: 2100000, guid: 71318762504df8949943c22a223306c6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WindowMAT
+    second: {fileID: 2100000, guid: f6efdbe58f8168c4a806db9933b2a0d4, type: 2}
+  - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: WindowMAT_Base_Color
