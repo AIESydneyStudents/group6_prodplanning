@@ -5,9 +5,11 @@ using UnityEngine;
 public class PhoneDialouge : MonoBehaviour
 {
     public DialougeSequence SequenceToPlay;
+    public AudioClip AnswerSound;
 
     private Interactable interactScript;
     private DialougeManager dialougeManager;
+    private AudioSource audioSource;
     private bool hasPlayed;
 
     private int interactableLayer;
@@ -16,6 +18,7 @@ public class PhoneDialouge : MonoBehaviour
     void Start()
     {
         interactScript = GetComponent<Interactable>();
+        audioSource = GetComponent<AudioSource>();
         interactScript.OnInteract.AddListener(OnInteract);
 
         interactableLayer = gameObject.layer;
@@ -30,6 +33,7 @@ public class PhoneDialouge : MonoBehaviour
     public void ActivatePhone()
     {
         gameObject.layer = interactableLayer;
+        audioSource.Play();
     }
 
     public void OnInteract()
@@ -39,6 +43,9 @@ public class PhoneDialouge : MonoBehaviour
             gameObject.layer = parentLayer;
             hasPlayed = true;
             dialougeManager.PlayDialouge(SequenceToPlay);
+            audioSource.Stop();
+            audioSource.loop = false;
+            if(AnswerSound != null) audioSource.PlayOneShot(AnswerSound);
         }
     }
 

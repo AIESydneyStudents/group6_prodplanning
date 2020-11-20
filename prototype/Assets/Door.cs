@@ -10,6 +10,7 @@ public class Door : MonoBehaviour
     private float initRotationY;
     private DialougeManager dialougeManager;
     private List<DialougeLine> cannotProgress = new List<DialougeLine>();
+    private AudioSource audioSource;
 
     public DialougeSequence FailedToOpenSequence;
 
@@ -21,6 +22,7 @@ public class Door : MonoBehaviour
     {
         dialougeManager = GameObject.FindGameObjectWithTag("DialougeSystem").GetComponent<DialougeManager>();
         initRotationY = transform.rotation.eulerAngles.y;
+        audioSource = GetComponent<AudioSource>();
 
         cannotProgress.Add(new DialougeLine("I still have things to do in here.",3f));
 
@@ -32,12 +34,16 @@ public class Door : MonoBehaviour
     public void ToggleDoor()
     {
         Open = !Open;
+        if (Open) audioSource.Play();
+
         Moving = true;
     }
 
     public void ToggleDoor(bool open)
     {
         Open = open;
+        if (Open) audioSource.Play();
+
         Moving = true;
     }
 

@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerIntroAnimation : MonoBehaviour
 {
+    public CinemachineVirtualCamera MonitorVirtualCam;
     public CinemachineVirtualCamera VirtualCamera;
     public CinemachineBrain MainCameraBrain;
     public F_PlayerMovement Player;
@@ -35,25 +36,13 @@ public class PlayerIntroAnimation : MonoBehaviour
         if (Started)
         {
             timer += Time.deltaTime;
-            switch (state)
-            {
-                case 0:
-                {
-                    Camera.main.transform.position = Vector3.Lerp(startPos, VirtualCamera.transform.position, timer / 2f);
-                    Camera.main.transform.rotation = Quaternion.Lerp(startRot, VirtualCamera.transform.rotation, timer / 2f);
-                    
-                    if (timer > 0f)
-                    {
-                        state = 0;
-                        timer = 0;
-                        Player.enabled = true;
-                        Started = false;
-                        MainCameraBrain.enabled = true;
-                    }
-                    break;
-                }
 
-            }
+            MonitorVirtualCam.Priority = -1999;
+            VirtualCamera.Priority = 10;
+
+            Player.enabled = true;
+            enabled = false;
+            
         }
     }
 }
