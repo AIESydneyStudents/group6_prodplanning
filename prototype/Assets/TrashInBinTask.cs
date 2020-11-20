@@ -5,6 +5,7 @@ using UnityEngine;
 public class TrashInBinTask : Task
 {
     public int TrashCapacity = 10;
+    public string TargetTag = "Trash";
 
     private PickupObject pickupObject = null;
     private int trashCurrent = 0;
@@ -18,7 +19,7 @@ public class TrashInBinTask : Task
 
     private void OnTriggerEnter(Collider other)
     {
-        if(taskRunning && other.tag == "Trash")
+        if(taskRunning && other.tag == TargetTag)
         {
             DisableTrashInteraction(other.gameObject);            
             trashCurrent++;

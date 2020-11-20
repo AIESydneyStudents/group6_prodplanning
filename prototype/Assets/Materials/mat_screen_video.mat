@@ -72,7 +72,7 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _Metalic: 1
+    - _Metalic: 0
     - _Metallic: 1
     - _NoiseTrans: 0.26
     - _OcclusionStrength: 1

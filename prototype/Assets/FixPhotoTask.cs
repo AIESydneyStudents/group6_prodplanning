@@ -11,6 +11,7 @@ public class FixPhotoTask : Task
     public CinemachineVirtualCamera TaskCamera;
     public AdjustAxis AxisToAdjust = AdjustAxis.x;
 
+    private AudioSource audioSource;
     private PickupTextPrompt prompt;
 
     public enum AdjustAxis
@@ -28,10 +29,13 @@ public class FixPhotoTask : Task
 
         //Get the text Prompt
         prompt = GameObject.FindGameObjectWithTag("PromptPanel").GetComponent<PickupTextPrompt>();
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     Vector2 previousMosuePos = Vector2.zero;
     Vector3 euler;
+    float soundDelayTimer = 0f;
 
     private void Update()
     {
@@ -42,12 +46,14 @@ public class FixPhotoTask : Task
                 previousMosuePos = GetNormalizedMousePosition();
             }
 
+            float dir = 0;
+
             if (Input.GetMouseButton(0))
             {
                 Vector2 mousePos = GetNormalizedMousePosition();
                 euler = transform.eulerAngles;
 
-                float dir = mousePos.x - previousMosuePos.x;
+                dir = mousePos.x - previousMosuePos.x;
 
                 switch (AxisToAdjust)
                 {
@@ -80,10 +86,38 @@ public class FixPhotoTask : Task
                     }
 
                     TaskFinished();
+                    audioSource.Stop();
                     prompt.DisableText();
                     OnTaskProgressed.Invoke();
                     player.ChangePerspective(null);
                     gameObject.layer = transform.parent.gameObject.layer;
+                }
+            }
+
+
+            //Audio
+            if (!taskFinished && audioSource != null) //Task can finish after top check so adding it again here
+            {
+                if (dir != 0)
+                {
+                    if (!audioSource.isPlaying)
+                    {
+                        audioSource.volume = 0.2f;
+                        audioSource.Play();
+                        soundDelayTimer = 0.5f;
+                    }
+                }
+                else
+                {
+                    soundDelayTimer -= Time.deltaTime;
+                    if (soundDelayTimer <= 0)
+                    {
+                        audioSource.Pause();
+                    }
+                    else
+                    {
+                        audioSource.volume = 0.2f * (soundDelayTimer / 0.5f);
+                    }
                 }
             }
         }

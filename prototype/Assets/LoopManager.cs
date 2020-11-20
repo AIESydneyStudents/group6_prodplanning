@@ -26,6 +26,8 @@ public class LoopManager : MonoBehaviour
         }
     }
 
+    public Camera CameraBelow;
+
     private List<ObjectRoomPair> loops = new List<ObjectRoomPair>();
 
     private F_PlayerMovement player;
@@ -103,6 +105,17 @@ public class LoopManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Update portal camera
+        if (currentLoop + 1 < loops.Count)
+        {
+            Vector3 loopPos = Camera.main.transform.position - loops[currentLoop].obj.transform.position;
+
+            CameraBelow.transform.position = loops[currentLoop + 1].obj.transform.position + loopPos;
+            CameraBelow.transform.rotation = Camera.main.transform.rotation;
+        }
+
+
+
         saturationFrame.value = Mathf.MoveTowards(saturationFrame.value,saturationValue,0.25f * Time.deltaTime);
         saturationCurve.satVsSat.value.MoveKey(0,saturationFrame);
 
