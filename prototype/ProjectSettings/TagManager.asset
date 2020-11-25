@@ -15,6 +15,7 @@ TagManager:
   - Sink
   - Phone
   - Book
+  - SpecialTextPanel
   layers:
   - Default
   - TransparentFX
