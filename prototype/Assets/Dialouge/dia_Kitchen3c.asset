@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: dia_Kitchen3c
   m_EditorClassIdentifier: 
   textStrings:
-  - DialougeText: "If only I hadn\u2019t asked him to drive me home."
-    SpokenLine: {fileID: 0}
-    EndWaitTime: 3
+  - DialougeText: "David: If only I hadn\u2019t asked him to drive me home."
+    SpokenLine: {fileID: 8300000, guid: ff53f1a1fb2cac44c978bb0e666c319c, type: 3}
+    EndWaitTime: 0

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: dia_Livingroom3b
   m_EditorClassIdentifier: 
   textStrings:
-  - DialougeText: "Twice over the legal limit. He didn\u2019t seem that bad"
-    SpokenLine: {fileID: 0}
-    EndWaitTime: 3
+  - DialougeText: "David: Twice over the legal limit. He didn\u2019t seem that bad"
+    SpokenLine: {fileID: 8300000, guid: d577925e5eac8a1448034bc971ad7bd1, type: 3}
+    EndWaitTime: 0

@@ -14,11 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textStrings:
   - DialougeText: "David: Jarred\u2026  that sounded like him."
-    SpokenLine: {fileID: 0}
+    SpokenLine: {fileID: 8300000, guid: 7e49050e65e1b904aaefc1425e5e01be, type: 3}
     EndWaitTime: 2
   - DialougeText: 'David: There has to be something else in this mess'
-    SpokenLine: {fileID: 0}
-    EndWaitTime: 2
-  - DialougeText: 'David: Ugh, this place is filthy'
-    SpokenLine: {fileID: 0}
+    SpokenLine: {fileID: 8300000, guid: 0e502356a11da4d4e91c99da8bfcebf7, type: 3}
     EndWaitTime: 2

@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textStrings:
   - DialougeText: I can't leave the room like this.
-    SpokenLine: {fileID: 0}
-    EndWaitTime: 2
+    SpokenLine: {fileID: 8300000, guid: 42ebc8ebb162a994b964e7850bb6add9, type: 3}
+    EndWaitTime: 0

@@ -13,15 +13,7 @@ MonoBehaviour:
   m_Name: dia_picture
   m_EditorClassIdentifier: 
   textStrings:
-  - DialougeText: 'David: (looks at picture) Feels like it''s been forever.'
-    SpokenLine: {fileID: 0}
-    EndWaitTime: 3
-  - DialougeText: 'Jarred: Graduation day with the crew.'
-    SpokenLine: {fileID: 0}
-    EndWaitTime: 3
-  - DialougeText: 'David: Those were better days.'
-    SpokenLine: {fileID: 0}
-    EndWaitTime: 3
-  - DialougeText: 'David: Probably been a while since I last tidied up the place'
-    SpokenLine: {fileID: 0}
-    EndWaitTime: 3
+  - DialougeText: 'David:  Feels like it''s been forever. Me, Alice and ... Jarred.
+      We used to do everything together.'
+    SpokenLine: {fileID: 8300000, guid: 54468de820c6618499de2cbb02aac1c2, type: 3}
+    EndWaitTime: 0

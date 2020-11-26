@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: dia_bedroom3a
   m_EditorClassIdentifier: 
   textStrings:
-  - DialougeText: "Why did this have to happen\u2026  "
-    SpokenLine: {fileID: 0}
+  - DialougeText: 'David: Why did this have to happen....'
+    SpokenLine: {fileID: 8300000, guid: 2439d8e42c7e26f479cebf6891f6eebd, type: 3}
     EndWaitTime: 2

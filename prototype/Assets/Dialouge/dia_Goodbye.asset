@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textStrings:
   - DialougeText: 'David: *sigh* Goodbye...'
-    SpokenLine: {fileID: 0}
-    EndWaitTime: 7
+    SpokenLine: {fileID: 8300000, guid: ff67b5e5fd60c1f44ad40d8cfb1f6100, type: 3}
+    EndWaitTime: 0

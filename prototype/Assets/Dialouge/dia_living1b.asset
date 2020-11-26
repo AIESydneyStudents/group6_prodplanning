@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textStrings:
   - DialougeText: 'David: I dont understand how it got this bad.'
-    SpokenLine: {fileID: 0}
-    EndWaitTime: 3
+    SpokenLine: {fileID: 8300000, guid: c48064ea94571d74e919798b52113eab, type: 3}
+    EndWaitTime: 0

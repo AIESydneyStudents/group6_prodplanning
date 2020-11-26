@@ -1980,7 +1980,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5461e58a1da010045bb5e1764adda318, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CameraBelow: {fileID: 0}
+  CameraBelow: {fileID: 86343630}
 --- !u!1 &839428683
 GameObject:
   m_ObjectHideFlags: 0
