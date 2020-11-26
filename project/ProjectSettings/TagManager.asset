@@ -3,7 +3,19 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Portal
+  - ObjectHolder
+  - DialougeSystem
+  - Plate
+  - Trash
+  - PromptPanel
+  - PauseHint
+  - Bin
+  - Sink
+  - Phone
+  - Book
+  - SpecialTextPanel
   layers:
   - Default
   - TransparentFX
@@ -13,12 +25,12 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Ground
+  - Pickupable
+  - PortalPlane
+  - Interactable
+  - Player
+  - Wall
   - 
   - 
   - 
