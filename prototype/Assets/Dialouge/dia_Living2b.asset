@@ -14,40 +14,40 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textStrings:
   - DialougeText: "Alice: You\u2019re hurt. You need help."
-    SpokenLine: {fileID: 0}
-    EndWaitTime: 2
+    SpokenLine: {fileID: 8300000, guid: fd2201ed51b2e024d899daa353513312, type: 3}
+    EndWaitTime: 0
   - DialougeText: "David: I\u2019m fine. No need to worry. "
-    SpokenLine: {fileID: 0}
-    EndWaitTime: 2
+    SpokenLine: {fileID: 8300000, guid: a7aee22d7b12b5b43914f1c3e3f66fc5, type: 3}
+    EndWaitTime: 0
   - DialougeText: "Alice: Our friend is gone, it\u2019s okay to say you miss him.
       It\u2019s okay to say you\u2019re having a rough time."
-    SpokenLine: {fileID: 0}
-    EndWaitTime: 4
+    SpokenLine: {fileID: 8300000, guid: 8dafce222254e1441a19531135bc567b, type: 3}
+    EndWaitTime: 0
   - DialougeText: 'David: Stop!  Stop mothering me.'
-    SpokenLine: {fileID: 0}
-    EndWaitTime: 3
+    SpokenLine: {fileID: 8300000, guid: c382883c116689f479a841ed7e5844db, type: 3}
+    EndWaitTime: 0
   - DialougeText: "Alice: You can\u2019t keep pushing everyone away."
-    SpokenLine: {fileID: 0}
-    EndWaitTime: 3
+    SpokenLine: {fileID: 8300000, guid: 541f47132481308488472af4e2b63632, type: 3}
+    EndWaitTime: 0
   - DialougeText: "David: I don\u2019t need anyone\u2019s help or pity. Leave me
       alone I\u2019m fine"
-    SpokenLine: {fileID: 0}
-    EndWaitTime: 4
+    SpokenLine: {fileID: 8300000, guid: 45dc92ec0d5f86d4098ff2b1f692cb69, type: 3}
+    EndWaitTime: 0
   - DialougeText: "Alice: You say that a lot, but do you actually mean it. Because
       you don\u2019t act fine. You don\u2019t leave the house, you don\u2019t talk
       to anyone. This place is so disgusting that it\u2019s hard to move without
       stepping on trash."
-    SpokenLine: {fileID: 0}
-    EndWaitTime: 8
+    SpokenLine: {fileID: 8300000, guid: 69e96c886933d4e4fb251a8576ec7d83, type: 3}
+    EndWaitTime: 0
   - DialougeText: "David: Why do you keep coming here then? Go away.\r\nI just want
       to be left alone. \r\n"
-    SpokenLine: {fileID: 0}
-    EndWaitTime: 3
+    SpokenLine: {fileID: 8300000, guid: d4b43b72059f0864290a658ec47734bd, type: 3}
+    EndWaitTime: 0
   - DialougeText: "Alice: If that\u2019s how you really feel.\r\nOh, and one more
       thing. Stop blaming Jarred when we were the ones who should have stopped him.
       \r\n\r\n"
-    SpokenLine: {fileID: 0}
-    EndWaitTime: 6
+    SpokenLine: {fileID: 8300000, guid: 8c53222bcd0d9ab458d662347b394925, type: 3}
+    EndWaitTime: 0
   - DialougeText: "David: Whatever\u2026"
-    SpokenLine: {fileID: 0}
-    EndWaitTime: 3
+    SpokenLine: {fileID: 8300000, guid: 7869d455e0b63d84c954a5b00007bd2d, type: 3}
+    EndWaitTime: 0

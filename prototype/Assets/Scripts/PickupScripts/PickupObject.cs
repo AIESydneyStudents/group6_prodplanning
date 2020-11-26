@@ -10,7 +10,7 @@ public class PickupObject : MonoBehaviour
     GameObject pickedObjectParent = null;
     Vector3 pickedObjectRotation;
 
-    float pickedObjectColliderMultiplier = 2;
+    float pickedObjectColliderMultiplier = 1;
 
     InspectionEvent pickedObjectInspectEvent = null;
 
@@ -110,6 +110,7 @@ public class PickupObject : MonoBehaviour
                 pickedObjectRb.constraints = freezeRotation;
             }
         }
+
         //if (Input.GetKeyUp(KeyCode.R))
         //{
         //    fixedRotation = false;

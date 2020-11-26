@@ -1110,7 +1110,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TargetOpenRotationY: 90
-  FailedToOpenSequence: {fileID: 0}
+  FailedToOpenSequence:
+  - {fileID: 11400000, guid: 36e8c63e4a1d052499670ced293c5cc4, type: 2}
+  - {fileID: 11400000, guid: 93264bd66900cb14ab51330b7edf222b, type: 2}
+  - {fileID: 11400000, guid: 24c7889d1c525f24a9fa5a0057b5fba9, type: 2}
 --- !u!114 &8370059468511372081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9122,7 +9125,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TargetOpenRotationY: 90
-  FailedToOpenSequence: {fileID: 0}
+  FailedToOpenSequence:
+  - {fileID: 11400000, guid: 36e8c63e4a1d052499670ced293c5cc4, type: 2}
+  - {fileID: 11400000, guid: 93264bd66900cb14ab51330b7edf222b, type: 2}
+  - {fileID: 11400000, guid: 24c7889d1c525f24a9fa5a0057b5fba9, type: 2}
 --- !u!114 &4218819944235175725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11799,7 +11805,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TargetOpenRotationY: -90
-  FailedToOpenSequence: {fileID: 0}
+  FailedToOpenSequence:
+  - {fileID: 11400000, guid: 36e8c63e4a1d052499670ced293c5cc4, type: 2}
+  - {fileID: 11400000, guid: 93264bd66900cb14ab51330b7edf222b, type: 2}
+  - {fileID: 11400000, guid: 24c7889d1c525f24a9fa5a0057b5fba9, type: 2}
 --- !u!114 &2397086226299669466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15969,13 +15978,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8160956995583322091}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5819610809850935313}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!136 &7329813980658310336
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -15986,9 +15995,9 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.004
+  m_Radius: 0.002
   m_Height: 0.0075
-  m_Direction: 1
+  m_Direction: 0
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &5801029429173582825
 MonoBehaviour:
@@ -16019,7 +16028,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  TrashCapacity: 10
+  TrashCapacity: 5
   TargetTag: Trash
 --- !u!1 &8420006142893951364
 GameObject:

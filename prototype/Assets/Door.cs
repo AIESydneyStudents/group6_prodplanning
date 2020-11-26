@@ -12,7 +12,7 @@ public class Door : MonoBehaviour
     private List<DialougeLine> cannotProgress = new List<DialougeLine>();
     private AudioSource audioSource;
 
-    public DialougeSequence FailedToOpenSequence;
+    public DialougeSequence[] FailedToOpenSequence;
 
 #if UNITY_EDITOR // So we can skip tasks >:>
     private Collider col;
@@ -86,7 +86,7 @@ public class Door : MonoBehaviour
             }
             else
             {
-                dialougeManager.PlayDialougeIfNotPlaying(FailedToOpenSequence);
+                dialougeManager.PlayDialougeIfNotPlaying(FailedToOpenSequence[Random.Range(0,FailedToOpenSequence.Length)]);
             }
         }
     }

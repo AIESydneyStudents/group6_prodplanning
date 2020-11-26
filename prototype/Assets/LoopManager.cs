@@ -114,8 +114,6 @@ public class LoopManager : MonoBehaviour
             CameraBelow.transform.rotation = Camera.main.transform.rotation;
         }
 
-
-
         saturationFrame.value = Mathf.MoveTowards(saturationFrame.value,saturationValue,0.25f * Time.deltaTime);
         saturationCurve.satVsSat.value.MoveKey(0,saturationFrame);
 
