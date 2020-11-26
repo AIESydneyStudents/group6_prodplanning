@@ -5,10 +5,20 @@ ModelImporter:
   internalIDToNameTable: []
   externalObjects:
   - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WardrobeDoorsMAT
+    second: {fileID: 2100000, guid: 12f20a222c30030498a235c04c4e67f3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WardrobeMAT
+    second: {fileID: 2100000, guid: d234a1202dba041469712d491a1ffd63, type: 2}
+  - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: WardrobeMAT_Base_Color
-    second: {fileID: 2800000, guid: 342ae5d19531e1642a45a32dfcc05645, type: 3}
+    second: {fileID: 2800000, guid: f033ffc35e5fa184e9c3ecf4bb4a135d, type: 3}
   materials:
     materialImportMode: 1
     materialName: 0
