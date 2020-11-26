@@ -38,6 +38,7 @@ public class TrashInBinTask : Task
     private void DisableTrashInteraction(GameObject trash)
     {
         trash.gameObject.layer = gameObject.layer;
+        trash.transform.position = transform.position;
         trash.tag = "Untagged";
 
         //Force drop later.

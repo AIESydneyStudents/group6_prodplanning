@@ -57,8 +57,10 @@ public class F_PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        Cursor.visible = (Cursor.lockState != CursorLockMode.Locked);
+
         //Run the correct state for the player
-        switch(playerState)
+        switch (playerState)
         {
             case PlayerState.Gameplay: GameplayState(); break;
             case PlayerState.Cutscene: CutsceneState(); break;

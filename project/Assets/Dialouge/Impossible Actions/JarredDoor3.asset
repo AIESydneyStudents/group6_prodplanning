@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textStrings:
   - DialougeText: "Why\u2026"
-    SpokenLine: {fileID: 0}
+    SpokenLine: {fileID: 8300000, guid: 9c212586f667946498957a4c97a8a22e, type: 3}
     EndWaitTime: 0

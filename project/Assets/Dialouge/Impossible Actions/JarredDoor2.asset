@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textStrings:
   - DialougeText: "It\u2019s too soon."
-    SpokenLine: {fileID: 0}
+    SpokenLine: {fileID: 8300000, guid: b128dc4c239e2c5499e0d781ebfa544c, type: 3}
     EndWaitTime: 0

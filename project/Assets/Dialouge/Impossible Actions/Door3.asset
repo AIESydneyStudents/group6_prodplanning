@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Door3
   m_EditorClassIdentifier: 
   textStrings:
-  - DialougeText: I can't leave the room like this.
+  - DialougeText: I need to finish cleaning first.
     SpokenLine: {fileID: 8300000, guid: 42ebc8ebb162a994b964e7850bb6add9, type: 3}
     EndWaitTime: 0

@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayDialougeOnCollision : MonoBehaviour
 {
     public bool OnlyOnce = true;
+    public bool DontDestory = false;
     public DialougeSequence DialougeToPlay;
 
     private bool hasPlayed = false;
@@ -26,7 +27,7 @@ public class PlayDialougeOnCollision : MonoBehaviour
             if (OnlyOnce) 
             {
                 hasPlayed = true;
-                Destroy(gameObject);
+                if(!DontDestory) Destroy(gameObject);
             };
         }
     }
