@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textStrings:
   - DialougeText: There's more to do.
-    SpokenLine: {fileID: 0}
-    EndWaitTime: 2
+    SpokenLine: {fileID: 8300000, guid: b20c67d89dcfb834c97885107e039c1a, type: 3}
+    EndWaitTime: 0

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: dia_Bedroom3a2
   m_EditorClassIdentifier: 
   textStrings:
-  - DialougeText: This is what happens when you rely on others.
-    SpokenLine: {fileID: 0}
+  - DialougeText: 'David: This is what happens when you rely on others.'
+    SpokenLine: {fileID: 8300000, guid: 9ed5b3d68bc021144b278e326bd3b648, type: 3}
     EndWaitTime: 2

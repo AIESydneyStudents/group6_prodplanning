@@ -13,12 +13,11 @@ MonoBehaviour:
   m_Name: dia_journal1
   m_EditorClassIdentifier: 
   textStrings:
-  - DialougeText: "(David reads the piece of paper) Jarred: Found out today that
-      Alice\u2019s sister passed away\u2026\r\n"
-    SpokenLine: {fileID: 0}
-    EndWaitTime: 6
+  - DialougeText: "Jarred: Found out today that Alice\u2019s sister passed away\u2026\r\n"
+    SpokenLine: {fileID: 8300000, guid: d4506a9efd3b19644b653188649a0a2e, type: 3}
+    EndWaitTime: 0
   - DialougeText: "She\u2019s not taking it well\u2026  \nWe are there for her if
       she needs us. But, she is the one that has to ask for help, to start healing.
       \r\n"
-    SpokenLine: {fileID: 0}
-    EndWaitTime: 5
+    SpokenLine: {fileID: 8300000, guid: f79d56a2a78e346498d0342f147834e9, type: 3}
+    EndWaitTime: 0

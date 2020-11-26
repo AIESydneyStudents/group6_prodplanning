@@ -9,8 +9,11 @@ public class PickupObject : MonoBehaviour
     Rigidbody pickedObjectRb;
     GameObject pickedObjectParent = null;
     Vector3 pickedObjectRotation;
+    BoxCollider pickedObjectCol = null;
 
-    float pickedObjectColliderMultiplier = 1;
+    public GameObject HeldObject { get { return pickedObject; } }
+
+    float pickedObjectColliderMultiplier = 1.0f;
 
     InspectionEvent pickedObjectInspectEvent = null;
 
@@ -19,11 +22,13 @@ public class PickupObject : MonoBehaviour
 
     public LayerMask PickableObjectLayer;
     public LayerMask InteractableLayer;
+    public LayerMask WallsLayer;
 
     public F_PlayerMovement playerMovement;
 
     public Material SelectedGlowMaterial;
 
+    bool rayHitting = false;
     bool smoothMove = false;
     bool focusing = false;
     bool fixedRotation = false;
@@ -31,34 +36,24 @@ public class PickupObject : MonoBehaviour
     bool isObjectDesiredInspection = false; // Does the object have a force rotation script?
 
     public float ArmLength = 4f; // Ray cast length for pickup
-    [SerializeField] float pickUpSmooth = 20f; // Lerp smooth value
+    [SerializeField] float pickUpSmooth = 10f; // Lerp smooth value
     [SerializeField] float carrySmooth = 4f; // Lerp smooth value
+    float defaultCarrySmooth;
     [SerializeField] float throwStrength = 500f; // Throwing object
 
     public float PickedRotationSpeed = 4f; // Player rotation's of object during inspection
     [SerializeField] float inspectionSmooth = 1f;
-    [SerializeField] float zoomSmooth = 110f; // Lerp smooth value
+    [SerializeField] float zoomSmooth = 40f; // Lerp smooth value
 
     public GameObject ObjectDestination;
     public Vector3 defaultLocalObjectHolderPos = new Vector3(0, 0, 1.2f);
     Vector3 zoomedLocalObjectHolderPos;
 
     public bool IsHoldingObject() { return pickedObject != null; }
-    public GameObject HeldObject
-    {
-        get
-        {
-            if(IsHoldingObject())
-            {
-                return pickedObject;
-            }
-
-            return null;
-        }
-    }
 
     private bool hasInteracted = false;
     private GameObject highlightingObject;
+
 
     void Start()
     {
@@ -66,17 +61,14 @@ public class PickupObject : MonoBehaviour
         playerMovement = FindObjectOfType<F_PlayerMovement>();
 
         zoomedLocalObjectHolderPos = new Vector3(0, 0, defaultLocalObjectHolderPos.z / 2);
+        defaultCarrySmooth = carrySmooth;
     }
 
     void Update()
     {
         RaycastObjectUpdate();
 
-        if (Input.GetMouseButtonDown(0) && playerMovement.IsGameplay && !fixedRotation)
-        {
-            ToggleDisplayText(false);
-            PickUpControl();
-        }
+        if (Input.GetMouseButtonDown(0) && playerMovement.IsGameplay && !fixedRotation) PickUpControl();
 
         if (Input.GetMouseButtonUp(0) && playerMovement.IsGameplay && !fixedRotation)
         {
@@ -110,7 +102,6 @@ public class PickupObject : MonoBehaviour
                 pickedObjectRb.constraints = freezeRotation;
             }
         }
-
         //if (Input.GetKeyUp(KeyCode.R))
         //{
         //    fixedRotation = false;
@@ -193,9 +184,9 @@ public class PickupObject : MonoBehaviour
 
                     pickedObjectRb.MoveRotation(pickedObject.transform.rotation * Quaternion.Euler(Input.GetAxis("Mouse X"), 0, Input.GetAxis("Mouse Y")));
 
-    //                pickedObjectRb.MoveRotation(Quaternion.Lerp(pickedObject.transform.rotation,
-    //pickedObject.transform.rotation * Quaternion.Euler(Input.GetAxis("Mouse X") * 3, 1f, Input.GetAxis("Mouse Y") * 3),
-    //inspectionSmooth));
+                    //                pickedObjectRb.MoveRotation(Quaternion.Lerp(pickedObject.transform.rotation,
+                    //pickedObject.transform.rotation * Quaternion.Euler(Input.GetAxis("Mouse X") * 3, 1f, Input.GetAxis("Mouse Y") * 3),
+                    //inspectionSmooth));
                 }
             }
             else
@@ -260,14 +251,14 @@ public class PickupObject : MonoBehaviour
                         isObjectDesiredInspection = true;
                     }
 
-                    if(pickedObject.GetComponent<BoxCollider>() == null)
+                    if (pickedObject.GetComponent<BoxCollider>() == null)
                     {
                         pickedObject.GetComponent<Collider>().enabled = false;
                         pickedObject.AddComponent<BoxCollider>();
                     }
 
-                    BoxCollider col = pickedObject.GetComponent<BoxCollider>();
-                    col.size = new Vector3(col.size.x * pickedObjectColliderMultiplier, col.size.y * pickedObjectColliderMultiplier, col.size.z * pickedObjectColliderMultiplier);
+                    pickedObjectCol = pickedObject.GetComponent<BoxCollider>();
+                    pickedObjectCol.size = new Vector3(pickedObjectCol.size.x * pickedObjectColliderMultiplier, pickedObjectCol.size.y * pickedObjectColliderMultiplier, pickedObjectCol.size.z * pickedObjectColliderMultiplier);
                 }
             }
         }
@@ -290,6 +281,7 @@ public class PickupObject : MonoBehaviour
             pickedObjectRb.constraints = RigidbodyConstraints.None;
             pickedObjectRb.useGravity = true;
             pickedObjectRb = null;
+            pickedObjectCol = null;
 
             isObjectDesiredInspection = false;
             if (pickedObjectInspectEvent != null)
@@ -362,11 +354,21 @@ public class PickupObject : MonoBehaviour
         else
         {
             ResetHighlightedObject();
+            ToggleDisplayText(false);
+        }
 
-            //Disable text, if in gameplay. (Cutscene needs it to display tool tips.)
-            if(playerMovement.PlayerCurrentState == F_PlayerMovement.PlayerState.Gameplay)
+        if (IsHoldingObject())
+        {
+            RaycastHit _hit;
+            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out _hit, 1.2f, WallsLayer))
             {
-                ToggleDisplayText(false);
+                //Vector3 absPos = new Vector3(Mathf.Abs(pickedObjectCol.size.x), Mathf.Abs(pickedObjectCol.size.y), Mathf.Abs(pickedObjectCol.size.z));
+                ObjectDestination.transform.position = _hit.point;/* + absPos;*/
+                //Vector3.ClampMagnitude(_hit.point, defaultLocalObjectHolderPos.z);
+            }
+            else
+            {
+                ObjectDestination.transform.localPosition = defaultLocalObjectHolderPos;
             }
         }
     }

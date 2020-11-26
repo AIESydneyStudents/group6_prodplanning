@@ -15,7 +15,7 @@ MonoBehaviour:
   textStrings:
   - DialougeText: <color=#a37df5>Triggered </color>by walking through a <color=#f57d95>Door.</color>
     SpokenLine: {fileID: 8300000, guid: 24fe7588ae5c5d84ca6b27976074431d, type: 3}
-    EndWaitTime: 1
+    EndWaitTime: 0
   - DialougeText: Line 2 Line 2 Line 2 Line 2 Line 2.
     SpokenLine: {fileID: 8300000, guid: 24fe7588ae5c5d84ca6b27976074431d, type: 3}
-    EndWaitTime: 1
+    EndWaitTime: 0

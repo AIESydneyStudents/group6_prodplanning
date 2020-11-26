@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textStrings:
   - DialougeText: 'David: There has to be something else in this mess'
-    SpokenLine: {fileID: 0}
+    SpokenLine: {fileID: 8300000, guid: 0e502356a11da4d4e91c99da8bfcebf7, type: 3}
     EndWaitTime: 2
