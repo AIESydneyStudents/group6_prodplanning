@@ -13,7 +13,7 @@ public class PickupObject : MonoBehaviour
 
     public GameObject HeldObject { get { return pickedObject; } }
 
-    float pickedObjectColliderMultiplier = 1.0f;
+    float pickedObjectColliderMultiplier = 3.0f;
 
     InspectionEvent pickedObjectInspectEvent = null;
 
