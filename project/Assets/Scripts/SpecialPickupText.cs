@@ -6,15 +6,20 @@ public class SpecialPickupText : MonoBehaviour
 {
     [TextArea(5,10)]
     public string SpecialText = "";
+    public DialougeSequence OptionalSequence;
 
     private PickupObject pickupManager;
     private ItemSpecialText specialTextUI;
+
+    private DialougeManager dialougeManager;
+    private bool dialougePlayed = false;
 
     // Start is called before the first frame update
     void Start()
     {
         pickupManager = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PickupObject>();
         specialTextUI = GameObject.FindGameObjectWithTag("SpecialTextPanel").GetComponent<ItemSpecialText>();
+        dialougeManager = GameObject.FindGameObjectWithTag("DialougeSystem").GetComponent<DialougeManager>();
     }
 
     bool wasHeld = false; // Makes sure deactivate code is called once.
@@ -26,6 +31,12 @@ public class SpecialPickupText : MonoBehaviour
         {
             if (!wasHeld)
             {
+                if (!dialougePlayed && OptionalSequence != null)
+                {
+                    dialougeManager.PlayDialouge(OptionalSequence);
+                    dialougePlayed = true;
+                }
+
                 wasHeld = true;
                 specialTextUI.ActivatePanel(SpecialText);
             }
