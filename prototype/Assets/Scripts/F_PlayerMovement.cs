@@ -69,10 +69,17 @@ public class F_PlayerMovement : MonoBehaviour
         {
             footStepTimer += Time.deltaTime;
 
-            if(footStepTimer >= 0.5f)
+            if(footStepTimer >= 0.75f)
             {
                 footStepTimer = Random.Range(0,0.1f);
-                audioPlayer.PlayOneShot(FootstepClips[Random.Range(0,FootstepClips.Length)]);
+                AudioClip toPlay = FootstepClips[Random.Range(0, FootstepClips.Length)];
+                while(toPlay == audioPlayer.clip)
+                {
+                    toPlay = FootstepClips[Random.Range(0, FootstepClips.Length)];
+                }
+
+                audioPlayer.clip = toPlay;
+                audioPlayer.Play();
             }
         }
         else
