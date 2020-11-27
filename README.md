@@ -1,16 +1,19 @@
-# PROJECT NAME
+# PROJECT STILL
 
 ## About the Game
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Project Still is a game where to player David completes household tasks while the story of how his depression started unfolds around him. Through the decision to reach out and ask for help, he can start the process of healing. Gameplay wise, the player completes tasks such as washing the dishes, picking up trash and other household tasks related to cleaning.
 
 ### Contributors:
 Contributors to the project are strictly limated to AIE Students as part of their group work project.
 
-Members (example):
- - John Doe: designer
- - John Smith: programmer
- - Sandra Dee: artist
-
+Members:
+ - Sebastian: designer
+ - James: designer
+ - Ryan: programmer
+ - Harrison: programmer
+ - Daniel: artist
+ - Ivan: artist
+ 
 
 ## Build Steps:
 The project can currently be built for both windows and webgl in the following ways:
