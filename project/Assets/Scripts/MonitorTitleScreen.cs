@@ -67,7 +67,7 @@ public class MonitorTitleScreen : MonoBehaviour
         HowToPlayGroup.alpha = 0;
         HowToPlayGroup.interactable = false;
         HowToPlayGroup.blocksRaycasts = false;
-
+        
         doFades = false;
     }
 }

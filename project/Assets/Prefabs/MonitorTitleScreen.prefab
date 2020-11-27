@@ -1957,7 +1957,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Project Still is a game.
+  m_text: "Project Still is a game in which you move through the home of David cleaning
+    and experiencing the story between David and his closest friends. As you progress
+    through the game you will notice differences in the home of David.\n\nWASD to
+    move \n\nMouse to control the camera\n\nLeft mouse button to interact with items\n\nRight
+    mouse button to throw items"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 612f0276bb66c5c43a61ebe51bea9829, type: 2}
   m_sharedMaterial: {fileID: -2277427267584055223, guid: 612f0276bb66c5c43a61ebe51bea9829,
@@ -2003,7 +2007,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: -1
+  m_firstOverflowCharacterIndex: 270
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -2027,12 +2031,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: -0.23362467}
   m_textInfo:
     textComponent: {fileID: 6847725639236118706}
-    characterCount: 24
+    characterCount: 346
     spriteCount: 0
-    spaceCount: 4
-    wordCount: 5
+    spaceCount: 65
+    wordCount: 61
     linkCount: 0
-    lineCount: 1
+    lineCount: 14
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0

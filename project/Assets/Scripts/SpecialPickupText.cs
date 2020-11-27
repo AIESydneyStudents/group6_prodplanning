@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class SpecialPickupText : MonoBehaviour
 {
@@ -8,11 +9,14 @@ public class SpecialPickupText : MonoBehaviour
     public string SpecialText = "";
     public DialougeSequence OptionalSequence;
 
+    public UnityEvent OnFirstPickup;
+
     private PickupObject pickupManager;
     private ItemSpecialText specialTextUI;
 
     private DialougeManager dialougeManager;
     private bool dialougePlayed = false;
+    private MeshRenderer rend;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +24,9 @@ public class SpecialPickupText : MonoBehaviour
         pickupManager = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PickupObject>();
         specialTextUI = GameObject.FindGameObjectWithTag("SpecialTextPanel").GetComponent<ItemSpecialText>();
         dialougeManager = GameObject.FindGameObjectWithTag("DialougeSystem").GetComponent<DialougeManager>();
+        rend = GetComponent<MeshRenderer>();
+
+        rend.material.SetFloat("_Cull", 0);
     }
 
     bool wasHeld = false; // Makes sure deactivate code is called once.
@@ -34,6 +41,7 @@ public class SpecialPickupText : MonoBehaviour
                 if (!dialougePlayed && OptionalSequence != null)
                 {
                     dialougeManager.PlayDialouge(OptionalSequence);
+                    OnFirstPickup.Invoke();
                     dialougePlayed = true;
                 }
 

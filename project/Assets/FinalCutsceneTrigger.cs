@@ -2,15 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class FinalCutsceneTrigger : MonoBehaviour
 {
     
     public CanvasGroup endScreenCanvas;
+
+    public CanvasGroup RootGroup;
     private F_PlayerMovement player;
     private bool started = false;
     private bool FadeOutStarted = false;
     private DialougeManager dialougeManager;
+
+    private float breathTimer = 0;
 
     void Start()
     {
@@ -23,11 +26,16 @@ public class FinalCutsceneTrigger : MonoBehaviour
     {
         if(FadeOutStarted && !dialougeManager.IsPlayingDialouge)
         {
-            endScreenCanvas.alpha = Mathf.MoveTowards(endScreenCanvas.alpha, 1, 1 * Time.deltaTime);
-            if(endScreenCanvas.alpha == 1)
+            breathTimer += Time.deltaTime;
+            if (breathTimer >= 3.0f)
             {
-                endScreenCanvas.blocksRaycasts = true;
-                endScreenCanvas.interactable = true;
+                endScreenCanvas.alpha = Mathf.MoveTowards(endScreenCanvas.alpha, 1, 1 * Time.deltaTime);
+                if (endScreenCanvas.alpha == 1)
+                {
+                    RootGroup.blocksRaycasts = true;
+                    endScreenCanvas.blocksRaycasts = true;
+                    endScreenCanvas.interactable = true;
+                }
             }
         }
     }

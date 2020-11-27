@@ -25,8 +25,8 @@ MonoBehaviour:
       day\u2026 \r"
     SpokenLine: {fileID: 8300000, guid: 790d19fdff59b86479bb485eafa092e8, type: 3}
     EndWaitTime: 0
-  - DialougeText: "Alice: We both said things we didn\u2019t mean.\r We should meet
-      up  tonight and talk.\r"
+  - DialougeText: "Alice: We both said things we didn\u2019t mean.\r \nWe should
+      meet up  tonight and talk.\r"
     SpokenLine: {fileID: 8300000, guid: b9cd6cc1278b16b46bca2854f2437a8d, type: 3}
     EndWaitTime: 0
   - DialougeText: "David: I\u2019d like that. Thank you. See you then."
