@@ -8,6 +8,8 @@ public class FinalCutsceneTrigger : MonoBehaviour
     public CanvasGroup endScreenCanvas;
 
     public CanvasGroup RootGroup;
+    public PauseManager Pause;
+
     private F_PlayerMovement player;
     private bool started = false;
     private bool FadeOutStarted = false;
@@ -35,6 +37,11 @@ public class FinalCutsceneTrigger : MonoBehaviour
                     RootGroup.blocksRaycasts = true;
                     endScreenCanvas.blocksRaycasts = true;
                     endScreenCanvas.interactable = true;
+                }
+
+                if(Input.GetMouseButton(0))
+                {
+                    Pause.ExitGame();
                 }
             }
         }

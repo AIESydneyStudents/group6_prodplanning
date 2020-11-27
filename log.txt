@@ -1,0 +1,1327 @@
+commit 3d5f8e1c25c2132eb66bb70d5e3d5ea4323d80fa
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Fri Nov 27 11:25:40 2020 +1100
+
+    Update (Gameplay): Imported and replaced various assets.
+    
+    Updated some dialogue objects.
+    Fixed misc bugs in scene.
+
+commit 744274878af3717150b169d2e720a728de4a867c
+Author: Volpanic <volpanicstudios@gmail.com>
+Date:   Fri Nov 27 06:20:01 2020 +1100
+
+    Feature (Gameplay): Added story note items in loop 1 and  2.
+
+commit 42dbb18ea6c5e6356ade5879b5761946fe84e1f3
+Author: Volpanic <volpanicstudios@gmail.com>
+Date:   Thu Nov 26 22:10:59 2020 +1100
+
+    Feature (Gameplay): Added a ending screen. Fixed various bugs-
+    Fixed Door3 dialouge text not reflectiong audio
+    Door audio doesn't repeat the same clip in a row
+    Cursor now hidden when locked in builds
+    Phone shows visual indication that it needs to be interacted with
+    Bin task now teleports trash to center, will make smoother later.
+
+commit b21c3aa633fe348cbd55da22601954478e0a9e02
+Author: Volpanic <volpanicstudios@gmail.com>
+Date:   Thu Nov 26 19:50:23 2020 +1100
+
+    Fix (Gameplay): Adjusted bin hitboxes.
+    Made all walls that can be in the map prefab convex.
+
+commit 84a210e8a6858d63b5da6e5a56196c32b53d3676
+Author: Volpanic <volpanicstudios@gmail.com>
+Date:   Thu Nov 26 19:25:28 2020 +1100
+
+    Update (Files): Removed old project folder, renamed prototype to project.
+
+commit cfbda80e2579ca7ebda17e534762c9e19051a445
+Author: Volpanic <volpanicstudios@gmail.com>
+Date:   Thu Nov 26 19:06:42 2020 +1100
+
+    Fix (Files): Moved scripts from root asset folder to scripts folder.
+
+commit bbff868f8b4f99a4569b11dabc3155a5165bd3c6
+Merge: 25a29d0 b58511f
+Author: James <valeraindw@gmail.com>
+Date:   Thu Nov 26 16:27:03 2020 +1100
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 25a29d06df925057dc728aa494f1d51e76dc89f3
+Author: James <valeraindw@gmail.com>
+Date:   Thu Nov 26 16:21:30 2020 +1100
+
+    Update (Gameplay): final lighting.
+
+commit b58511f78c631a6a5f3e5fa1369d20baefc2689d
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Thu Nov 26 16:20:25 2020 +1100
+
+    Update (Audio): Imported more voice lines, and applied them.
+
+commit 097fe6a617754c3c71c50f4d958396b624530b4d
+Merge: b5126d7 255ce7f
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Thu Nov 26 15:55:25 2020 +1100
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 255ce7fd91af06c638c5e37a551e5cdef6b43814
+Author: Sycellette <sycellette@gmail.com>
+Date:   Thu Nov 26 15:54:30 2020 +1100
+
+    Fix (Gameplay): Collision of objects with walls.
+    
+    Objects are now manually coded to stop from clipping outside the walls.
+
+commit b5126d71d14c0a81cd812b7ec5e5b52828c57aa8
+Merge: 7a0a0fd 0c73e17
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Thu Nov 26 15:25:21 2020 +1100
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 0c73e17a63ee93cc48f0941eee5144a2dc029dbb
+Author: James <valeraindw@gmail.com>
+Date:   Thu Nov 26 13:50:58 2020 +1100
+
+    Update (Assets) Imported more assets with textures.
+
+commit 7a0a0fd467877683144a7e8ee5ffab03fee2efd8
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Thu Nov 26 13:08:17 2020 +1100
+
+    Update (UI): Removed Titlescreen option from pause menu.
+
+commit 2c0c44c672eb719c125b3312814a3da95450ad81
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Thu Nov 26 13:05:46 2020 +1100
+
+    Fix (Gameplay): Updated some objects tags.
+    
+    Title screen monitor now removes options after play is clicked.
+
+commit 0e41f1570552911ce3bd2cd1a9a0c18ed0da6f31
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Thu Nov 26 12:09:59 2020 +1100
+
+    Update (Audio): Imported some voiced lines and applied them.
+    
+    Doors now display a random set of text when interacted with.
+    Imported Letter models
+    Added photo frame interaction at the start of loop, and prefab for it.
+
+commit 64cc898460d374c24479fbc32cdb68905e6ef683
+Author: Sebastian <s.bialalearmonth@gmail.com>
+Date:   Thu Nov 26 12:00:52 2020 +1100
+
+    Properly hooked up important game objects.
+
+commit a0d16ecee3fdcfbb068968bc9e934d1e706028f1
+Merge: f026207 98712c1
+Author: James <valeraindw@gmail.com>
+Date:   Thu Nov 26 10:54:10 2020 +1100
+
+    Merge remote-tracking branch 'origin/master'
+
+commit f02620742cdc53d7ebe03a37db373e44448211c3
+Author: James <valeraindw@gmail.com>
+Date:   Thu Nov 26 10:53:49 2020 +1100
+
+    Update(Gameplay): lighting update
+
+commit 98712c15f0cd3a93df2b455a12981a2e4942cf7b
+Merge: 35c0cd2 a34bfff
+Author: Sebastian <s.bialalearmonth@gmail.com>
+Date:   Thu Nov 26 08:56:25 2020 +1100
+
+    Merge remote-tracking branch 'origin/master'
+
+commit a34bfff0fd4d0ad4f0b6a459441f462a7cadf3de
+Author: Volpanic <volpanicstudios@gmail.com>
+Date:   Wed Nov 25 15:10:29 2020 +1100
+
+    Feature (UI): Added a UI panel to display text for certain objects.
+    Also fixed a bug with inconsistent lighting through portals.
+
+commit 6cb4db8228c061dda340373e56e1194409102838
+Author: James <valeraindw@gmail.com>
+Date:   Fri Nov 20 17:00:40 2020 +1100
+
+    Update (Gameplay): lighting update.
+
+commit 35c0cd22ccfe501e49db33adbf058953f3540c42
+Merge: 0d963f7 e842436
+Author: Sebastian <s.bialalearmonth@gmail.com>
+Date:   Fri Nov 20 16:58:01 2020 +1100
+
+    Merge remote-tracking branch 'origin/master'
+
+commit e8424363a4d607935bc2912887353493b4e08fc9
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Fri Nov 20 16:08:07 2020 +1100
+
+    Update (Gameplay): Changed certain items in map prefab to new materials.
+
+commit 2263870379cc833d4d84fc73ce388d306f1c2698
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Fri Nov 20 15:47:16 2020 +1100
+
+    Update (Audio): Added audio for Phone, Doors and photo tasks.
+
+commit 36d3085fcbc3881a7b090bb9900eab4f805a7c90
+Author: James <valeraindw@gmail.com>
+Date:   Fri Nov 20 15:12:03 2020 +1100
+
+    Update (Gameplay) imported new assets and improved lighting.
+
+commit 2559ba44adb1f7bb62e1207d54a666c69b0a7343
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Fri Nov 20 13:52:15 2020 +1100
+
+    Feature (Gameplay): Book task added.
+    
+    Made portal position more accurate for our situation .
+
+commit 0d963f719a46f901ba5104ba7b878813e596cf3e
+Author: Sebastian <s.bialalearmonth@gmail.com>
+Date:   Fri Nov 20 11:18:21 2020 +1100
+
+    Altered first loop's design to better teach the player mechanics
+
+commit f871265a6f62522b2fe512273bdb99953c23591a
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Fri Nov 20 10:32:48 2020 +1100
+
+    Update (Gameplay): Kitchen no longer completes until phone interaction.
+
+commit dea117c74a859e2074f38790802f366fdeef41e7
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Fri Nov 20 09:49:46 2020 +1100
+
+    Feature (Gameplay): Added hint highlighting if holding certain objects.
+    
+    Fixed Collisions with sink,
+    Exposed dialogue to editor in door script,
+
+commit d717059456a93bc90050943bd61180e17032a1bd
+Merge: 892f576 6372853
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Fri Nov 20 08:58:16 2020 +1100
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 892f5769375fa14b4bfaa24dea13e4e307b57102
+Author: Volpanic <volpanicstudios@gmail.com>
+Date:   Thu Nov 19 21:39:04 2020 +1100
+
+    Feature (UI): Doors now indicate that they cannot be opened.
+
+commit 6372853251364670967ce40c236f3456e800d3c6
+Author: Volpanic <volpanicstudios@gmail.com>
+Date:   Thu Nov 19 21:39:04 2020 +1100
+
+    Feature (UI): Doors no indicate that they cannot be opened.
+
+commit e95f453153b4ba17a38d3dcdc78b75eb1d55da66
+Author: Volpanic <volpanicstudios@gmail.com>
+Date:   Thu Nov 19 21:19:34 2020 +1100
+
+    Fix (Gameplay): Fixed a bug with portals when changing screen resolution.
+    Also imported floor normal map.
+
+commit 21b9f8904ad3465bb2f6ba4051e545bef1f95545
+Author: Volpanic <volpanicstudios@gmail.com>
+Date:   Thu Nov 19 21:11:23 2020 +1100
+
+    Feature (UI): Added room hint system to pause screen.
+
+commit c04c076ad2aaa9d7aec5f2f1704960406fae1d2a
+Author: Volpanic <volpanicstudios@gmail.com>
+Date:   Thu Nov 19 20:06:41 2020 +1100
+
+    Update (Gameplay): Added text instructions to the photo fix task.
+
+commit d08ffef255b7071e8ae21bed8ddd395f89394d62
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Thu Nov 19 16:28:30 2020 +1100
+
+    Update (UI): Added a how to play screen to the title screen.
+
+commit 585bf0dc2aec0ae7b85a34f80fe792b50c18895a
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Thu Nov 19 16:07:25 2020 +1100
+
+    Fix (Gameplay): Fixed photo task on new photo frames.
+
+commit 267b2e95ad18102d50d208c4749c6d07f5c071b1
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Thu Nov 19 15:57:05 2020 +1100
+
+    Feature (Gameplay): Added a basic picking up clothes task.
+
+commit 0c2a6c68c925bcc908dc59a4cfffd0a101f5b6dd
+Merge: de5f6e5 4bcedcc
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Thu Nov 19 14:57:25 2020 +1100
+
+    Merge remote-tracking branch 'origin/master'
+
+commit de5f6e58cc630ab440034ad42ea533f7efc93179
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Thu Nov 19 14:56:18 2020 +1100
+
+    Update (Gameplay): Changed meshes to updated meshes in map prefab.
+
+commit 4bcedcc6e53a2ced5781295eb73b3dae0d36ec2e
+Author: Sebastian <s.bialalearmonth@gmail.com>
+Date:   Thu Nov 19 14:54:22 2020 +1100
+
+    Added dialogue triggers to scene
+
+commit d256a69aee1bb682d0cd55bf6e10d16a596cd93b
+Merge: c705f1e 28cc478
+Author: Sebastian <s.bialalearmonth@gmail.com>
+Date:   Thu Nov 19 14:52:10 2020 +1100
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 28cc478ce05cad94a2a7eb795898dccd5a240b31
+Author: James <valeraindw@gmail.com>
+Date:   Thu Nov 19 14:51:11 2020 +1100
+
+    Feature (Update): More textured assets.
+
+commit c705f1e935215804abfa8ba85b2448db681844ce
+Merge: efcb803 fffebd6
+Author: Sebastian <s.bialalearmonth@gmail.com>
+Date:   Thu Nov 19 13:49:18 2020 +1100
+
+    Merge remote-tracking branch 'origin/master'
+
+commit efcb8035db1a1e745687191d7c53626f00aa24e2
+Author: Sebastian <s.bialalearmonth@gmail.com>
+Date:   Thu Nov 19 12:34:12 2020 +1100
+
+    Auto stash before merge of "master" and "origin/master"
+
+commit fffebd67367693537616594b29ec7c36a392316c
+Author: James <valeraindw@gmail.com>
+Date:   Thu Nov 19 12:17:57 2020 +1100
+
+    Update (Imported): Updated models with texture and lightmaps.
+
+commit 7b46a5cb85446b0747af2355d8c137fba3e2b589
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Thu Nov 19 11:44:03 2020 +1100
+
+    Update (Gameplay): Added saturation slider to each loop.
+    
+    Made saturation transition nicely as well.
+
+commit 794ac69c02618b97614ce503289d2ce8b6d62491
+Merge: f9752dd b13960a
+Author: Sycellette <sycellette@gmail.com>
+Date:   Thu Nov 19 11:09:18 2020 +1100
+
+    Merge remote-tracking branch 'origin/master'
+
+commit f9752ddd03711f5eb27f180983b9c463c1ab6b87
+Author: Sycellette <sycellette@gmail.com>
+Date:   Thu Nov 19 11:09:07 2020 +1100
+
+    Fix (Gameplay): Interaction bug fix
+    
+    Fixing the bug caused by the fix of another bug, now both bugs fixed :)
+
+commit b13960a79686bb83f3f37473783e4517e017a11d
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Thu Nov 19 11:01:24 2020 +1100
+
+    Update (Gameplay): Imported new floor model.
+    
+    Fixed bugs in bed task and loop manager.
+
+commit 4d86c7ecb228f1fc007118298978c488b99b923b
+Author: Sycellette <sycellette@gmail.com>
+Date:   Thu Nov 19 10:46:26 2020 +1100
+
+    Feature (UI): Added WIP UI display.
+
+commit df4b3bf5010ae3f5378d58f1081e5ad9252f1273
+Author: Sycellette <sycellette@gmail.com>
+Date:   Thu Nov 19 10:18:10 2020 +1100
+
+    Fix (Gameplay): Bug when picking up item with new input.
+    
+    You could hold down and drag onto an object so that releasing the mouse button is what picks the object up (the opposite of what we intended).
+
+commit 913396ba2c8675b1c0c71dbf4a0749cc3f60aabb
+Merge: e76d3b2 7eda473
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Thu Nov 19 09:25:46 2020 +1100
+
+    Merge remote-tracking branch 'origin/master'
+
+commit e76d3b2f202f4e3eb40acb85d53385ea05bee1da
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Thu Nov 19 09:25:39 2020 +1100
+
+    Feature (Gameplay): Added a loop manager to dynamically activate loops.
+    
+    Fixed a but where players and despicable could collide.
+    Fixed bed task to work with new models.
+
+commit 7eda4736670d12f76131d01b8468ca1a1d7c7a39
+Author: Sebastian <s.bialalearmonth@gmail.com>
+Date:   Thu Nov 19 09:23:48 2020 +1100
+
+    origin/master"
+
+commit d4c91677804d1d1e0652b50109a3485ae065c0b1
+Author: Sebastian <s.bialalearmonth@gmail.com>
+Date:   Thu Nov 19 09:21:18 2020 +1100
+
+    Auto stash before merge of "master" and "origin/master"
+
+commit d4cc05b0587ac7c420153402e235ee8b431f99bd
+Author: James <valeraindw@gmail.com>
+Date:   Wed Nov 18 16:54:11 2020 +1100
+
+    Feature (Lighting) WIP lighting
+
+commit 6c59ec517ec2a85ee9aa8a0b384bcce33a9857a5
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Wed Nov 18 14:57:06 2020 +1100
+
+    Feature (Sound): Added a sound effect for cleaning dishes.
+
+commit 202d9ff84e93fe44dc54e1a908ed4b19279e853e
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Wed Nov 18 14:41:16 2020 +1100
+
+    Feature (Sound): Added footsteps when the player walks.
+
+commit f9d470119d52de88c838f72349a2a9f5476cb45f
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Wed Nov 18 13:30:04 2020 +1100
+
+    Fix (Gameplay): Fixed dish washing camera.
+
+commit 8b82bdbdf17af170ac26e4bbe22f41f6be306bc5
+Author: Sebastian <s.bialalearmonth@gmail.com>
+Date:   Wed Nov 18 13:18:53 2020 +1100
+
+    Duplicated the map scene
+
+commit 17396bd3fdc03a13f44e4770f1291d386e53446e
+Merge: 23934a0 f57d082
+Author: Sebastian <s.bialalearmonth@gmail.com>
+Date:   Wed Nov 18 12:59:53 2020 +1100
+
+    Merge remote-tracking branch 'origin/master'
+
+commit f57d082b89201929aac18443785079c2f075e30e
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Wed Nov 18 12:40:24 2020 +1100
+
+    Update (Gameplay): Imported more models for the living room.
+    
+    And added to map prefab.
+
+commit b5091b1b103f11aea459b5218ed8ffb08100378d
+Merge: 2c6e831 099c701
+Author: Sycellette <sycellette@gmail.com>
+Date:   Wed Nov 18 12:34:34 2020 +1100
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 2c6e83128620fa016c0badd15930b96c37f34638
+Author: Sycellette <sycellette@gmail.com>
+Date:   Wed Nov 18 12:31:59 2020 +1100
+
+    Update (Gameplay): Collision update WIP.
+    
+    Updates to pickup script that helps with small object collision.
+
+commit 23934a0711377741b22fa6e8716cd92c603069ee
+Merge: 995f47e 099c701
+Author: Sebastian <s.bialalearmonth@gmail.com>
+Date:   Wed Nov 18 12:07:51 2020 +1100
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 099c701e492f589259bc52305ca3da81a9ed1ff6
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Wed Nov 18 11:56:07 2020 +1100
+
+    Update (Gameplay): Imported various models into the map prefab.
+    
+    Mainly for bedroom and Kitchen.
+
+commit 995f47e6852ace3bbe5b393604fbd7b4183a3a13
+Merge: c22921e f1af4c7
+Author: Sebastian <s.bialalearmonth@gmail.com>
+Date:   Wed Nov 18 09:06:59 2020 +1100
+
+    Merge remote-tracking branch 'origin/master'
+
+commit f1af4c79479e2501b251c200526779cbf51adced
+Author: Volpanic <volpanicstudios@gmail.com>
+Date:   Wed Nov 18 06:02:34 2020 +1100
+
+    Feature (UI): Added a basic world space UI titlescreen.
+
+commit c22921e9710d928bfe895eb3c3ef779908998554
+Merge: ae2b6b7 f33b2f5
+Author: Sebastian <s.bialalearmonth@gmail.com>
+Date:   Fri Nov 13 16:49:45 2020 +1100
+
+    Merge remote-tracking branch 'origin/master'
+
+commit f33b2f55f1d4ab40b5b6f74e327add1a7486e35b
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Fri Nov 13 16:17:02 2020 +1100
+
+    Update (Gameplay): Player is now forced through portals and doors close.
+
+commit 920b3fe28d77e5951621c111a1cb54f8a0362933
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Fri Nov 13 12:52:51 2020 +1100
+
+    Update (Gameplay): Plates now stack when cleaned.
+    
+    Fixed a bug with dish washing task as well.
+
+commit 9fb8d0089a95b8e2002d13aa8d0e684c371d67c4
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Fri Nov 13 09:11:11 2020 +1100
+
+    Fix (Gameplay): Fixed photo fix task from moving all photos.
+
+commit ae2b6b7c085222758f9b6cbd862f0d9b5c9f4c98
+Merge: 6d8fdf0 e0b4e3a
+Author: Sebastian <s.bialalearmonth@gmail.com>
+Date:   Fri Nov 13 09:09:53 2020 +1100
+
+    Merge remote-tracking branch 'origin/master'
+
+commit e0b4e3aacd0386d6ae11b8f58e43b03ab56919e3
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Fri Nov 13 08:24:49 2020 +1100
+
+    Fix (Gameplay): Fixed interactables with new pickup controls.
+    
+    Also changed some lighting, and made a soon to be used material.
+
+commit 6d8fdf042445d22f8c552de436c0d572ce74682f
+Author: Sebastian <s.bialalearmonth@gmail.com>
+Date:   Thu Nov 12 16:55:04 2020 +1100
+
+    Began proper layout of the floors
+
+commit 79c015ddc50b3825db1f43399cb066d5b3ffba31
+Merge: 65d0ef0 00fb396
+Author: Sycellette <sycellette@gmail.com>
+Date:   Thu Nov 12 16:54:49 2020 +1100
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 65d0ef0a6d05758c10978aae24168ec317e911e5
+Author: Sycellette <sycellette@gmail.com>
+Date:   Thu Nov 12 16:54:19 2020 +1100
+
+    Fix (Gameplay): WIP Inspection fix
+
+commit 00fb396da7773603f087aedd73b2c2f023ba3acd
+Author: James <valeraindw@gmail.com>
+Date:   Thu Nov 12 16:53:56 2020 +1100
+
+    Update (dialogue) names
+
+commit b5d85d6219763c38f8f39169f02e9bdf266f4ae5
+Merge: 4276e5a f42d364
+Author: James <valeraindw@gmail.com>
+Date:   Thu Nov 12 14:01:50 2020 +1100
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 4276e5a8cc3c70d245eefb808b723fcc3b8641ff
+Author: James <valeraindw@gmail.com>
+Date:   Thu Nov 12 14:01:34 2020 +1100
+
+    Update (dialogue) names
+
+commit f42d3645ef3f5c2061f5af3572d313f818f27070
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Thu Nov 12 14:00:55 2020 +1100
+
+    Feature (UI): Pause Menu.
+
+commit 591180597fb652c150d328ab82b58e9b1e1e4865
+Author: James <valeraindw@gmail.com>
+Date:   Thu Nov 12 13:23:09 2020 +1100
+
+    Update (dialogue) renamed dialogue triggers
+
+commit 8186bb75496a70b7bd97aee1f23260022c4e970d
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Thu Nov 12 11:36:13 2020 +1100
+
+    Feature (Gameplay): Interactable and pickupable object highlighting.
+
+commit a1a1e34aa51afbc6463598337e7dd200994b7c64
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Thu Nov 12 10:37:58 2020 +1100
+
+    Fix (UI): Fixed dialogue interrupting dialogue.
+
+commit 7d7ec39777c100a34702c2de581b897b71998bf9
+Author: James <valeraindw@gmail.com>
+Date:   Thu Nov 12 10:26:13 2020 +1100
+
+    Update (dialogue) major dialogue in game
+
+commit fc3c261794aa955327e53d06217e4f2390c32415
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Thu Nov 12 08:20:26 2020 +1100
+
+    Update (UI): dialogue is now queued up when multiple are active.
+    
+    Also fixed wired font issue.
+
+commit e2621d29e11962aaae8696d374a7c5912fd2774c
+Merge: 3634130 e62e410
+Author: Sycellette <sycellette@gmail.com>
+Date:   Fri Nov 6 16:46:08 2020 +1100
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 3634130f332d1f0ec18549f32a688a97ff3cbf85
+Author: Sycellette <sycellette@gmail.com>
+Date:   Fri Nov 6 16:45:55 2020 +1100
+
+    Feature (Gameplay): WIP Inspection Rotation
+    
+    Using a different method to make it feel smoother, work in progress.
+
+commit e62e41026ed584b54909844f231573afb4a1a103
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Fri Nov 6 16:36:49 2020 +1100
+
+    Update (Gameplay): Adjusted lighting in map scene.
+
+commit 70cea2a612b7418f8dcd0fd3538841d0854964b6
+Merge: 8066201 4c01076
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Fri Nov 6 14:12:55 2020 +1100
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 8066201f95b1edbef8e7092d068e898def0debea
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Fri Nov 6 14:12:46 2020 +1100
+
+    Update (Gameplay): Readded tasks to map prefab.
+
+commit 4c01076028c17b7932e7137d4dc72d8e796bc238
+Author: James <valeraindw@gmail.com>
+Date:   Fri Nov 6 11:37:15 2020 +1100
+
+    Feature (UI): Pause menu
+
+commit 74c4072fb0ff3a9fdb7fdceffaa6240e381ee626
+Author: Sebastian <s.bialalearmonth@gmail.com>
+Date:   Fri Nov 6 10:55:14 2020 +1100
+
+    Duplicated the Map scene file for testing purposes
+
+commit ff00dcacc4424e8e8d204d0d7755a90c2d9209ce
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Fri Nov 6 10:16:52 2020 +1100
+
+    Update (Gameplay): Added player, colliders and lights to map prefab.
+    
+    as well as scn_map.
+
+commit 98ba76a31d0eb68d5232c8487198ec88b45b5fa6
+Author: James <valeraindw@gmail.com>
+Date:   Fri Nov 6 09:34:55 2020 +1100
+
+    Update (UI) updated object inspection UI
+
+commit a679a5d92ee7411f80b872a0f3f52d47a66bd789
+Merge: e84a1c4 5c6089d
+Author: James <valeraindw@gmail.com>
+Date:   Fri Nov 6 09:22:21 2020 +1100
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 5c6089dfc2d872c5b1884bbfaef13c273a4ba2ef
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Thu Nov 5 16:36:11 2020 +1100
+
+    Update (Gameplay): Imported new block out and organized it.
+
+commit e84a1c462f6d27341cd3c191468147014750d26c
+Merge: dac1b0b 716d35d
+Author: James <valeraindw@gmail.com>
+Date:   Thu Nov 5 16:05:56 2020 +1100
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 716d35d82d2aba60079b4e6c93bdc8220627559c
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Thu Nov 5 16:03:32 2020 +1100
+
+    Feature (Gameplay): The TV can now be turned on and off.
+
+commit dac1b0be7bb4075df760ccc20497e2519b636a1c
+Merge: 284b0bd 45c8c96
+Author: James <valeraindw@gmail.com>
+Date:   Thu Nov 5 15:44:39 2020 +1100
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 45c8c963ca8ebb9a25ec9a5ff46593b54278feda
+Author: Sycellette <sycellette@gmail.com>
+Date:   Thu Nov 5 15:23:29 2020 +1100
+
+    Feature (Gameplay): Forced inspection for specific objects.
+
+commit 284b0bd33567ff3dcf55d92b53cca181898aaba2
+Merge: d47c716 8e53158
+Author: James <valeraindw@gmail.com>
+Date:   Thu Nov 5 14:43:49 2020 +1100
+
+    Merge remote-tracking branch 'origin/master'
+
+commit d47c7169ef886d177d1f0ce01a65db116652b390
+Author: James <valeraindw@gmail.com>
+Date:   Thu Nov 5 14:35:30 2020 +1100
+
+    Feature (UI): Pickup object description.
+
+commit 8e531589d550b63e0687baa57e2ea7ca86f403ee
+Author: James <valeraindw@gmail.com>
+Date:   Thu Nov 5 14:35:30 2020 +1100
+
+    Feature (UI) Pickup object description
+
+commit b6f9cbca895d4f81ba4e4e15c9aa3a73c7c59421
+Merge: c1fe8d0 2b07469
+Author: Sycellette <sycellette@gmail.com>
+Date:   Thu Nov 5 12:28:45 2020 +1100
+
+    Merge remote-tracking branch 'origin/master'
+
+commit c1fe8d0bf819017242cb03c1279bcae04618d357
+Author: Sycellette <sycellette@gmail.com>
+Date:   Thu Nov 5 12:28:39 2020 +1100
+
+    Update (Gameplay): Zoom values and update is smoother now.
+
+commit 2b0746924d48e36db68e09c6505f2adf3cae0a40
+Author: Sebastian <s.bialalearmonth@gmail.com>
+Date:   Thu Nov 5 11:51:04 2020 +1100
+
+    Experimented with lighting in scn_block_test 3
+
+commit 1816a6dc477c8052552dda3f00da190d938de354
+Merge: bce4c49 3f44557
+Author: Sycellette <sycellette@gmail.com>
+Date:   Thu Nov 5 10:54:24 2020 +1100
+
+    Merge remote-tracking branch 'origin/master'
+
+commit bce4c494de92429961256dd975b94d9dfbcc159e
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Thu Nov 5 10:18:59 2020 +1100
+
+    Feature (Gameplay): Dish washing task cleanup and tuning.
+    
+    Task now activated manually.
+    Can have as many or as little dishes as it wants.
+    Player now correctly returns to locked cursor when returned from mini game.
+    Changed 'Hologram' shader the differentiate it from regular plates.
+
+commit 3f445578511741920527689354c72ca98ec5bcc8
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Thu Nov 5 10:18:59 2020 +1100
+
+    Feature (Gameplay): dish washing task cleanup and tuning.
+    
+    Task now activated manually.
+    Can have as many or as little dishes as it wants.
+    Player now correctly returns to locked cursor when returned from mini game.
+    Changed 'Hologram' shader the differentiate it from regular plates.
+
+commit f1e5eacf9ce4dc3d90e8e0ee0f679a0234868546
+Author: Volpanic <volpanicstudios@gmail.com>
+Date:   Wed Nov 4 20:50:32 2020 +1100
+
+    Feature (Gameplay): Basic implementation of photo frame adjusting task.
+    Changed how rotating an image works, task can now be completed.
+
+commit b7174c94ba701cb80e48397fff83c578930edd0d
+Merge: 7ccda11 2593d43
+Author: Sebastian <s.bialalearmonth@gmail.com>
+Date:   Wed Nov 4 16:48:54 2020 +1100
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 7ccda116e65232eda37c4c5be5a6fbe07ce81336
+Author: Sebastian <s.bialalearmonth@gmail.com>
+Date:   Wed Nov 4 16:48:45 2020 +1100
+
+    Arranged basic layout of the 2nd loop
+
+commit 2593d431732cb98d834e12869dec83079bd805b3
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Wed Nov 4 16:40:34 2020 +1100
+
+    Feature (Gameplay): WIP aligning photo frame task.
+
+commit ac8f0a447952410f73fecb54b0784b8b7ac92a3a
+Author: Sycellette <sycellette@gmail.com>
+Date:   Wed Nov 4 16:24:28 2020 +1100
+
+    Update (Gameplay): Adjusted inspection rotation, removed jump
+
+commit e22a9f3ac573aef6bb488cae06a712a8834e0608
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Wed Nov 4 15:46:57 2020 +1100
+
+    Feature (Gameplay): Made a room manger to manage completion of a room
+    
+    Will control when events happen, open door play dialogue etc
+
+commit b64b47315fc526df7dce1e0ebcd85dbdf20bba7c
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Wed Nov 4 15:11:17 2020 +1100
+
+    Feature (Gameplay): Basic implementation of make bed task.
+
+commit 30f5fd4f1ecc9ab1f319bd8d654998d024e2db91
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Wed Nov 4 13:35:12 2020 +1100
+
+    Feature (Gameplay): Basic implementation of trash bin task.
+
+commit 7f0ad0c6f76c73be41f41056d51765fbcb9b51a4
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Wed Nov 4 12:50:48 2020 +1100
+
+    Fix (UI): Pickup prompt text now fades in and out.
+
+commit ca19a8e7b25a678f660c328c312e773f2ccad345
+Merge: a23e10f b866c4d
+Author: Sebastian <s.bialalearmonth@gmail.com>
+Date:   Wed Nov 4 12:32:40 2020 +1100
+
+    Merge remote-tracking branch 'origin/master'
+
+commit a23e10f2439f39d2652d5bdc69edd509e250959e
+Author: Sebastian <s.bialalearmonth@gmail.com>
+Date:   Wed Nov 4 12:32:25 2020 +1100
+
+    Arranged the basic layout of the first loop
+
+commit b866c4d914b90f3290be1145dadf5425de4d3ea3
+Author: Sycellette <sycellette@gmail.com>
+Date:   Wed Nov 4 12:31:33 2020 +1100
+
+    Feature (Gameplay): WIP defaulted inspection.
+    
+    This feature (of which is still a WIP) will be used for something specific but will be able to be scaled elsewhere.
+
+commit 95bfbcddc5d75d2d187c70ff973d152e4b8af45d
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Wed Nov 4 11:48:06 2020 +1100
+
+    Fix (Gameplay): Made task code more modular.
+
+commit 350ee1d4577e1ea8d1f084170dd57141c8da7b8a
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Wed Nov 4 11:05:25 2020 +1100
+
+    Feature (Gameplay): Added various ways to trigger dialouge.
+    
+    Added new font, Made dialogue look prettier with a fade in and out.
+
+commit 45969482523d9357b54983ae1e588acf6cf16886
+Author: Sebastian <s.bialalearmonth@gmail.com>
+Date:   Wed Nov 4 10:09:19 2020 +1100
+
+    Added scn_block_test 3 for design iteration purposes
+    
+    The scene is to be used by me to iterate on the level design
+
+commit 632eb8914a49b2e2506e7bc4c87f26577b0683c2
+Author: Sebastian <s.bialalearmonth@gmail.com>
+Date:   Wed Nov 4 10:04:44 2020 +1100
+
+commit 3542d37821dff2e5f48ffde4200bfb6fbe9b09b6
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Wed Nov 4 09:52:06 2020 +1100
+
+    Feature (UI): Basic implementation of a dialogue system.
+
+commit 55df47076383a1cfff01ee32ad39624c28c33022
+Author: Sycellette <sycellette@gmail.com>
+Date:   Wed Nov 4 09:34:46 2020 +1100
+
+    Fix (Gameplay): Inspection rotation easier to use.
+    
+    Fixed the way the inspection works.
+
+commit 5cb0acbb2cdbf08bcf404dad26be10d3967d37ce
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Wed Nov 4 09:03:08 2020 +1100
+
+    Feature (Gameplay):  Made a hologram shader to indicate items.
+    
+    Also sped up cinamachine transitions
+
+commit 35de47fe0d641c1396049279b0c13a533c386647
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Fri Oct 30 16:15:16 2020 +1100
+
+    Fix (Gameplay): Made dish washing work with the new dish texture.
+
+commit 2c30d54ed7fb52f0241fc12a1f3ff3e557e492e8
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Fri Oct 30 14:20:29 2020 +1100
+
+    Feature (Gameplay): Doors closing on loop.
+
+commit bef5845ebc96fec5d3f752687298e37d0beec35a
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Fri Oct 30 12:07:12 2020 +1100
+
+    Fix (Gameplay): door script now rotates through code not animation.
+    
+    Because rotation wasn't relative.
+
+commit 6b63e82e2473c61c5484464b199feb75b47c4193
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Fri Oct 30 11:32:25 2020 +1100
+
+    Fix (Gameplay): Added a particle effect to dish washing.
+
+commit d7eb5701ed31f2fc99f9501168ee17cddfb4d9db
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Fri Oct 30 10:33:13 2020 +1100
+
+    Feature (Gameplay): Added camera transitions when washing dishes.
+
+commit 2e31491ddf3349a219c28a5456246890bbaa0777
+Author: Sycellette <sycellette@gmail.com>
+Date:   Thu Oct 29 16:37:37 2020 +1100
+
+    Fix (Gameplay): Fixed manual rotation during inspection.
+
+commit d99f53c146429c34cb4e0cf468f5ee855191e625
+Merge: 2324895 d5793d1
+Author: Sycellette <sycellette@gmail.com>
+Date:   Thu Oct 29 16:05:49 2020 +1100
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 232489590b145a325bd9ebb33823bc1b75b547a1
+Author: Sycellette <sycellette@gmail.com>
+Date:   Thu Oct 29 16:04:45 2020 +1100
+
+    Feature (Interface): Implemented notebook structure.
+
+commit 1bd59939ae6bfced5f597b090687f987edeb5c01
+Author: Sycellette <sycellette@gmail.com>
+Date:   Thu Oct 29 14:58:50 2020 +1100
+
+    Feature (Package): Imported Cinemachine.
+    
+    did some other stuff but cant remember
+
+commit d5793d1870d1764bf1c3b554e334af81dd48694e
+Author: Sycellette <sycellette@gmail.com>
+Date:   Thu Oct 29 16:04:45 2020 +1100
+
+    Feature (Interface): Implemented notebook structure.
+
+commit 8a099a8a1d34c925b852da6c12ee5481e95a13d3
+Author: Sycellette <sycellette@gmail.com>
+Date:   Thu Oct 29 14:58:50 2020 +1100
+
+    Feature (Package): Imported Cinemachine
+    
+    did some other stuff but cant remember
+
+commit 2446b46f18b25171fd5dc87d12d7176de7417d53
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Thu Oct 29 14:35:20 2020 +1100
+
+    Feature (Gameplay): Added a basic implementation of dish washing.
+
+commit 6b605d5f3747bff74c425d1e71b90e4c82115c57
+Author: Sycellette <sycellette@gmail.com>
+Date:   Thu Oct 29 14:09:59 2020 +1100
+
+    Fix (Gameplay): Fixed camera during first tutorial animation.
+    
+    Camera was clipping 180 degrees.. it's fixed now..
+    Changed the initial position of the object holder.
+
+commit cd73416939753aa8087d7a360c8567854b97c3cd
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Thu Oct 29 08:53:49 2020 +1100
+
+    Fix (Gameplay): Added a basic state machine to the player.
+    
+    Move player update to it's own state and added an cutscene state. Made pickup script not pickup unless gameplay.
+
+commit ec9c0497a153fef61a42c793c68cf4378ec2386a
+Author: Volpanic <volpanicstudios@gmail.com>
+Date:   Wed Oct 28 14:00:24 2020 +1100
+
+    Fix (Gameplay): Cleaned up portal related code.
+
+commit 5bd558d58c6a586bad2e4eefbc487ac996d96d1f
+Author: Sycellette <sycellette@gmail.com>
+Date:   Fri Oct 23 16:18:27 2020 +1100
+
+    Fix (Gameplay): Fixed scene object's mesh collider.
+    
+    Bug causing run-time crash fixed.
+
+commit 0e1e6e4b67fec2e870c1de678746abfc5581287a
+Author: Sycellette <sycellette@gmail.com>
+Date:   Fri Oct 23 16:11:23 2020 +1100
+
+    Feature (Gameplay): Tutorial initial cutscene and baked lighting.
+    
+    Baked lighting and tutorial are part of Test_roof map model.
+
+commit 0bebc983e6b3f3c2fd16f3b2613dfd648b3d43fa
+Author: Sycellette <sycellette@gmail.com>
+Date:   Fri Oct 23 11:53:08 2020 +1100
+
+    Fix (Gameplay): Fixed zoom and character height.
+    
+    Fixed zoom, it now works, also changed zoom smooth to be a lot slower. Player character should not be changed through scale, I have fixed this by changing the height of the character controller.
+
+commit 14c5072275a6da24921243f3eaab2fea7d6539ab
+Author: Sycellette <sycellette@gmail.com>
+Date:   Fri Oct 23 09:56:19 2020 +1100
+
+    Feature (Gameplay): Added display prompt for pickupable objects.
+    
+    Included in this is the foundation for a display prompt for interactable objects. A few scenes have been updated for this already.
+
+commit 835ffc44acee4dca331535bc388013eb6f106f43
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Thu Oct 22 16:07:23 2020 +1100
+
+    Fix (Gameplay): Added lighting and materials to test models.
+
+commit 48e55800b1c258dead2bbacd5e42efa2801665ab
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Thu Oct 22 16:06:50 2020 +1100
+
+    Feature (Gameplay): Added a basic door opening script.
+
+commit cb38a17b77a683b2b3581d345a52e4a6b526ea63
+Author: Sycellette <sycellette@gmail.com>
+Date:   Thu Oct 22 15:19:34 2020 +1100
+
+    Fix (Gameplay): Fixed objectholder position bug
+
+commit 9b8364586380c34315733c67e496ee1bfc35abba
+Author: Sycellette <sycellette@gmail.com>
+Date:   Thu Oct 22 15:18:03 2020 +1100
+
+    Feature (Gameplay): Unity EventSystem-based interaction system added.
+
+commit 473075359deae6ab09443bbce700eb823a5540fa
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Thu Oct 22 15:16:10 2020 +1100
+
+    Asset (Gameplay): Imported new blockout of the room.
+    
+    Also created some door animations.
+
+commit d36dc8f8e73b453fa86c2931ca5ccf97d1edb1ed
+Author: Sycellette <sycellette@gmail.com>
+Date:   Thu Oct 22 14:13:05 2020 +1100
+
+    Feature (Gameplay): Ability to throw held objects.
+
+commit e038f37bfe7caffb78151d712f0cbfdb2c4b399e
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Thu Oct 22 14:10:44 2020 +1100
+
+    Fix (Gameplay): Added smoothing to snapping objects.
+
+commit d03f4ab35028237635926e6253e6d948891c2a3e
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Thu Oct 22 11:33:03 2020 +1100
+
+    Feature (Gameplay): Snapping objects into set position.
+    
+    Also tested some baked lighting.
+
+commit 2d99680e743d28ace5fbf0a938e768ef7c67f362
+Author: Sycellette <sycellette@gmail.com>
+Date:   Thu Oct 22 11:19:37 2020 +1100
+
+    Feature (Gameplay): Inspection of picked up objects.
+
+commit 7b11af5669994d3989747935e8eeec6827aa21ca
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Wed Oct 21 16:37:39 2020 +1100
+
+    Fix (Scene): Adjusted lighting settings
+
+commit 48ea5fca4d70f264a8507dc8e5139618c4f9be61
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Wed Oct 21 13:28:20 2020 +1100
+
+    Fix (Gameplay): Added test scene for models, Fields portal jitter.
+    
+    Added a scene to test model (SM_LAYOUT). Fixed a error making portals jitter when telporting (Player was being offset incorrectly)
+
+commit 157f4406b63306b201142930b6dd93dae0b31458
+Author: Ivan <ivantam7@gmail.com>
+Date:   Wed Oct 21 12:20:53 2020 +1100
+
+    Added model for house layout and TV
+
+commit 933421f7814210d5872be41b6f2a9285de430d1d
+Merge: 5a3e9fd 8d5b98d
+Author: Sycellette <sycellette@gmail.com>
+Date:   Wed Oct 21 11:15:52 2020 +1100
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 5a3e9fda355914583c6eed1aeb31fa0af778ac11
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Wed Oct 21 09:49:40 2020 +1100
+
+    Fix (Gameplay): Made new player controller work with portals.
+    
+    Also changed some lighting in portal scene.
+
+commit 3c9be3cb3321a84c5c073a7f74864d2d7d757d39
+Author: Sycellette <sycellette@gmail.com>
+Date:   Wed Oct 21 09:34:01 2020 +1100
+
+    Feature (Gameplay): Added headbobbing effect to player movement.
+    
+    Player structure and PlayerMovement revised and renewed to suit head bobbing. This should have little impact.
+
+commit 2a252014e41efd5b1ed124869b2616e41815b183
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Wed Oct 21 08:31:16 2020 +1100
+
+    Fix (Gameplay): Added more checks for the correct portal to be rendered.
+    
+    Camera now checks if a portal is facing the screen to decide to render it. Fixed checks not occurring unless just teleported.
+
+commit 965252f9df847a58dbde867a739f50981a141db2
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Fri Oct 16 09:54:22 2020 +1100
+
+    Fix (Engine): Fixed a problem preventing the project from building.
+    
+    Added a #if UNITY_EDITOR when using handles. Adjusted some post processing settings for the build.
+
+commit 8d5b98da79306f994bad383916ee299ed4d2eab0
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Wed Oct 21 09:49:40 2020 +1100
+
+    Fix (Gameplay): Made new player controller work with portals.
+    
+    Also changed some lighting in portal scene.
+
+commit b86f39db7fd1f2b97a91e76c7118fe622d988e5d
+Author: Sycellette <sycellette@gmail.com>
+Date:   Wed Oct 21 09:34:01 2020 +1100
+
+    Feature (Gameplay): Added headbobbing effect to player movement.
+    
+    Player structure and PlayerMovement revised and renewed to suit head bobbing. This should have little impact.
+
+commit dcc0e8f72c56326bdb442eddd3329ee9c1272a00
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Wed Oct 21 08:31:16 2020 +1100
+
+    Fix (Gameplay): Added more checks for the correct portal to be rendered.
+    
+    Camera now checks if a portal is facing the screen to decide to render it. Fixed checks not occurring unless just teleported.
+
+commit f888ab954a6177dd07533f967072bacf8016b3a3
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Fri Oct 16 09:54:22 2020 +1100
+
+    Fix (Engine): fixed a problem preventing the project from building.
+    
+    Added a #if UNITY_EDITOR when using handles. Adjusted some post processing settings for the build.
+
+commit cabcdded876e402e235e58320c163f67ca0ef48c
+Author: Sycellette <sycellette@gmail.com>
+Date:   Fri Oct 16 09:16:40 2020 +1100
+
+    Feature (Interface): Added crosshair structure with example.
+    Crosshair sprite can be easily changed if needed.
+
+commit 21b0a1a8390d07de5202963c62bcb02fb2a73481
+Author: Sycellette <sycellette@gmail.com>
+Date:   Thu Oct 15 19:18:56 2020 +1100
+
+    Object pickup further testing and adjustments.
+
+commit 2f7293ddd2a539289bb5fb6e0be620b0aa9d2e42
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Thu Oct 15 16:32:19 2020 +1100
+
+    Feature (Gameplay) Created some variations between prototype loops.
+
+commit 40affeb06dc61e09802b884d2ce842c646d885ee
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Thu Oct 15 12:18:27 2020 +1100
+
+    Feature (Gameplay): Portal camera now renders the nearest.
+    
+    Allows for easier use of multiple portals. Still many bugs with the implementation. Added new material for loop 3's floor.
+
+commit 0751ba07ad56866a30a78df226a6a7a1602f8c17
+Author: Sycellette <sycellette@gmail.com>
+Date:   Thu Oct 15 07:22:39 2020 +1100
+
+    Pickup feature now implemented with collision recognition.
+    More testing is needed for this collision recognition.
+
+commit 880189c91eb4da552837d1e71f6f32a6d55b0d14
+Author: Volpanic <volpanicstudios@gmail.com>
+Date:   Wed Oct 14 15:19:00 2020 +1100
+
+    Added more comments and move scripts from root to Scripts.
+
+commit ad63d342efebcfcae75c13186c4b865ffcbef540
+Author: Volpanic <volpanicstudios@gmail.com>
+Date:   Wed Oct 14 15:02:30 2020 +1100
+
+    Portal now only activates if entered from the plane facing side.
+    Added some comments and changed visablity of certain variables.
+    Portal Manger now gives it's instance to all portals.
+
+commit 8fa29f7f02b15fd35aaa9ac031a321e930f65d16
+Author: Volpanic <volpanicstudios@gmail.com>
+Date:   Wed Oct 14 01:04:10 2020 +1100
+
+    Made the system slightly more expandable (Still in the works)
+    Added a portal prefab, added a few failsafes to if a teleport takes you into another teleporter.
+
+commit d8266479af06fb4a46e3a4e010cf5338170869f3
+Author: Volpanic <volpanicstudios@gmail.com>
+Date:   Mon Oct 12 21:29:47 2020 +1100
+
+    Movement through portals now works.
+    Added a protal prefab. System not very expandable currently.
+
+commit f18cdf51afadeddbb212d2a3cc948edbc02c6520
+Author: Volpanic <volpanicstudios@gmail.com>
+Date:   Sat Oct 10 17:51:09 2020 +1100
+
+    Portals now render semi properly, not really in a usable state yet.
+
+commit 08ceb30b10286f0d359268a9af1cd82fe66fe563
+Author: Volpanic <volpanicstudios@gmail.com>
+Date:   Sat Oct 10 13:28:38 2020 +1100
+
+    Started work on a test scene for the portals.
+    Also edited the lamp material.
+
+commit 6ae54d4e8a46f3b73ee4e0f01e68ed1b765f017f
+Author: Volpanic <volpanicstudios@gmail.com>
+Date:   Sat Oct 10 13:15:25 2020 +1100
+
+    Created some flat colour materials for testing.
+
+commit cb71787b34c93cc3ff2fe896c6ad7b7b7a3d6632
+Author: Sycellette <sycellette@gmail.com>
+Date:   Fri Oct 9 16:38:43 2020 +1100
+
+    Fixed cursor lock
+    
+    Disconnects control of camera movement when escape key is pressed. Resume control when mousebuttondown(0)
+
+commit 568029ff9f346d9f79dd025734dfc24661288fbf
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Fri Oct 9 10:29:37 2020 +1100
+
+    Blocked out a basic room in the debug scene.
+
+commit 1f28376cd1eeaaccf5635f881ca8e545602574be
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Thu Oct 8 16:15:33 2020 +1100
+
+    Started work on picking up objects.
+    
+    For the most part functional, messes up with mesh colliders though.
+
+commit 97b7310197874d6c0d2be310b660c9c003150420
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Thu Oct 8 11:25:36 2020 +1100
+
+    Created player prefab.
+
+commit cbd40e400bed9134760539afc994ee8823832999
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Thu Oct 8 11:23:57 2020 +1100
+
+    Imported some basic first person control scripts.
+    
+    Imported MouseLook and PlayerMovement and set them up in the scene.
+
+commit 2469090a835b14f12fb1a37770802e5a229351d5
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Thu Oct 8 10:47:18 2020 +1100
+
+    Added some basic aesthetic's to scn_debug.
+    
+    Added a darker sky box and a vignette to maintain mood when working in the project.
+
+commit 73bdfa04dbdcbf589d5790c4d3b87c1541b6e7a9
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Thu Oct 8 10:41:16 2020 +1100
+
+    Imported ProBuilder and ProGrids package.
+
+commit 5a1e7016d0530047ec670ff99145845894272b2d
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Thu Oct 8 10:38:36 2020 +1100
+
+    Duplicated project into prototype.
+    
+    Created a second project for the prototype.
+
+commit 2c0703712121c7777ce9833f95c0a374f7462277
+Author: Ryan Lawrence <Volpanicstudios@gmail.com>
+Date:   Thu Sep 24 13:16:43 2020 +1000
+
+    Switched rendering pipeline to URP.
+
+commit 9bb5477639edc94973359ba979a8a8abd7ac0ef6
+Author: Aaron Cox <aaron.cox@aie.edu.au>
+Date:   Tue Sep 22 16:21:52 2020 +1000
+
+    Initial Commit
+
+commit 3a0466e19be299cea40f0b0bec7b6289a063ac5a
+Author: Aaron Cox <aaronrcox@users.noreply.github.com>
+Date:   Tue Sep 22 16:09:38 2020 +1000
+
+    Initial commit

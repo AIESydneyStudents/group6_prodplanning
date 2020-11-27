@@ -28,18 +28,23 @@ public class PauseManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Return) && player.enabled != false && player.PlayerCurrentState == F_PlayerMovement.PlayerState.Gameplay)
+        bool pressed = Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Escape);
+
+        if(pressed)
         {
             if(!active)
             {
-                TogglePause(!active);
+                if(player.enabled != false && player.PlayerCurrentState == F_PlayerMovement.PlayerState.Gameplay)
+                {
+                    TogglePause(true);
+                }
             }
-            else if(active)
+            else
             {
-                TogglePause(!active);
+                TogglePause(false);
             }
-            
         }
+
     }
 
     public void TogglePause(bool on)

@@ -11,6 +11,8 @@ public class RoomPhotoFrame : Task
     private DialougeManager dialougeManager;
     public DialougeSequence sequenceToPlay;
 
+    private bool delay = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +26,7 @@ public class RoomPhotoFrame : Task
     {
         if(taskRunning)
         {
-            if(Input.GetMouseButtonDown(0))
+            if(delay && Input.GetMouseButtonDown(0))
             {
                 if(!taskFinished) TaskFinished();
                 player.ChangePerspective(null);
@@ -37,6 +39,15 @@ public class RoomPhotoFrame : Task
         taskRunning = true;
         player.ChangePerspective(vCamPersoective);
         if(!taskFinished) StartCoroutine(WaitToPlayDialouge());
+
+        delay = false;
+        StartCoroutine(WaitForDelay());
+    }
+
+    IEnumerator WaitForDelay()
+    {
+        yield return new WaitForSeconds(2.0f);
+        delay = true;
     }
 
     IEnumerator WaitToPlayDialouge()
